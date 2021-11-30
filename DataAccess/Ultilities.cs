@@ -11,7 +11,10 @@ namespace DataAccess
     {
         private static string StrName = "ConnectionStringName";
         public static string ConnectionString = ConfigurationManager.ConnectionStrings[StrName].ConnectionString;
+        //---All
+        public static string GetAllByTableName = "GetALl";
         //---Job
+        public static string Job_GetAll = "select * from Job";
         //---JobDetail
         //---TypeOfJob
         //---Account

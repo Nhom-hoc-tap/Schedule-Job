@@ -85,28 +85,28 @@ namespace Schedule_Job.UserComponent
             // 
             this.lbl_finish_time.AutoSize = true;
             this.lbl_finish_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_finish_time.Location = new System.Drawing.Point(87, 86);
+            this.lbl_finish_time.Location = new System.Drawing.Point(55, 87);
             this.lbl_finish_time.Name = "lbl_finish_time";
-            this.lbl_finish_time.Size = new System.Drawing.Size(80, 17);
+            this.lbl_finish_time.Size = new System.Drawing.Size(60, 17);
             this.lbl_finish_time.TabIndex = 5;
-            this.lbl_finish_time.Text = "Time Finish";
+            this.lbl_finish_time.Text = "Kết thúc";
             // 
             // lbl_start_time
             // 
             this.lbl_start_time.AutoSize = true;
             this.lbl_start_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_start_time.Location = new System.Drawing.Point(87, 60);
+            this.lbl_start_time.Location = new System.Drawing.Point(55, 61);
             this.lbl_start_time.Name = "lbl_start_time";
-            this.lbl_start_time.Size = new System.Drawing.Size(73, 17);
+            this.lbl_start_time.Size = new System.Drawing.Size(57, 17);
             this.lbl_start_time.TabIndex = 7;
-            this.lbl_start_time.Text = "Time Start";
+            this.lbl_start_time.Text = "Bắt đầu";
             // 
             // lbl_job_name
             // 
             this.lbl_job_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_job_name.Location = new System.Drawing.Point(86, 11);
+            this.lbl_job_name.Location = new System.Drawing.Point(56, 11);
             this.lbl_job_name.Name = "lbl_job_name";
-            this.lbl_job_name.Size = new System.Drawing.Size(250, 49);
+            this.lbl_job_name.Size = new System.Drawing.Size(280, 49);
             this.lbl_job_name.TabIndex = 8;
             this.lbl_job_name.Text = "Job Name";
             // 
@@ -114,7 +114,7 @@ namespace Schedule_Job.UserComponent
             // 
             this.lbl_value_time_start.AutoSize = true;
             this.lbl_value_time_start.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbl_value_time_start.Location = new System.Drawing.Point(199, 60);
+            this.lbl_value_time_start.Location = new System.Drawing.Point(167, 61);
             this.lbl_value_time_start.Name = "lbl_value_time_start";
             this.lbl_value_time_start.Size = new System.Drawing.Size(106, 17);
             this.lbl_value_time_start.TabIndex = 12;
@@ -124,7 +124,7 @@ namespace Schedule_Job.UserComponent
             // 
             this.lbl_value_time_finish.AutoSize = true;
             this.lbl_value_time_finish.ForeColor = System.Drawing.Color.DarkOrange;
-            this.lbl_value_time_finish.Location = new System.Drawing.Point(199, 86);
+            this.lbl_value_time_finish.Location = new System.Drawing.Point(167, 87);
             this.lbl_value_time_finish.Name = "lbl_value_time_finish";
             this.lbl_value_time_finish.Size = new System.Drawing.Size(111, 17);
             this.lbl_value_time_finish.TabIndex = 12;
@@ -135,7 +135,7 @@ namespace Schedule_Job.UserComponent
             this.pb_priority.Image = global::Schedule_Job.Properties.Resources.icons8_star_20;
             this.pb_priority.Location = new System.Drawing.Point(10, 10);
             this.pb_priority.Name = "pb_priority";
-            this.pb_priority.Size = new System.Drawing.Size(50, 50);
+            this.pb_priority.Size = new System.Drawing.Size(40, 40);
             this.pb_priority.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_priority.TabIndex = 4;
             this.pb_priority.TabStop = false;
