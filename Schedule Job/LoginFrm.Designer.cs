@@ -70,7 +70,7 @@ namespace Schedule_Job
 			// 
 			this.lblCreateAccount.AutoSize = true;
 			this.lblCreateAccount.ForeColor = System.Drawing.Color.DodgerBlue;
-			this.lblCreateAccount.Location = new System.Drawing.Point(217, 309);
+			this.lblCreateAccount.Location = new System.Drawing.Point(223, 309);
 			this.lblCreateAccount.Name = "lblCreateAccount";
 			this.lblCreateAccount.Size = new System.Drawing.Size(73, 13);
 			this.lblCreateAccount.TabIndex = 23;
@@ -232,6 +232,7 @@ namespace Schedule_Job
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(504, 331);
 			this.Controls.Add(this.guna2Button2);
 			this.Controls.Add(this.lblCreateAccount);

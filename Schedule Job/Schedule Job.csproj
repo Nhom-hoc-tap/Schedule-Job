@@ -55,6 +55,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddJobFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddJobFrm.Designer.cs">
+      <DependentUpon>AddJobFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateAccountFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +110,9 @@
     <Compile Include="UserComponent\JobDetailControl.Designer.cs">
       <DependentUpon>JobDetailControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddJobFrm.resx">
+      <DependentUpon>AddJobFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CreateAccountFrm.resx">
       <DependentUpon>CreateAccountFrm.cs</DependentUpon>
     </EmbeddedResource>
