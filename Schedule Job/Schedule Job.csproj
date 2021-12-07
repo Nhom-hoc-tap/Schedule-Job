@@ -36,6 +36,9 @@
     <Reference Include="CircularProgressBar, Version=2.8.0.16, Culture=neutral, PublicKeyToken=310fd07b25df79b3, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.8.0.16\lib\net40\CircularProgressBar.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.2.5, Culture=neutral, PublicKeyToken=e4b9cdd7b4cde4b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.2.5\lib\net40\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +55,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CreateAccountFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateAccountFrm.Designer.cs">
+      <DependentUpon>CreateAccountFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ForgotPassWordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ForgotPassWordForm.Designer.cs">
+      <DependentUpon>ForgotPassWordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +104,15 @@
     <Compile Include="UserComponent\JobDetailControl.Designer.cs">
       <DependentUpon>JobDetailControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CreateAccountFrm.resx">
+      <DependentUpon>CreateAccountFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ForgotPassWordForm.resx">
+      <DependentUpon>ForgotPassWordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
