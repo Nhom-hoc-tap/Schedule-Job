@@ -27,8 +27,7 @@ namespace DataAccess
 
                 typeOfJob.Id = Convert.ToInt32(reader["ID"]);
                 typeOfJob.Name = reader["TenLoaiCV"].ToString();
-                typeOfJob.User = reader["TenDangNhap"].ToString();
-                
+                typeOfJob.UserName = reader["TenDangNhap"].ToString();
                 typeOfJobs.Add(typeOfJob);
             }
             sqlConn.Close();

@@ -140,6 +140,7 @@
     <None Include="Resources\icons8-add-24.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\icons8-search-24.png" />
     <Content Include="Resources\ReminderSystemV3 %281%29.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

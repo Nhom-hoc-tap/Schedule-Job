@@ -27,16 +27,22 @@ namespace Schedule_Job.UserComponent
             lbl_estimate_time.Text = GetTime(_jobDetail.EstimateTime);
             lbl_actual_time.Text = GetTime(_jobDetail.ActualTime);
             prg_Progress.Value = _jobDetail.Progress;
-            if (_jobDetail.Progress < 100)
+            if (_jobDetail.Status == 0)
             {
                 lbl_progress.Text = _jobDetail.Progress.ToString() + "/100%";
                 lbl_progress.ForeColor = Color.FromArgb(255, 128, 0);
             }
-            else
+            else if(_jobDetail.Status == 1)
             {
                 lbl_progress.Text = "Hoàn thành";
-                lbl_progress.Font = new Font("Microsoft Sans Serif", 7);
+                lbl_progress.Font = new Font("Microsoft Sans Serif", 8);
                 lbl_progress.ForeColor = Color.Green;
+            }
+            else
+            {
+                lbl_progress.Text = "Tạm dừng";
+                lbl_progress.Font = new Font("Microsoft Sans Serif", 8);
+                lbl_progress.ForeColor = Color.Gray;
             }
         }
         private string GetTime(int value)

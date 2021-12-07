@@ -34,7 +34,7 @@ namespace DataAccess
                 job.Progress = Convert.ToInt32(reader["TienDo"]);
                 job.Status = Convert.ToInt32(reader["TrangThai"]);
                 job.TypeOfJobId = Convert.ToInt32(reader["ID_LoaiCV"]);
-                job.UserName = reader["TenDangNhap"].ToString();
+                //job.UserName = reader["TenDangNhap"].ToString();
                 jobs.Add(job);
             }
             sqlConn.Close();

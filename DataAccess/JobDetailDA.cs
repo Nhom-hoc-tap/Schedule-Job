@@ -32,8 +32,8 @@ namespace DataAccess
                 jobDetail.EstimateTime = int.Parse(reader["ThoiDuKien"].ToString());
                 jobDetail.Priority = int.Parse(reader["MucdoUuTien"].ToString());
                 jobDetail.JobId = int.Parse(reader["ID_CongViec"].ToString());
-                jobDetail.Status = int.Parse(reader["TrangThai"].ToString());
                 jobDetail.Progress = int.Parse(reader["TienDo"].ToString());
+                jobDetail.Status = int.Parse(reader["TrangThai"].ToString());
                 jobDetails.Add(jobDetail);
             }
             sqlConn.Close();
