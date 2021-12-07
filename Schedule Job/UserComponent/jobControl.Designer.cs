@@ -42,7 +42,7 @@ namespace Schedule_Job.UserComponent
             // 
             // pb_priority
             // 
-            this.pb_priority.Image = global::Schedule_Job.Properties.Resources.icons8_star_20;
+            //this.pb_priority.Image = global::Schedule_Job.Properties.Resources.icons8_star_20;
             this.pb_priority.Location = new System.Drawing.Point(10, 10);
             this.pb_priority.Name = "pb_priority";
             this.pb_priority.Size = new System.Drawing.Size(50, 50);

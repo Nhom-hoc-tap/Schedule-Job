@@ -15,7 +15,20 @@ namespace DataAccess
         public DateTime EndTime { get; set; }
         public int Priority { get; set; }
         public int Progress { get; set; }
-        public int Status { get; set; }
+        //0 - on going, 1 - complete , -1 over, 2 drop
+        private int status;
+        public int Status 
+        { 
+            get { return status; }
+            set {
+                if (Progress == 100)
+                    this.status = 1;
+                else if (EndTime < DateTime.Now)
+                    this.status = -1;
+                else
+                    status = value;
+            } 
+        } 
         public int TypeOfJobId { get; set; }
         public string UserName { get; set; }
     }

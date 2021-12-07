@@ -29,10 +29,14 @@ namespace Schedule_Job
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.fpn_job_detail = new System.Windows.Forms.FlowLayoutPanel();
             this.fpn_jobs = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.cbb_type_jobs = new System.Windows.Forms.ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btn_add_job = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,7 +71,7 @@ namespace Schedule_Job
             this.panel1.Controls.Add(this.monthCalendar1);
             this.panel1.Location = new System.Drawing.Point(1277, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 707);
+            this.panel1.Size = new System.Drawing.Size(492, 707);
             this.panel1.TabIndex = 5;
             // 
             // monthCalendar1
@@ -78,15 +82,37 @@ namespace Schedule_Job
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 4;
             // 
+            // cbb_type_jobs
+            // 
+            this.cbb_type_jobs.BackColor = System.Drawing.Color.White;
+            this.cbb_type_jobs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbb_type_jobs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbb_type_jobs.FormattingEnabled = true;
+            this.cbb_type_jobs.Location = new System.Drawing.Point(10, 150);
+            this.cbb_type_jobs.Name = "cbb_type_jobs";
+            this.cbb_type_jobs.Size = new System.Drawing.Size(459, 28);
+            this.cbb_type_jobs.TabIndex = 7;
+            this.cbb_type_jobs.SelectedIndexChanged += new System.EventHandler(this.cbb_type_jobs_SelectedIndexChanged);
+            // 
+            // btn_add_job
+            // 
+            this.btn_add_job.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
+            this.btn_add_job.Location = new System.Drawing.Point(475, 149);
+            this.btn_add_job.Name = "btn_add_job";
+            this.btn_add_job.Size = new System.Drawing.Size(38, 34);
+            this.btn_add_job.TabIndex = 8;
+            this.btn_add_job.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 730);
+            this.ClientSize = new System.Drawing.Size(1782, 730);
+            this.Controls.Add(this.btn_add_job);
+            this.Controls.Add(this.cbb_type_jobs);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fpn_job_detail);
             this.Controls.Add(this.fpn_jobs);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "MainForm";
             this.Text = "Quản Lý Công Việc";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -101,6 +127,9 @@ namespace Schedule_Job
         private System.Windows.Forms.FlowLayoutPanel fpn_jobs;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.ComboBox cbb_type_jobs;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btn_add_job;
     }
 }
 

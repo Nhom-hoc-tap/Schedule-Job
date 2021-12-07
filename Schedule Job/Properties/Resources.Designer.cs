@@ -63,9 +63,9 @@ namespace Schedule_Job.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_check_64 {
+        internal static System.Drawing.Bitmap circle_outline_48 {
             get {
-                object obj = ResourceManager.GetObject("icons8-check-64", resourceCulture);
+                object obj = ResourceManager.GetObject("circle-outline-48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Schedule_Job.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_ok_20 {
+        internal static System.Drawing.Bitmap icons8_add_24 {
             get {
-                object obj = ResourceManager.GetObject("icons8-ok-20", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-add-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Schedule_Job.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_plus_50 {
+        internal static System.Drawing.Bitmap icons8_check_circle {
             get {
-                object obj = ResourceManager.GetObject("icons8-plus-50", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-check-circle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,19 @@ namespace Schedule_Job.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_star_20 {
+        internal static System.Drawing.Bitmap icons8_star_filled {
             get {
-                object obj = ResourceManager.GetObject("icons8-star-20", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8-star-filled", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap outline_star_24 {
+            get {
+                object obj = ResourceManager.GetObject("outline-star-24", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

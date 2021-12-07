@@ -14,9 +14,11 @@ namespace DataAccess
         //---All
         public static string GetAllByTableName = "GetALl";
         //---Job
-        public static string Job_GetAll = "select * from Job";
+        public static string Job_GetByAccount = "GetJobByAccountName";
         //---JobDetail
+        public static string JobDetail_GetByJob = "GetJobDetailByJobId";
         //---TypeOfJob
+        public static string TypeOfJob_GetByAccountName = "GetTypeOfJobByAccountName";
         //---Account
 
         //public static string ...

@@ -10,9 +10,9 @@ namespace BusinessLogic
     public class JobBL
     {
         JobDA jobDA = new JobDA();
-        public List<Job> GetAll()
+        public List<Job> GetByAccount(string accountName)
         {
-            return jobDA.GetAll();
+            return jobDA.GetByAccount(accountName);
         }
     }
 }
