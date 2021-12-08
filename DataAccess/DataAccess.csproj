@@ -70,9 +70,10 @@
     <Compile Include="JobDetail.cs" />
     <Compile Include="JobDetailDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlHelper.cs" />
     <Compile Include="TypeOfJob.cs" />
     <Compile Include="TypeOfJobDA.cs" />
-    <Compile Include="Ultilities.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

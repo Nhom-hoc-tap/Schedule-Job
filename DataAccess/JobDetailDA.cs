@@ -13,12 +13,12 @@ namespace DataAccess
         public List<JobDetail> GetByJobId(int jobId)
         {
             List<JobDetail> jobDetails = new List<JobDetail>();
-            SqlConnection sqlConn = new SqlConnection(Ultilities.ConnectionString);
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
             sqlConn.Open();
 
             SqlCommand command = sqlConn.CreateCommand();
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = Ultilities.JobDetail_GetByJob;
+            command.CommandText = Utilities.JobDetail_GetByJob;
             command.Parameters.Add("@JobId", SqlDbType.Int).Value = jobId;
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())

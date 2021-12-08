@@ -11,35 +11,33 @@ using System.Windows.Forms;
 
 namespace Schedule_Job
 {
-	public partial class ForgotPassWordForm : Form
-	{
-		public ForgotPassWordForm()
-		{
-			InitializeComponent();
-		}
+    public partial class ForgotPassWordForm : Form
+    {
+        public ForgotPassWordForm()
+        {
+            InitializeComponent();
+        }
 
-		private void ForgotPassWordForm_Load(object sender, EventArgs e)
-		{
-			this.Text = string.Empty;
-			this.ControlBox = false;
-			this.DoubleBuffered = true;
-			this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
-		}
+        private void ForgotPassWordForm_Load(object sender, EventArgs e)
+        {
+            MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+        }
 
-		[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-		private extern static void ReleaseCapture();
-		[DllImport("user32.DLL", EntryPoint = "SendMessage")]
-		private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
 
-		private void ForgotPassWordForm_MouseDown(object sender, MouseEventArgs e)
-		{
-			ReleaseCapture();
-			SendMessage(this.Handle, 0x112, 0xf012, 0);
-		}
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
-		private void btnCancel_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-	}
+        private void ForgotPassWordForm_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
 }

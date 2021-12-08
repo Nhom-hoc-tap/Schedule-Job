@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessLogic;
+using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,14 +22,12 @@ namespace Schedule_Job
 
 		private void CreateAccountFrm_Load(object sender, EventArgs e)
 		{
-			this.Text = string.Empty;
-			this.ControlBox = false;
-			this.DoubleBuffered = true;
-			this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
+			MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
 		}
 
 		[DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
 		private extern static void ReleaseCapture();
+
 		[DllImport("user32.DLL", EntryPoint = "SendMessage")]
 		private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
 
@@ -39,7 +39,70 @@ namespace Schedule_Job
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			Close();
 		}
-	}
+
+		private Account GetAccount()
+        {
+			string fullName = txtFullName.Text;
+			string userName = txtUserName.Text;
+			string password = txtPassword.Text;
+			bool gender = rbMale.Checked;
+			DateTime birth = dtpBirth.Value;
+			return new Account()
+			{
+				UserName = userName,
+				Password = password,
+				FullName = fullName,
+				Gender = gender,
+				Birth = birth
+            };
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+		{
+            if (ValidateUserInput())
+            {
+				if (AccountBL.Instance.Insert(GetAccount()))
+                {
+					MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK);
+				}
+            }
+		}
+
+		private bool ValidateUserInput()
+        {
+			if (string.IsNullOrWhiteSpace(txtFullName.Text))
+			{
+				MessageBox.Show("Không được để trống họ và tên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (string.IsNullOrWhiteSpace(txtUserName.Text))
+			{
+				MessageBox.Show("Không được để trống tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (AccountBL.Instance.HasAccount(txtUserName.Text))
+			{
+				MessageBox.Show("Đã có tên đăng nhập!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (string.IsNullOrWhiteSpace(txtPassword.Text))
+			{
+				MessageBox.Show("Không được để trống mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if (txtPassword.Text != txtConfimPassword.Text)
+			{
+				MessageBox.Show("Mật khẩu nhập lại không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			return true;
+		}
+    }
 }

@@ -13,12 +13,12 @@ namespace DataAccess
         public List<Job> GetByAccount(string accountName)
         {
             List<Job> jobs = new List<Job>();
-            SqlConnection sqlConn = new SqlConnection(Ultilities.ConnectionString);
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
             sqlConn.Open();
 
             SqlCommand command = sqlConn.CreateCommand();
             command.CommandType = CommandType.StoredProcedure;
-            command.CommandText = Ultilities.Job_GetByAccount;
+            command.CommandText = Utilities.Job_GetByAccount;
             command.Parameters.Add("@AccountName", SqlDbType.NVarChar, 200).Value = accountName;
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
