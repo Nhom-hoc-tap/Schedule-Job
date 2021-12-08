@@ -47,7 +47,7 @@ namespace Schedule_Job
 			this.fpn_job_detail.AutoScroll = true;
 			this.fpn_job_detail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.fpn_job_detail.Location = new System.Drawing.Point(389, 150);
-			this.fpn_job_detail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.fpn_job_detail.Margin = new System.Windows.Forms.Padding(2);
 			this.fpn_job_detail.Name = "fpn_job_detail";
 			this.fpn_job_detail.Size = new System.Drawing.Size(567, 436);
 			this.fpn_job_detail.TabIndex = 4;
@@ -59,7 +59,7 @@ namespace Schedule_Job
 			this.fpn_jobs.AutoScroll = true;
 			this.fpn_jobs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.fpn_jobs.Location = new System.Drawing.Point(8, 150);
-			this.fpn_jobs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.fpn_jobs.Margin = new System.Windows.Forms.Padding(2);
 			this.fpn_jobs.Name = "fpn_jobs";
 			this.fpn_jobs.Size = new System.Drawing.Size(378, 435);
 			this.fpn_jobs.TabIndex = 2;
@@ -72,7 +72,7 @@ namespace Schedule_Job
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel1.Controls.Add(this.monthCalendar1);
 			this.panel1.Location = new System.Drawing.Point(958, 11);
-			this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.panel1.Margin = new System.Windows.Forms.Padding(2);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(370, 575);
 			this.panel1.TabIndex = 5;
@@ -82,7 +82,7 @@ namespace Schedule_Job
 			this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.monthCalendar1.Location = new System.Drawing.Point(0, 0);
-			this.monthCalendar1.Margin = new System.Windows.Forms.Padding(7, 7, 7, 7);
+			this.monthCalendar1.Margin = new System.Windows.Forms.Padding(7);
 			this.monthCalendar1.Name = "monthCalendar1";
 			this.monthCalendar1.TabIndex = 4;
 			// 
@@ -93,7 +93,7 @@ namespace Schedule_Job
 			this.cbb_type_jobs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.cbb_type_jobs.FormattingEnabled = true;
 			this.cbb_type_jobs.Location = new System.Drawing.Point(8, 122);
-			this.cbb_type_jobs.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.cbb_type_jobs.Margin = new System.Windows.Forms.Padding(2);
 			this.cbb_type_jobs.Name = "cbb_type_jobs";
 			this.cbb_type_jobs.Size = new System.Drawing.Size(345, 25);
 			this.cbb_type_jobs.TabIndex = 7;
@@ -103,7 +103,7 @@ namespace Schedule_Job
 			// 
 			this.btn_add_job.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
 			this.btn_add_job.Location = new System.Drawing.Point(356, 121);
-			this.btn_add_job.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.btn_add_job.Margin = new System.Windows.Forms.Padding(2);
 			this.btn_add_job.Name = "btn_add_job";
 			this.btn_add_job.Size = new System.Drawing.Size(28, 28);
 			this.btn_add_job.TabIndex = 8;
@@ -119,7 +119,7 @@ namespace Schedule_Job
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.fpn_job_detail);
 			this.Controls.Add(this.fpn_jobs);
-			this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+			this.Margin = new System.Windows.Forms.Padding(2);
 			this.Name = "MainForm";
 			this.Text = "Quản Lý Công Việc";
 			this.Load += new System.EventHandler(this.MainForm_Load);
