@@ -48,8 +48,7 @@ namespace Schedule_Job
             {
 				TypeOfJob typeOfJob = new TypeOfJob()
                 {
-					Name = txtName.Text,
-					User = ""
+					Name = txtName.Text
                 };
 
 				if (TypeOfJobBL.Instance.Insert(typeOfJob))
