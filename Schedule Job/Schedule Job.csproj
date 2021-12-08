@@ -55,11 +55,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddjobDetailFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddjobDetailFrm.Designer.cs">
+      <DependentUpon>AddjobDetailFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AddJobFrm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AddJobFrm.Designer.cs">
       <DependentUpon>AddJobFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTypeofJobFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddTypeofJobFrm.Designer.cs">
+      <DependentUpon>AddTypeofJobFrm.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateAccountFrm.cs">
       <SubType>Form</SubType>
@@ -110,8 +122,14 @@
     <Compile Include="UserComponent\JobDetailControl.Designer.cs">
       <DependentUpon>JobDetailControl.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddjobDetailFrm.resx">
+      <DependentUpon>AddjobDetailFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddJobFrm.resx">
       <DependentUpon>AddJobFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddTypeofJobFrm.resx">
+      <DependentUpon>AddTypeofJobFrm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateAccountFrm.resx">
       <DependentUpon>CreateAccountFrm.cs</DependentUpon>
