@@ -44,15 +44,15 @@ namespace Schedule_Job
 			this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
 			this.btnThemLoaiCV = new Guna.UI2.WinForms.Guna2Button();
-			this.guna2CheckBox1 = new Guna.UI2.WinForms.Guna2CheckBox();
-			this.guna2CheckBox2 = new Guna.UI2.WinForms.Guna2CheckBox();
-			this.guna2CheckBox3 = new Guna.UI2.WinForms.Guna2CheckBox();
-			this.guna2CheckBox4 = new Guna.UI2.WinForms.Guna2CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
 			this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
 			this.label6 = new System.Windows.Forms.Label();
 			this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
+			this.radioButton1 = new System.Windows.Forms.RadioButton();
+			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioButton3 = new System.Windows.Forms.RadioButton();
+			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -251,8 +251,8 @@ namespace Schedule_Job
 			this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
 			this.guna2ComboBox1.ItemHeight = 30;
 			this.guna2ComboBox1.Items.AddRange(new object[] {
-            "Quan trọng",
-            "Không quan trọng"});
+			"Quan trọng",
+			"Không quan trọng"});
 			this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
 			this.guna2ComboBox1.Location = new System.Drawing.Point(529, 310);
 			this.guna2ComboBox1.Name = "guna2ComboBox1";
@@ -300,84 +300,16 @@ namespace Schedule_Job
 			this.btnThemLoaiCV.Text = "Thêm loại công việc";
 			this.btnThemLoaiCV.Click += new System.EventHandler(this.btnThemLoaiCV_Click);
 			// 
-			// guna2CheckBox1
-			// 
-			this.guna2CheckBox1.AutoSize = true;
-			this.guna2CheckBox1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox1.CheckedState.BorderRadius = 0;
-			this.guna2CheckBox1.CheckedState.BorderThickness = 0;
-			this.guna2CheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox1.Location = new System.Drawing.Point(8, 19);
-			this.guna2CheckBox1.Name = "guna2CheckBox1";
-			this.guna2CheckBox1.Size = new System.Drawing.Size(90, 19);
-			this.guna2CheckBox1.TabIndex = 30;
-			this.guna2CheckBox1.Text = "Hoàn thành";
-			this.guna2CheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			this.guna2CheckBox1.UncheckedState.BorderRadius = 0;
-			this.guna2CheckBox1.UncheckedState.BorderThickness = 0;
-			this.guna2CheckBox1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			// 
-			// guna2CheckBox2
-			// 
-			this.guna2CheckBox2.AutoSize = true;
-			this.guna2CheckBox2.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox2.CheckedState.BorderRadius = 0;
-			this.guna2CheckBox2.CheckedState.BorderThickness = 0;
-			this.guna2CheckBox2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox2.Location = new System.Drawing.Point(8, 42);
-			this.guna2CheckBox2.Name = "guna2CheckBox2";
-			this.guna2CheckBox2.Size = new System.Drawing.Size(110, 19);
-			this.guna2CheckBox2.TabIndex = 31;
-			this.guna2CheckBox2.Text = "Đang tiến hành";
-			this.guna2CheckBox2.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			this.guna2CheckBox2.UncheckedState.BorderRadius = 0;
-			this.guna2CheckBox2.UncheckedState.BorderThickness = 0;
-			this.guna2CheckBox2.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			// 
-			// guna2CheckBox3
-			// 
-			this.guna2CheckBox3.AutoSize = true;
-			this.guna2CheckBox3.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox3.CheckedState.BorderRadius = 0;
-			this.guna2CheckBox3.CheckedState.BorderThickness = 0;
-			this.guna2CheckBox3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox3.Location = new System.Drawing.Point(8, 65);
-			this.guna2CheckBox3.Name = "guna2CheckBox3";
-			this.guna2CheckBox3.Size = new System.Drawing.Size(82, 19);
-			this.guna2CheckBox3.TabIndex = 32;
-			this.guna2CheckBox3.Text = "Tạm dừng";
-			this.guna2CheckBox3.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			this.guna2CheckBox3.UncheckedState.BorderRadius = 0;
-			this.guna2CheckBox3.UncheckedState.BorderThickness = 0;
-			this.guna2CheckBox3.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			// 
-			// guna2CheckBox4
-			// 
-			this.guna2CheckBox4.AutoSize = true;
-			this.guna2CheckBox4.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox4.CheckedState.BorderRadius = 0;
-			this.guna2CheckBox4.CheckedState.BorderThickness = 0;
-			this.guna2CheckBox4.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-			this.guna2CheckBox4.Location = new System.Drawing.Point(8, 90);
-			this.guna2CheckBox4.Name = "guna2CheckBox4";
-			this.guna2CheckBox4.Size = new System.Drawing.Size(70, 19);
-			this.guna2CheckBox4.TabIndex = 33;
-			this.guna2CheckBox4.Text = "Kết thúc";
-			this.guna2CheckBox4.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			this.guna2CheckBox4.UncheckedState.BorderRadius = 0;
-			this.guna2CheckBox4.UncheckedState.BorderThickness = 0;
-			this.guna2CheckBox4.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.guna2CheckBox1);
-			this.groupBox1.Controls.Add(this.guna2CheckBox4);
-			this.groupBox1.Controls.Add(this.guna2CheckBox2);
-			this.groupBox1.Controls.Add(this.guna2CheckBox3);
-			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox1.Location = new System.Drawing.Point(414, 42);
+			this.groupBox1.Controls.Add(this.radioButton4);
+			this.groupBox1.Controls.Add(this.radioButton3);
+			this.groupBox1.Controls.Add(this.radioButton2);
+			this.groupBox1.Controls.Add(this.radioButton1);
+			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupBox1.Location = new System.Drawing.Point(410, 42);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(279, 125);
+			this.groupBox1.Size = new System.Drawing.Size(283, 125);
 			this.groupBox1.TabIndex = 34;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Trạng thái";
@@ -457,6 +389,50 @@ namespace Schedule_Job
 			this.guna2TextBox3.Size = new System.Drawing.Size(216, 36);
 			this.guna2TextBox3.TabIndex = 40;
 			// 
+			// radioButton1
+			// 
+			this.radioButton1.AutoSize = true;
+			this.radioButton1.Location = new System.Drawing.Point(20, 33);
+			this.radioButton1.Name = "radioButton1";
+			this.radioButton1.Size = new System.Drawing.Size(111, 24);
+			this.radioButton1.TabIndex = 34;
+			this.radioButton1.TabStop = true;
+			this.radioButton1.Text = "Hoàn thành";
+			this.radioButton1.UseVisualStyleBackColor = true;
+			// 
+			// radioButton2
+			// 
+			this.radioButton2.AutoSize = true;
+			this.radioButton2.Location = new System.Drawing.Point(20, 74);
+			this.radioButton2.Name = "radioButton2";
+			this.radioButton2.Size = new System.Drawing.Size(136, 24);
+			this.radioButton2.TabIndex = 35;
+			this.radioButton2.TabStop = true;
+			this.radioButton2.Text = "Đang tiến hành";
+			this.radioButton2.UseVisualStyleBackColor = true;
+			// 
+			// radioButton3
+			// 
+			this.radioButton3.AutoSize = true;
+			this.radioButton3.Location = new System.Drawing.Point(162, 33);
+			this.radioButton3.Name = "radioButton3";
+			this.radioButton3.Size = new System.Drawing.Size(98, 24);
+			this.radioButton3.TabIndex = 36;
+			this.radioButton3.TabStop = true;
+			this.radioButton3.Text = "Tạm dừng";
+			this.radioButton3.UseVisualStyleBackColor = true;
+			// 
+			// radioButton4
+			// 
+			this.radioButton4.AutoSize = true;
+			this.radioButton4.Location = new System.Drawing.Point(162, 74);
+			this.radioButton4.Name = "radioButton4";
+			this.radioButton4.Size = new System.Drawing.Size(88, 24);
+			this.radioButton4.TabIndex = 37;
+			this.radioButton4.TabStop = true;
+			this.radioButton4.Text = "Quá hạn";
+			this.radioButton4.UseVisualStyleBackColor = true;
+			// 
 			// AddJobFrm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -511,14 +487,14 @@ namespace Schedule_Job
 		private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
 		private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
 		private Guna.UI2.WinForms.Guna2Button btnThemLoaiCV;
-		private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox1;
-		private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox2;
-		private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox3;
-		private Guna.UI2.WinForms.Guna2CheckBox guna2CheckBox4;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private Guna.UI2.WinForms.Guna2Button btnCancel;
 		private Guna.UI2.WinForms.Guna2Button guna2Button2;
 		private System.Windows.Forms.Label label6;
 		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
+		private System.Windows.Forms.RadioButton radioButton4;
+		private System.Windows.Forms.RadioButton radioButton3;
+		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton radioButton1;
 	}
 }
