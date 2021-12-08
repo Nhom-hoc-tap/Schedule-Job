@@ -10,6 +10,22 @@ namespace DataAccess
 {
     public class TypeOfJobDA
     {
+        private static TypeOfJobDA instance;
+
+        private TypeOfJobDA()
+        {
+
+        }
+
+        public static TypeOfJobDA Instance
+        {
+            get
+            {
+                instance = instance ?? new TypeOfJobDA();
+                return instance;
+            }
+        }
+
         public List<TypeOfJob> GetByAccount(string accountName)
         {
             List<TypeOfJob> typeOfJobs = new List<TypeOfJob>();
@@ -33,6 +49,27 @@ namespace DataAccess
             }
             sqlConn.Close();
             return typeOfJobs;
+        }
+
+        public bool Insert(TypeOfJob typeOfJob)
+        {
+            SqlParameter id = new SqlParameter("@ID", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            SqlParameter name = new SqlParameter("@TenLoaiCV", SqlDbType.NVarChar, 1000)
+            {
+                Value = typeOfJob.Name
+            };
+
+            SqlParameter user = new SqlParameter("@TenDangNhap", SqlDbType.NVarChar, 255)
+            {
+                Value = typeOfJob.User
+            };
+
+            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.TypeOfJob_Insert, id, name, user);
+            return result > 0;
         }
     }
 }

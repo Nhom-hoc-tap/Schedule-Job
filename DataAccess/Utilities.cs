@@ -25,6 +25,8 @@ namespace DataAccess
         //---TypeOfJob
         public static string TypeOfJob_GetByAccountName => "GetTypeOfJobByAccountName";
 
+        public static string TypeOfJob_Insert => "LoaiCV_Insert";
+
         //---Account
         public static string Account_Insert => "TaiKhoan_Insert";
 

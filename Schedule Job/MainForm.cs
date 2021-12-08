@@ -31,7 +31,7 @@ namespace Schedule_Job
         {
             _jobBL = new JobBL();
             _jobDetailBL = new JobDetailBL();
-            _typeOfJobBL = new TypeOfJobBL();
+            _typeOfJobBL = TypeOfJobBL.Instance;
             InitializeComponent();
         }
 
