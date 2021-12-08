@@ -33,6 +33,17 @@ namespace Schedule_Job
             this.fpn_job_detail = new System.Windows.Forms.FlowLayoutPanel();
             this.fpn_jobs = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_next_month = new System.Windows.Forms.Button();
+            this.btn_prev_month = new System.Windows.Forms.Button();
+            this.lbl_month_year = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.fpn_display_calendar = new System.Windows.Forms.FlowLayoutPanel();
             this.cbb_type_jobs = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -67,21 +78,15 @@ namespace Schedule_Job
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_add_jod_detail = new System.Windows.Forms.Button();
             this.btn_add_job = new System.Windows.Forms.Button();
-            this.fpn_display_calendar = new System.Windows.Forms.FlowLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.lbl_month_year = new System.Windows.Forms.Label();
-            this.btn_prev_month = new System.Windows.Forms.Button();
-            this.btn_next_month = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.tsm_account = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_count = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_option = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // fpn_job_detail
@@ -90,9 +95,9 @@ namespace Schedule_Job
             | System.Windows.Forms.AnchorStyles.Left)));
             this.fpn_job_detail.AutoScroll = true;
             this.fpn_job_detail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fpn_job_detail.Location = new System.Drawing.Point(519, 262);
+            this.fpn_job_detail.Location = new System.Drawing.Point(519, 290);
             this.fpn_job_detail.Name = "fpn_job_detail";
-            this.fpn_job_detail.Size = new System.Drawing.Size(660, 552);
+            this.fpn_job_detail.Size = new System.Drawing.Size(660, 524);
             this.fpn_job_detail.TabIndex = 4;
             // 
             // fpn_jobs
@@ -101,9 +106,9 @@ namespace Schedule_Job
             | System.Windows.Forms.AnchorStyles.Left)));
             this.fpn_jobs.AutoScroll = true;
             this.fpn_jobs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fpn_jobs.Location = new System.Drawing.Point(10, 262);
+            this.fpn_jobs.Location = new System.Drawing.Point(10, 290);
             this.fpn_jobs.Name = "fpn_jobs";
-            this.fpn_jobs.Size = new System.Drawing.Size(503, 552);
+            this.fpn_jobs.Size = new System.Drawing.Size(503, 524);
             this.fpn_jobs.TabIndex = 2;
             // 
             // panel1
@@ -127,13 +132,106 @@ namespace Schedule_Job
             this.panel1.Size = new System.Drawing.Size(350, 801);
             this.panel1.TabIndex = 5;
             // 
+            // btn_next_month
+            // 
+            this.btn_next_month.Location = new System.Drawing.Point(270, 24);
+            this.btn_next_month.Name = "btn_next_month";
+            this.btn_next_month.Size = new System.Drawing.Size(75, 23);
+            this.btn_next_month.TabIndex = 3;
+            this.btn_next_month.Text = ">>";
+            this.btn_next_month.UseVisualStyleBackColor = true;
+            this.btn_next_month.Click += new System.EventHandler(this.btn_next_month_Click);
+            // 
+            // btn_prev_month
+            // 
+            this.btn_prev_month.Location = new System.Drawing.Point(6, 24);
+            this.btn_prev_month.Name = "btn_prev_month";
+            this.btn_prev_month.Size = new System.Drawing.Size(75, 23);
+            this.btn_prev_month.TabIndex = 3;
+            this.btn_prev_month.Text = "<<";
+            this.btn_prev_month.UseVisualStyleBackColor = true;
+            this.btn_prev_month.Click += new System.EventHandler(this.btn_prev_month_Click);
+            // 
+            // lbl_month_year
+            // 
+            this.lbl_month_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_month_year.Location = new System.Drawing.Point(87, 24);
+            this.lbl_month_year.Name = "lbl_month_year";
+            this.lbl_month_year.Size = new System.Drawing.Size(177, 23);
+            this.lbl_month_year.TabIndex = 2;
+            this.lbl_month_year.Text = "MonthYear";
+            this.lbl_month_year.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(300, 58);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 20);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Sa";
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(258, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 20);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Fr";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(207, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 20);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Th";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(156, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "We";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(105, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Tu";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(54, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Mo";
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(3, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Su";
+            // 
+            // fpn_display_calendar
+            // 
+            this.fpn_display_calendar.Location = new System.Drawing.Point(3, 81);
+            this.fpn_display_calendar.Name = "fpn_display_calendar";
+            this.fpn_display_calendar.Size = new System.Drawing.Size(342, 300);
+            this.fpn_display_calendar.TabIndex = 0;
+            // 
             // cbb_type_jobs
             // 
             this.cbb_type_jobs.BackColor = System.Drawing.Color.White;
             this.cbb_type_jobs.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbb_type_jobs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_type_jobs.FormattingEnabled = true;
-            this.cbb_type_jobs.Location = new System.Drawing.Point(9, 228);
+            this.cbb_type_jobs.Location = new System.Drawing.Point(9, 256);
             this.cbb_type_jobs.Name = "cbb_type_jobs";
             this.cbb_type_jobs.Size = new System.Drawing.Size(459, 28);
             this.cbb_type_jobs.TabIndex = 7;
@@ -179,7 +277,7 @@ namespace Schedule_Job
             // 
             this.groupBox1.Controls.Add(this.txt_search);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(497, 12);
+            this.groupBox1.Location = new System.Drawing.Point(497, 38);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(682, 67);
             this.groupBox1.TabIndex = 10;
@@ -247,7 +345,7 @@ namespace Schedule_Job
             this.groupBox2.Controls.Add(this.dtp_end);
             this.groupBox2.Controls.Add(this.dtp_start);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(13, 85);
+            this.groupBox2.Location = new System.Drawing.Point(13, 111);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(1167, 136);
             this.groupBox2.TabIndex = 11;
@@ -437,9 +535,9 @@ namespace Schedule_Job
             // 
             this.dtp_start.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_start.Location = new System.Drawing.Point(755, 62);
+            this.dtp_start.Location = new System.Drawing.Point(757, 62);
             this.dtp_start.Name = "dtp_start";
-            this.dtp_start.Size = new System.Drawing.Size(119, 27);
+            this.dtp_start.Size = new System.Drawing.Size(117, 27);
             this.dtp_start.TabIndex = 0;
             // 
             // groupBox3
@@ -447,7 +545,7 @@ namespace Schedule_Job
             this.groupBox3.Controls.Add(this.ckb_search_job_detail);
             this.groupBox3.Controls.Add(this.ckb_search_job);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(13, 12);
+            this.groupBox3.Location = new System.Drawing.Point(13, 38);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(478, 67);
             this.groupBox3.TabIndex = 12;
@@ -457,7 +555,7 @@ namespace Schedule_Job
             // btn_add_jod_detail
             // 
             this.btn_add_jod_detail.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
-            this.btn_add_jod_detail.Location = new System.Drawing.Point(1141, 225);
+            this.btn_add_jod_detail.Location = new System.Drawing.Point(1141, 253);
             this.btn_add_jod_detail.Name = "btn_add_jod_detail";
             this.btn_add_jod_detail.Size = new System.Drawing.Size(38, 34);
             this.btn_add_jod_detail.TabIndex = 8;
@@ -466,104 +564,47 @@ namespace Schedule_Job
             // btn_add_job
             // 
             this.btn_add_job.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
-            this.btn_add_job.Location = new System.Drawing.Point(475, 227);
+            this.btn_add_job.Location = new System.Drawing.Point(475, 255);
             this.btn_add_job.Name = "btn_add_job";
             this.btn_add_job.Size = new System.Drawing.Size(38, 34);
             this.btn_add_job.TabIndex = 8;
             this.btn_add_job.UseVisualStyleBackColor = true;
             // 
-            // fpn_display_calendar
+            // menuStrip1
             // 
-            this.fpn_display_calendar.Location = new System.Drawing.Point(3, 81);
-            this.fpn_display_calendar.Name = "fpn_display_calendar";
-            this.fpn_display_calendar.Size = new System.Drawing.Size(342, 300);
-            this.fpn_display_calendar.TabIndex = 0;
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_account,
+            this.tsm_count,
+            this.tsm_option});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(427, 31);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
             // 
-            // label3
+            // tsm_account
             // 
-            this.label3.Location = new System.Drawing.Point(3, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Su";
+            this.tsm_account.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_account.Name = "tsm_account";
+            this.tsm_account.Size = new System.Drawing.Size(96, 27);
+            this.tsm_account.Text = "Tài khoản";
             // 
-            // label4
+            // tsm_count
             // 
-            this.label4.Location = new System.Drawing.Point(54, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 20);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Mo";
+            this.tsm_count.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_count.Name = "tsm_count";
+            this.tsm_count.Size = new System.Drawing.Size(95, 27);
+            this.tsm_count.Text = "Thống kê";
+            this.tsm_count.Click += new System.EventHandler(this.tsm_count_Click);
             // 
-            // label7
+            // tsm_option
             // 
-            this.label7.Location = new System.Drawing.Point(105, 58);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(45, 20);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Tu";
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(156, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 20);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "We";
-            // 
-            // label10
-            // 
-            this.label10.Location = new System.Drawing.Point(207, 58);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(45, 20);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Th";
-            // 
-            // label11
-            // 
-            this.label11.Location = new System.Drawing.Point(258, 58);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(45, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Fr";
-            // 
-            // label12
-            // 
-            this.label12.Location = new System.Drawing.Point(300, 58);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 20);
-            this.label12.TabIndex = 1;
-            this.label12.Text = "Sa";
-            // 
-            // lbl_month_year
-            // 
-            this.lbl_month_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_month_year.Location = new System.Drawing.Point(87, 24);
-            this.lbl_month_year.Name = "lbl_month_year";
-            this.lbl_month_year.Size = new System.Drawing.Size(177, 23);
-            this.lbl_month_year.TabIndex = 2;
-            this.lbl_month_year.Text = "MonthYear";
-            this.lbl_month_year.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btn_prev_month
-            // 
-            this.btn_prev_month.Location = new System.Drawing.Point(6, 24);
-            this.btn_prev_month.Name = "btn_prev_month";
-            this.btn_prev_month.Size = new System.Drawing.Size(75, 23);
-            this.btn_prev_month.TabIndex = 3;
-            this.btn_prev_month.Text = "<<";
-            this.btn_prev_month.UseVisualStyleBackColor = true;
-            this.btn_prev_month.Click += new System.EventHandler(this.btn_prev_month_Click);
-            // 
-            // btn_next_month
-            // 
-            this.btn_next_month.Location = new System.Drawing.Point(270, 24);
-            this.btn_next_month.Name = "btn_next_month";
-            this.btn_next_month.Size = new System.Drawing.Size(75, 23);
-            this.btn_next_month.TabIndex = 3;
-            this.btn_next_month.Text = ">>";
-            this.btn_next_month.UseVisualStyleBackColor = true;
-            this.btn_next_month.Click += new System.EventHandler(this.btn_next_month_Click);
+            this.tsm_option.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tsm_option.Name = "tsm_option";
+            this.tsm_option.Size = new System.Drawing.Size(78, 27);
+            this.tsm_option.Text = "Cài đặt";
             // 
             // MainForm
             // 
@@ -583,7 +624,9 @@ namespace Schedule_Job
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fpn_job_detail);
             this.Controls.Add(this.fpn_jobs);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "Quản Lý Công Việc";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -594,7 +637,10 @@ namespace Schedule_Job
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -648,6 +694,10 @@ namespace Schedule_Job
         private System.Windows.Forms.Label lbl_month_year;
         private System.Windows.Forms.Button btn_next_month;
         private System.Windows.Forms.Button btn_prev_month;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem tsm_account;
+        private System.Windows.Forms.ToolStripMenuItem tsm_count;
+        private System.Windows.Forms.ToolStripMenuItem tsm_option;
     }
 }
 

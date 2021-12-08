@@ -373,6 +373,13 @@ namespace Schedule_Job
             LoadJobsVer2(jobs);
             
         }
+
+        private void tsm_count_Click(object sender, EventArgs e)
+        {
+            StatisticalForm statisticalForm = new StatisticalForm(_current_account_name);
+            statisticalForm.Show();
+        }
+
         private void LoadJobsVer2(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
@@ -383,8 +390,7 @@ namespace Schedule_Job
             current_type_id = jobs[0].TypeOfJobId;
 
             Label labelDes = new Label();
-            labelDes.AutoSize = false;
-            labelDes.Size = new Size(500, 20);
+            labelDes.AutoSize = true;
             labelDes.Font = new Font("Microsoft Sans Serif", 10);
             labelDes.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
             fpn_jobs.Controls.Add(labelDes);
@@ -400,8 +406,7 @@ namespace Schedule_Job
                     current_type_id = j.TypeOfJobId;
 
                     Label label = new Label();
-                    label.AutoSize = false;
-                    label.Size = new Size(500, 20);
+                    label.AutoSize = true;
                     label.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
                     label.Font = new Font("Microsoft Sans Serif", 10);
 
@@ -410,6 +415,7 @@ namespace Schedule_Job
                 fpn_jobs.Controls.Add(jobControl2);
             }
             lbl_num_job.Text = jobs.Count().ToString();
+            fpn_job_detail.Controls.Clear();
         }
     }
 }
