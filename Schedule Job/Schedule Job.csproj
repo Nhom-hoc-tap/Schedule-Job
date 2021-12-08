@@ -65,6 +65,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UserComponent\BlankDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserComponent\BlankDay.Designer.cs">
+      <DependentUpon>BlankDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserComponent\DayControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserComponent\DayControl.Designer.cs">
+      <DependentUpon>DayControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserComponent\jobControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -90,6 +102,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserComponent\BlankDay.resx">
+      <DependentUpon>BlankDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserComponent\DayControl.resx">
+      <DependentUpon>DayControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserComponent\jobControl.resx">
       <DependentUpon>jobControl.cs</DependentUpon>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Schedule_Job.UserComponent;
 using DataAccess;
 using BusinessLogic;
+using System.Globalization;
 
 namespace Schedule_Job
 {
@@ -18,6 +19,8 @@ namespace Schedule_Job
         private string _current_account_name = "Nguyễn Văn A";
         private int _current_job_id = 0;
         private int _current_type_of_job_id = 0;
+
+        private int _month, _year;
 
         private List<Job> _list_job;
         private List<JobDetail> _list_job_detail;
@@ -46,6 +49,11 @@ namespace Schedule_Job
 
             txt_search.GotFocus += Txt_search_GotFocus;
             txt_search.LostFocus += Txt_search_LostFocus;
+
+            DateTime now = DateTime.Now;
+            _month = now.Month;
+            _year = now.Year;
+            DisplayCalendar(_month, _year);
         }
 
         private void Txt_search_LostFocus(object sender, EventArgs e)
@@ -60,8 +68,12 @@ namespace Schedule_Job
 
         private void Search(string str)
         {
-            if (ckb_search_job.Checked == true && _list_job!=null)
-                LoadJobs(_list_job.FindAll(x => x.Name.ToLower().Contains(str)));
+            List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+            if(_current_type_of_job_id >0)
+                jobs = jobs.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
+
+            if (ckb_search_job.Checked == true && jobs!=null)
+                LoadJobs(jobs.FindAll(x => x.Name.ToLower().Contains(str)));
             if (ckb_search_job_detail.Checked == true && _list_job_detail !=null)
                 LoadJobDetail(_list_job_detail.FindAll(x => x.Name.ToLower().Contains(str)));
         }
@@ -69,6 +81,8 @@ namespace Schedule_Job
         private void LoadJobs(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
+            jobs =  jobs.OrderBy(x => x.Priority).ToList();
+            jobs.Reverse();
             foreach(Job j in jobs)
             {
                 JobControl2 jobControl2 = new JobControl2(j);
@@ -99,6 +113,8 @@ namespace Schedule_Job
         private void LoadTypeOfJobs()
         {
             _list_TypeOfJob = _typeOfJobBL.GetByAccount(_current_account_name);
+            _list_TypeOfJob = _list_TypeOfJob.OrderBy(x => x.Name).ToList();
+            _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = _current_account_name });
             cbb_type_jobs.DataSource = _list_TypeOfJob;
             cbb_type_jobs.ValueMember = "Id";
             cbb_type_jobs.DisplayMember = "Name";
@@ -112,7 +128,10 @@ namespace Schedule_Job
         {
             int selectedTypeId= ((TypeOfJob) cbb_type_jobs.SelectedItem).Id;
             _current_type_of_job_id = selectedTypeId;
-            List<Job> jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
+            List<Job> jobs = new List<Job>();
+            if (selectedTypeId == 0)
+                jobs = _jobBL.GetByAccount(_current_account_name);
+            else jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
             LoadJobs(jobs);
         }
 
@@ -134,7 +153,9 @@ namespace Schedule_Job
         {
             if (_list_job != null)
             {
-                List<Job> jobs = _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
+                List<Job> jobs = _list_job;
+                if(_current_type_of_job_id >0)
+                    jobs = _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
                 if (ckb_priority_true.Checked == true)
                     jobs = jobs.FindAll(x => x.Priority == 1);
                 if (ckb_priority_false.Checked == true)
@@ -284,6 +305,111 @@ namespace Schedule_Job
                 ckb_search_by_date.Enabled = true;
                 //ckb_status_over.Enabled = true;
             }
+        }
+
+        private void btn_prev_month_Click(object sender, EventArgs e)
+        {
+            if (_month == 1)
+            {
+                _month = 12;
+                _year--;
+            }
+            else
+            {
+                _month--;
+            }
+            DisplayCalendar(_month, _year);
+        }
+
+        private void btn_next_month_Click(object sender, EventArgs e)
+        {
+            if (_month == 12)
+            {
+                _month = 1;
+                _year++;
+            }
+            else
+            {
+                _month++;
+            }
+            DisplayCalendar(_month, _year);
+        }
+
+        private void DisplayCalendar(int month, int year)
+        {
+
+            fpn_display_calendar.Controls.Clear();
+            String monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
+            lbl_month_year.Text = monthname + " " + year.ToString();
+
+            DateTime startofthemonth = new DateTime(year, month, 1);
+            int days = DateTime.DaysInMonth(year, month);
+            int dayoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d"))+1;
+            for(int i =1; i<dayoftheweek; i++)
+            {
+                BlankDay blankDay = new BlankDay();
+                fpn_display_calendar.Controls.Add(blankDay);
+            }
+            for(int i=1; i <= days; i++)
+            {
+                List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+                jobs = jobs.FindAll(x => (x.EndTime.Day == i && x.EndTime.Month == month && x.EndTime.Year == year));
+                DayControl dayControl = new DayControl(jobs);
+                dayControl.Days(i);
+                if (jobs.Count > 0)
+                {
+                    dayControl.Click += DayControl_Click;
+                }
+                if (i == DateTime.Now.Day && month == DateTime.Now.Month && year == DateTime.Now.Year)
+                    dayControl.BorderStyle = BorderStyle.FixedSingle;
+                fpn_display_calendar.Controls.Add(dayControl);
+            }
+        }
+
+        private void DayControl_Click(object sender, EventArgs e)
+        {
+            List<Job> jobs = (sender as DayControl).jobs;
+            cbb_type_jobs.Text = "Tất cả";
+            LoadJobsVer2(jobs);
+            
+        }
+        private void LoadJobsVer2(List<Job> jobs)
+        {
+            fpn_jobs.Controls.Clear();
+
+            int current_type_id = 0;
+
+            jobs = jobs.OrderBy(x => x.TypeOfJobId).ToList();
+            current_type_id = jobs[0].TypeOfJobId;
+
+            Label labelDes = new Label();
+            labelDes.AutoSize = false;
+            labelDes.Size = new Size(500, 20);
+            labelDes.Font = new Font("Microsoft Sans Serif", 10);
+            labelDes.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
+            fpn_jobs.Controls.Add(labelDes);
+
+            foreach (Job j in jobs)
+            {
+                JobControl2 jobControl2 = new JobControl2(j);
+                jobControl2.Tag = j.Id;
+                jobControl2.Click += JobControl2_Click;
+
+                if(j.TypeOfJobId != current_type_id)
+                {
+                    current_type_id = j.TypeOfJobId;
+
+                    Label label = new Label();
+                    label.AutoSize = false;
+                    label.Size = new Size(500, 20);
+                    label.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
+                    label.Font = new Font("Microsoft Sans Serif", 10);
+
+                    fpn_jobs.Controls.Add(label);
+                }
+                fpn_jobs.Controls.Add(jobControl2);
+            }
+            lbl_num_job.Text = jobs.Count().ToString();
         }
     }
 }

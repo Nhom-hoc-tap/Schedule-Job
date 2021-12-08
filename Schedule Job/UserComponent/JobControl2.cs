@@ -61,6 +61,7 @@ namespace Schedule_Job.UserComponent
 
             toolTip1.SetToolTip(lbl_job_name, _job.Name);
             toolTip1.SetToolTip(lbl_description, _job.Description);
+            toolTip1.AutoPopDelay = 15000;
         }
         public void DisplayProgress(Job job)
         {

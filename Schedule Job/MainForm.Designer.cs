@@ -33,7 +33,6 @@ namespace Schedule_Job
             this.fpn_job_detail = new System.Windows.Forms.FlowLayoutPanel();
             this.fpn_jobs = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.cbb_type_jobs = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +44,8 @@ namespace Schedule_Job
             this.ckb_search_job = new System.Windows.Forms.CheckBox();
             this.ckb_search_job_detail = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ckb_search_progress = new System.Windows.Forms.CheckBox();
+            this.ckb_search_by_date = new System.Windows.Forms.CheckBox();
             this.txt_progress_end = new System.Windows.Forms.TextBox();
             this.txt_progress_start = new System.Windows.Forms.TextBox();
             this.ckb_status_drop = new System.Windows.Forms.CheckBox();
@@ -66,8 +67,17 @@ namespace Schedule_Job
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_add_jod_detail = new System.Windows.Forms.Button();
             this.btn_add_job = new System.Windows.Forms.Button();
-            this.ckb_search_by_date = new System.Windows.Forms.CheckBox();
-            this.ckb_search_progress = new System.Windows.Forms.CheckBox();
+            this.fpn_display_calendar = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lbl_month_year = new System.Windows.Forms.Label();
+            this.btn_prev_month = new System.Windows.Forms.Button();
+            this.btn_next_month = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -98,23 +108,24 @@ namespace Schedule_Job
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.monthCalendar1);
+            this.panel1.Controls.Add(this.btn_next_month);
+            this.panel1.Controls.Add(this.btn_prev_month);
+            this.panel1.Controls.Add(this.lbl_month_year);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.fpn_display_calendar);
             this.panel1.Location = new System.Drawing.Point(1185, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(305, 801);
+            this.panel1.Size = new System.Drawing.Size(350, 801);
             this.panel1.TabIndex = 5;
-            // 
-            // monthCalendar1
-            // 
-            this.monthCalendar1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.monthCalendar1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.monthCalendar1.Location = new System.Drawing.Point(0, 0);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 4;
             // 
             // cbb_type_jobs
             // 
@@ -242,6 +253,30 @@ namespace Schedule_Job
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm theo ...";
+            // 
+            // ckb_search_progress
+            // 
+            this.ckb_search_progress.AutoSize = true;
+            this.ckb_search_progress.Checked = true;
+            this.ckb_search_progress.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckb_search_progress.Location = new System.Drawing.Point(578, 34);
+            this.ckb_search_progress.Name = "ckb_search_progress";
+            this.ckb_search_progress.Size = new System.Drawing.Size(18, 17);
+            this.ckb_search_progress.TabIndex = 9;
+            this.ckb_search_progress.UseVisualStyleBackColor = true;
+            this.ckb_search_progress.CheckedChanged += new System.EventHandler(this.ckb_search_progress_CheckedChanged);
+            // 
+            // ckb_search_by_date
+            // 
+            this.ckb_search_by_date.AutoSize = true;
+            this.ckb_search_by_date.Checked = true;
+            this.ckb_search_by_date.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckb_search_by_date.Location = new System.Drawing.Point(578, 62);
+            this.ckb_search_by_date.Name = "ckb_search_by_date";
+            this.ckb_search_by_date.Size = new System.Drawing.Size(18, 17);
+            this.ckb_search_by_date.TabIndex = 9;
+            this.ckb_search_by_date.UseVisualStyleBackColor = true;
+            this.ckb_search_by_date.CheckedChanged += new System.EventHandler(this.ckb_search_by_date_CheckedChanged);
             // 
             // txt_progress_end
             // 
@@ -437,35 +472,104 @@ namespace Schedule_Job
             this.btn_add_job.TabIndex = 8;
             this.btn_add_job.UseVisualStyleBackColor = true;
             // 
-            // ckb_search_by_date
+            // fpn_display_calendar
             // 
-            this.ckb_search_by_date.AutoSize = true;
-            this.ckb_search_by_date.Checked = true;
-            this.ckb_search_by_date.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb_search_by_date.Location = new System.Drawing.Point(578, 62);
-            this.ckb_search_by_date.Name = "ckb_search_by_date";
-            this.ckb_search_by_date.Size = new System.Drawing.Size(18, 17);
-            this.ckb_search_by_date.TabIndex = 9;
-            this.ckb_search_by_date.UseVisualStyleBackColor = true;
-            this.ckb_search_by_date.CheckedChanged += new System.EventHandler(this.ckb_search_by_date_CheckedChanged);
+            this.fpn_display_calendar.Location = new System.Drawing.Point(3, 81);
+            this.fpn_display_calendar.Name = "fpn_display_calendar";
+            this.fpn_display_calendar.Size = new System.Drawing.Size(342, 300);
+            this.fpn_display_calendar.TabIndex = 0;
             // 
-            // ckb_search_progress
+            // label3
             // 
-            this.ckb_search_progress.AutoSize = true;
-            this.ckb_search_progress.Checked = true;
-            this.ckb_search_progress.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckb_search_progress.Location = new System.Drawing.Point(578, 34);
-            this.ckb_search_progress.Name = "ckb_search_progress";
-            this.ckb_search_progress.Size = new System.Drawing.Size(18, 17);
-            this.ckb_search_progress.TabIndex = 9;
-            this.ckb_search_progress.UseVisualStyleBackColor = true;
-            this.ckb_search_progress.CheckedChanged += new System.EventHandler(this.ckb_search_progress_CheckedChanged);
+            this.label3.Location = new System.Drawing.Point(3, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 20);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Su";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(54, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 20);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "Mo";
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(105, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 20);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Tu";
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(156, 58);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 20);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "We";
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(207, 58);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 20);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Th";
+            // 
+            // label11
+            // 
+            this.label11.Location = new System.Drawing.Point(258, 58);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(45, 20);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Fr";
+            // 
+            // label12
+            // 
+            this.label12.Location = new System.Drawing.Point(300, 58);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(45, 20);
+            this.label12.TabIndex = 1;
+            this.label12.Text = "Sa";
+            // 
+            // lbl_month_year
+            // 
+            this.lbl_month_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_month_year.Location = new System.Drawing.Point(87, 24);
+            this.lbl_month_year.Name = "lbl_month_year";
+            this.lbl_month_year.Size = new System.Drawing.Size(177, 23);
+            this.lbl_month_year.TabIndex = 2;
+            this.lbl_month_year.Text = "MonthYear";
+            this.lbl_month_year.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_prev_month
+            // 
+            this.btn_prev_month.Location = new System.Drawing.Point(6, 24);
+            this.btn_prev_month.Name = "btn_prev_month";
+            this.btn_prev_month.Size = new System.Drawing.Size(75, 23);
+            this.btn_prev_month.TabIndex = 3;
+            this.btn_prev_month.Text = "<<";
+            this.btn_prev_month.UseVisualStyleBackColor = true;
+            this.btn_prev_month.Click += new System.EventHandler(this.btn_prev_month_Click);
+            // 
+            // btn_next_month
+            // 
+            this.btn_next_month.Location = new System.Drawing.Point(270, 24);
+            this.btn_next_month.Name = "btn_next_month";
+            this.btn_next_month.Size = new System.Drawing.Size(75, 23);
+            this.btn_next_month.TabIndex = 3;
+            this.btn_next_month.Text = ">>";
+            this.btn_next_month.UseVisualStyleBackColor = true;
+            this.btn_next_month.Click += new System.EventHandler(this.btn_next_month_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1500, 853);
+            this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -499,7 +603,6 @@ namespace Schedule_Job
         private System.Windows.Forms.FlowLayoutPanel fpn_job_detail;
         private System.Windows.Forms.FlowLayoutPanel fpn_jobs;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.ComboBox cbb_type_jobs;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btn_add_job;
@@ -534,6 +637,17 @@ namespace Schedule_Job
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.CheckBox ckb_search_progress;
         private System.Windows.Forms.CheckBox ckb_search_by_date;
+        private System.Windows.Forms.FlowLayoutPanel fpn_display_calendar;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_month_year;
+        private System.Windows.Forms.Button btn_next_month;
+        private System.Windows.Forms.Button btn_prev_month;
     }
 }
 
