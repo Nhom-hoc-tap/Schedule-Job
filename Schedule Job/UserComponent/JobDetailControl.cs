@@ -38,7 +38,7 @@ namespace Schedule_Job.UserComponent
                 lbl_progress.Font = new Font("Microsoft Sans Serif", 8);
                 lbl_progress.ForeColor = Color.Green;
             }
-            else
+            else if (_jobDetail.Status == 2)
             {
                 lbl_progress.Text = "Tạm dừng";
                 lbl_progress.Font = new Font("Microsoft Sans Serif", 8);

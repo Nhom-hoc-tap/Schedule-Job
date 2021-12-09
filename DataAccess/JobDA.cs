@@ -26,6 +26,22 @@ namespace DataAccess
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
+            sqlConn.Open();
+
+            SqlCommand command = sqlConn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Utilities.Job_SetToDrop;
+            command.Parameters.Add("@JobId", SqlDbType.Int).Value = id;
+            command.Parameters.Add("@Status", SqlDbType.Int).Value = status;
+
+            command.ExecuteNonQuery();
+
+            sqlConn.Close();
+        }
+
         public Job GetById(int id)
         {
             SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
@@ -179,11 +195,11 @@ namespace DataAccess
             return result > 0;
         }
 
-        public bool Delete(Job job)
+        public bool Delete(int jobId)
         {
             SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
             {
-                Value = job.Id
+                Value = jobId
             };
 
             int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Job_Delete, id);

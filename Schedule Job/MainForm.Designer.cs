@@ -82,11 +82,23 @@ namespace Schedule_Job
             this.tsm_account = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_count = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_option = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_job = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsm_update_job = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_add_job_detail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_set_to_drop = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_delete_job = new System.Windows.Forms.ToolStripMenuItem();
+            this.cms_job_detail = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsm_update_job_detail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_set_job_detail_to_drop = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_delete_job_detail = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_set_job_to_ongoing = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.cms_job.SuspendLayout();
+            this.cms_job_detail.SuspendLayout();
             this.SuspendLayout();
             // 
             // fpn_job_detail
@@ -584,7 +596,7 @@ namespace Schedule_Job
             this.tsm_option});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(277, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(279, 31);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -609,6 +621,80 @@ namespace Schedule_Job
             this.tsm_option.Name = "tsm_option";
             this.tsm_option.Size = new System.Drawing.Size(78, 27);
             this.tsm_option.Text = "Cài đặt";
+            // 
+            // cms_job
+            // 
+            this.cms_job.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms_job.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_update_job,
+            this.tsm_add_job_detail,
+            this.tsm_set_to_drop,
+            this.tsm_set_job_to_ongoing,
+            this.tsm_delete_job});
+            this.cms_job.Name = "cms_job";
+            this.cms_job.Size = new System.Drawing.Size(211, 152);
+            // 
+            // tsm_update_job
+            // 
+            this.tsm_update_job.Name = "tsm_update_job";
+            this.tsm_update_job.Size = new System.Drawing.Size(210, 24);
+            this.tsm_update_job.Text = "Cập nhật";
+            this.tsm_update_job.Click += new System.EventHandler(this.tsm_update_job_Click);
+            // 
+            // tsm_add_job_detail
+            // 
+            this.tsm_add_job_detail.Name = "tsm_add_job_detail";
+            this.tsm_add_job_detail.Size = new System.Drawing.Size(210, 24);
+            this.tsm_add_job_detail.Text = "Thêm chi tiết";
+            // 
+            // tsm_set_to_drop
+            // 
+            this.tsm_set_to_drop.Name = "tsm_set_to_drop";
+            this.tsm_set_to_drop.Size = new System.Drawing.Size(210, 24);
+            this.tsm_set_to_drop.Text = "Tạm dừng";
+            this.tsm_set_to_drop.Click += new System.EventHandler(this.tsm_set_to_drop_Click);
+            // 
+            // tsm_delete_job
+            // 
+            this.tsm_delete_job.Name = "tsm_delete_job";
+            this.tsm_delete_job.Size = new System.Drawing.Size(210, 24);
+            this.tsm_delete_job.Text = "Xóa";
+            this.tsm_delete_job.Click += new System.EventHandler(this.tsm_delete_job_Click);
+            // 
+            // cms_job_detail
+            // 
+            this.cms_job_detail.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cms_job_detail.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsm_update_job_detail,
+            this.tsm_set_job_detail_to_drop,
+            this.tsm_delete_job_detail});
+            this.cms_job_detail.Name = "cms_job_detail";
+            this.cms_job_detail.Size = new System.Drawing.Size(147, 76);
+            // 
+            // tsm_update_job_detail
+            // 
+            this.tsm_update_job_detail.Name = "tsm_update_job_detail";
+            this.tsm_update_job_detail.Size = new System.Drawing.Size(146, 24);
+            this.tsm_update_job_detail.Text = "Cập nhật";
+            // 
+            // tsm_set_job_detail_to_drop
+            // 
+            this.tsm_set_job_detail_to_drop.Name = "tsm_set_job_detail_to_drop";
+            this.tsm_set_job_detail_to_drop.Size = new System.Drawing.Size(146, 24);
+            this.tsm_set_job_detail_to_drop.Text = "Tạm dừng";
+            // 
+            // tsm_delete_job_detail
+            // 
+            this.tsm_delete_job_detail.Name = "tsm_delete_job_detail";
+            this.tsm_delete_job_detail.Size = new System.Drawing.Size(146, 24);
+            this.tsm_delete_job_detail.Text = "Xóa";
+            // 
+            // tsm_set_job_to_ongoing
+            // 
+            this.tsm_set_job_to_ongoing.Name = "tsm_set_job_to_ongoing";
+            this.tsm_set_job_to_ongoing.Size = new System.Drawing.Size(210, 24);
+            this.tsm_set_job_to_ongoing.Text = "Tiếp tục thực hiện";
+            this.tsm_set_job_to_ongoing.Click += new System.EventHandler(this.tsm_set_job_to_ongoing_Click);
             // 
             // MainForm
             // 
@@ -644,6 +730,8 @@ namespace Schedule_Job
             this.groupBox3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.cms_job.ResumeLayout(false);
+            this.cms_job_detail.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -703,6 +791,16 @@ namespace Schedule_Job
         private System.Windows.Forms.ToolStripMenuItem tsm_account;
         private System.Windows.Forms.ToolStripMenuItem tsm_count;
         private System.Windows.Forms.ToolStripMenuItem tsm_option;
+        private System.Windows.Forms.ContextMenuStrip cms_job;
+        private System.Windows.Forms.ToolStripMenuItem tsm_update_job;
+        private System.Windows.Forms.ToolStripMenuItem tsm_add_job_detail;
+        private System.Windows.Forms.ToolStripMenuItem tsm_set_to_drop;
+        private System.Windows.Forms.ToolStripMenuItem tsm_delete_job;
+        private System.Windows.Forms.ContextMenuStrip cms_job_detail;
+        private System.Windows.Forms.ToolStripMenuItem tsm_update_job_detail;
+        private System.Windows.Forms.ToolStripMenuItem tsm_set_job_detail_to_drop;
+        private System.Windows.Forms.ToolStripMenuItem tsm_delete_job_detail;
+        private System.Windows.Forms.ToolStripMenuItem tsm_set_job_to_ongoing;
     }
 }
 

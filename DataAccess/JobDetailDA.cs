@@ -27,6 +27,21 @@ namespace DataAccess
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
+            sqlConn.Open();
+
+            SqlCommand command = sqlConn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Utilities.JobDetail_SetToDrop;
+            command.Parameters.Add("@JobDetailId", SqlDbType.Int).Value = id;
+            command.Parameters.Add("@Status", SqlDbType.Int).Value = status;
+            command.ExecuteNonQuery();
+
+            sqlConn.Close();
+        }
+
         public JobDetail GetById(int id)
         {
             SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)

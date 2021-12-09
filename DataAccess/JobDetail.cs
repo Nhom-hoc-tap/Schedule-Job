@@ -23,8 +23,8 @@ namespace DataAccess
             {
                 if (Progress == 100)
                     status = 1;
-                else if (Progress < 100)
-                    status = 0;
+                //else if (Progress < 100)
+                //    status = 0;
                 else
                 {
                     status = value;

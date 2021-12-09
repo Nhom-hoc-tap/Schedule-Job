@@ -97,6 +97,7 @@ namespace Schedule_Job
                 JobControl2 jobControl2 = new JobControl2(j);
                 jobControl2.Tag = j.Id;
                 jobControl2.Click += JobControl2_Click;
+                jobControl2.ContextMenuStrip = cms_job;
                 fpn_jobs.Controls.Add(jobControl2);
             }
             lbl_num_job.Text = jobs.Count().ToString();
@@ -106,10 +107,14 @@ namespace Schedule_Job
         {
             _current_job_id = int.Parse((sender as JobControl2).Tag.ToString());
             LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
-            
-            foreach(Control c in fpn_jobs.Controls)
+
+            ShowCurrentSelectedJob();
+        }
+        private void ShowCurrentSelectedJob()
+        {
+            foreach (Control c in fpn_jobs.Controls)
             {
-                if(c is JobControl2)
+                if (c is JobControl2)
                 {
                     if (((JobControl2)c).Tag.ToString() == _current_job_id.ToString())
                         ((JobControl2)c).OnClick();
@@ -125,6 +130,7 @@ namespace Schedule_Job
             foreach (JobDetail jd in jobDetails)
             {
                 JobDetailControl jobDetailControl = new JobDetailControl(jd);
+                jobDetailControl.ContextMenuStrip = cms_job_detail;
                 fpn_job_detail.Controls.Add(jobDetailControl);
             }
             lbl_num_job_detail.Text = jobDetails.Count().ToString();
@@ -407,7 +413,10 @@ namespace Schedule_Job
             AddJobFrm form = new AddJobFrm(userName);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-
+                _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
+                LoadTypeOfJobs();
+                _list_job = _jobBL.GetByAccount(userName);
+                LoadJobs(_list_job);
             }
         }
 
@@ -416,8 +425,67 @@ namespace Schedule_Job
             AddjobDetailFrm form = new AddjobDetailFrm(_current_job_id);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-
+                _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
+                LoadJobDetail(_list_job_detail);
             }
+        }
+
+        private void tsm_update_job_Click(object sender, EventArgs e)
+        {
+            AddJobFrm form = new AddJobFrm(userName, _current_job_id);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
+                LoadTypeOfJobs();
+                _list_job = _jobBL.GetByAccount(userName);
+                LoadJobs(_list_job);
+            }
+        }
+
+        private void tsm_set_to_drop_Click(object sender, EventArgs e)
+        {
+            if (_list_job.FindAll(x => x.Status == 0 && x.Id == _current_job_id).Count > 0)
+            {
+                _jobBL.SetStatus(_current_job_id, 2);
+                _list_job = _jobBL.GetByAccount(userName);
+                List<Job> jobs = _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
+                if (_current_type_of_job_id == 0)
+                    jobs = _jobBL.GetByAccount(userName);
+                LoadJobs(jobs);
+                List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(_current_job_id);
+                foreach (var jd in jobDetails)
+                    if (jd.Status == 0)
+                        _jobDetailBL.SetStatus(jd.Id, 2);
+                LoadJobDetail(_jobDetailBL.GetByJobId(_current_job_id));
+                ShowCurrentSelectedJob();
+            }
+        }
+
+        private void tsm_set_job_to_ongoing_Click(object sender, EventArgs e)
+        {
+            if (_list_job.FindAll(x => x.Status == 2 && x.Id == _current_job_id).Count > 0)
+            {
+                _jobBL.SetStatus(_current_job_id, 0);
+                _list_job = _jobBL.GetByAccount(userName);
+                List<Job> jobs = _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
+                if (_current_type_of_job_id == 0)
+                    jobs = _jobBL.GetByAccount(userName);
+                LoadJobs(jobs);
+                List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(_current_job_id);
+                foreach (var jd in jobDetails)
+                    if (jd.Status == 2)
+                        _jobDetailBL.SetStatus(jd.Id, 0);
+                LoadJobDetail(_jobDetailBL.GetByJobId(_current_job_id));
+                ShowCurrentSelectedJob();
+            }
+        }
+
+        private void tsm_delete_job_Click(object sender, EventArgs e)
+        {
+            _jobBL.Delete(_current_job_id);
+            _current_job_id = 0;
+            LoadJobs(_list_job = _jobBL.GetByAccount(userName));
+            fpn_job_detail.Controls.Clear();
         }
 
         private void LoadJobsVer2(List<Job> jobs)

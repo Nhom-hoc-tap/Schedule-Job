@@ -28,6 +28,8 @@ namespace DataAccess
 
         public static string Job_Delete => "CongViec_Delete";
 
+        public static string Job_SetToDrop => "SetJobStatus";
+
         //---JobDetail
         public static string JobDetail_GetById => "ChiTietCV_GetById";
 
@@ -38,6 +40,8 @@ namespace DataAccess
         public static string JobDetail_Update => "ChiTietCV_Update";
 
         public static string JobDetail_Delete => "ChiTietCV_Delete";
+
+        public static string JobDetail_SetToDrop => "SetJobDetailStatus";
 
         //---TypeOfJob
         public static string TypeOfJob_GetByAccountName => "GetTypeOfJobByAccountName";

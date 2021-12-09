@@ -27,6 +27,11 @@ namespace BusinessLogic
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            jobDetailDA.SetStatus(id, status);
+        }
+
         public JobDetail GetById(int id)
         {
             return jobDetailDA.GetById(id);

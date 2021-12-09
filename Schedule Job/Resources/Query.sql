@@ -99,7 +99,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- Thủ tục Delete ChiTietCV --
-Create procedure [dbo].[ChiTietCV_Delete](@ID int)
+alter procedure [dbo].[ChiTietCV_Delete](@ID int)
 as
 begin
 Delete from ChiTietCV where ID =@ID
@@ -124,7 +124,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE proc [dbo].[ChiTietCV_Insert]
+alter proc [dbo].[ChiTietCV_Insert]
 	@id int output,
 	@idCongViec int,
 	@ten nvarchar(1000),
@@ -146,7 +146,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create proc [dbo].[ChiTietCV_Update]
+alter proc [dbo].[ChiTietCV_Update]
 	@id int,
 	@idCongViec int,
 	@ten nvarchar(1000),
@@ -177,7 +177,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- Thủ tục Delete CongViec --
-Create procedure [dbo].[CongViec_Delete](@ID int)
+alter procedure [dbo].[CongViec_Delete](@ID int)
 as
 begin
 Delete from CongViec where ID =@ID
@@ -202,7 +202,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create proc [dbo].[CongViec_Insert]
+alter proc [dbo].[CongViec_Insert]
 	@id int output,
 	@tenCongViec nvarchar(1000),
 	@batDau smalldatetime,
@@ -269,7 +269,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-create proc [dbo].[GetAccountByUserName]
+alter proc [dbo].[GetAccountByUserName]
 	@tenDangNhap nvarchar(255)
 as
 begin
@@ -331,7 +331,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 -- Thủ tục Delete LoaiCV --
-Create procedure [dbo].[LoaiCV_Delete](@ID int)
+alter procedure [dbo].[LoaiCV_Delete](@ID int)
 as
 begin
 Delete from LoaiCV where ID =@ID
@@ -347,7 +347,7 @@ GO
 --------------------------------------------------------------------------------
 
 --- Thủ tục Insert LoaiCV ---
-CREATE Procedure [dbo].[LoaiCV_Insert] (
+alter Procedure [dbo].[LoaiCV_Insert] (
 @ID int output,
 @TenLoaiCV nvarchar(1000),
 @TenDangNhap nvarchar(255)
@@ -370,7 +370,7 @@ GO
 --- Thử nghiệm ---
 
 -- Thủ tục Update LoaiCV --
-create procedure [dbo].[LoaiCV_Update](@ID int output,
+alter procedure [dbo].[LoaiCV_Update](@ID int output,
 @TenLoaiCV nvarchar(1000))
 as
 begin
@@ -384,7 +384,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE procedure [dbo].[TaiKhoan_Delete](@TendangNhap nvarchar(255))
+alter procedure [dbo].[TaiKhoan_Delete](@TendangNhap nvarchar(255))
 as
 begin
 Delete from TaiKhoan where @TendangNhap = TenDangNhap
@@ -395,7 +395,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE Procedure [dbo].[TaiKhoan_Insert] (
+alter Procedure [dbo].[TaiKhoan_Insert] (
 @TenDangNhap nvarchar(255),
 @MatKhau nvarchar(1000),
 @HovaTen nvarchar(1000),
@@ -415,7 +415,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE procedure [dbo].[TaiKhoan_Update](
+alter procedure [dbo].[TaiKhoan_Update](
 @TenDangNhap nvarchar(255),
 @MatKhau nvarchar(1000),
 @HovaTen nvarchar(1000),
@@ -428,3 +428,20 @@ set MatKhau =@MatKhau, HovaTen= @HovaTen,GioiTinh=@GioiTinh,Ngaysinh=@NgaySinh
 where TenDangNhap = @TenDangNhap
 end 
 GO
+
+alter procedure SetJobStatus(@JobId int, @Status int)
+as
+begin
+update CongViec set TrangThai = @Status where ID = @JobId 
+end
+go
+
+alter procedure SetJobDetailStatus(@JobDetailId int, @Status int)
+as
+begin
+update ChiTietCV set TrangThai = @Status where ID = @JobDetailId
+end
+go
+
+select * from CongViec
+select * from ChiTietCV where ID_CongViec=34
