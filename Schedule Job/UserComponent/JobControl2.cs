@@ -16,10 +16,32 @@ namespace Schedule_Job.UserComponent
     {
         private Boolean _clicked = false;
         private Job _job;
+        
         public JobControl2(Job job)
         {
             this._job = job;
             InitializeComponent();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if(_clicked == true)
+            {
+                base.OnPaint(e);
+                SolidBrush drawBrush = new SolidBrush(Color.OrangeRed);
+                Pen pen = new Pen(drawBrush, 3);
+                e.Graphics.DrawRectangle(pen, 0, 0, Width - 3, Height - 3);
+            }
+        }
+        public void OnClick()
+        {
+            this._clicked = true;
+            this.Refresh();
+        }
+        public void NotClick()
+        {
+            this._clicked = false;
+            this.Refresh();
         }
         private void SetData()
         {
@@ -44,11 +66,14 @@ namespace Schedule_Job.UserComponent
 
             if(_job.Priority == 1)
             {
+                pb_priority.Visible = true;
                 pb_priority.Image = Properties.Resources.icons8_star_filled;
             }
             else
             {
-                pb_priority.Image = Properties.Resources.outline_star_24;
+                //pb_priority.Image = Properties.Resources.outline_star_24;
+                pb_priority.Visible = false;
+
             }
 
             switch (_job.Status)
@@ -83,25 +108,6 @@ namespace Schedule_Job.UserComponent
                 cpb_job_progress.Value = i;
                 cpb_job_progress.Text = i.ToString() + "%";
                 cpb_job_progress.Update();
-            }
-        }
-
-       
-        private void onClicked(bool clicked)
-        {
-            _clicked = clicked;
-            //if (_clicked == true)
-            //    _clicked = false;
-            //else _clicked = true;
-        }
-        private void setToClick()
-        {
-            //onClicked();
-            if (_clicked == true)
-                this.BorderStyle = BorderStyle.Fixed3D;
-            else
-            {
-                this.BorderStyle = BorderStyle.FixedSingle;
             }
         }
 

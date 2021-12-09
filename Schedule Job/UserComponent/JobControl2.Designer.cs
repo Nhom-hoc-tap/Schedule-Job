@@ -155,9 +155,9 @@ namespace Schedule_Job.UserComponent
             // 
             // lbl_status
             // 
-            this.lbl_status.Location = new System.Drawing.Point(349, 100);
+            this.lbl_status.Location = new System.Drawing.Point(349, 98);
             this.lbl_status.Name = "lbl_status";
-            this.lbl_status.Size = new System.Drawing.Size(122, 23);
+            this.lbl_status.Size = new System.Drawing.Size(120, 21);
             this.lbl_status.TabIndex = 14;
             this.lbl_status.Text = "label1";
             this.lbl_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
