@@ -91,8 +91,8 @@ namespace Schedule_Job
             this.cms_job_detail = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsm_update_job_detail = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_set_job_detail_to_drop = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsm_delete_job_detail = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_set_to_ongoing = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsm_delete_job_detail = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -368,8 +368,6 @@ namespace Schedule_Job
             // ckb_search_progress
             // 
             this.ckb_search_progress.AutoSize = true;
-            this.ckb_search_progress.Checked = true;
-            this.ckb_search_progress.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckb_search_progress.Location = new System.Drawing.Point(578, 34);
             this.ckb_search_progress.Name = "ckb_search_progress";
             this.ckb_search_progress.Size = new System.Drawing.Size(18, 17);
@@ -380,8 +378,6 @@ namespace Schedule_Job
             // ckb_search_by_date
             // 
             this.ckb_search_by_date.AutoSize = true;
-            this.ckb_search_by_date.Checked = true;
-            this.ckb_search_by_date.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckb_search_by_date.Location = new System.Drawing.Point(578, 62);
             this.ckb_search_by_date.Name = "ckb_search_by_date";
             this.ckb_search_by_date.Size = new System.Drawing.Size(18, 17);
@@ -679,35 +675,35 @@ namespace Schedule_Job
             this.tsm_set_to_ongoing,
             this.tsm_delete_job_detail});
             this.cms_job_detail.Name = "cms_job_detail";
-            this.cms_job_detail.Size = new System.Drawing.Size(211, 128);
+            this.cms_job_detail.Size = new System.Drawing.Size(197, 100);
             // 
             // tsm_update_job_detail
             // 
             this.tsm_update_job_detail.Name = "tsm_update_job_detail";
-            this.tsm_update_job_detail.Size = new System.Drawing.Size(210, 24);
+            this.tsm_update_job_detail.Size = new System.Drawing.Size(196, 24);
             this.tsm_update_job_detail.Text = "Cập nhật";
             this.tsm_update_job_detail.Click += new System.EventHandler(this.tsm_update_job_detail_Click);
             // 
             // tsm_set_job_detail_to_drop
             // 
             this.tsm_set_job_detail_to_drop.Name = "tsm_set_job_detail_to_drop";
-            this.tsm_set_job_detail_to_drop.Size = new System.Drawing.Size(210, 24);
+            this.tsm_set_job_detail_to_drop.Size = new System.Drawing.Size(196, 24);
             this.tsm_set_job_detail_to_drop.Text = "Tạm dừng";
             this.tsm_set_job_detail_to_drop.Click += new System.EventHandler(this.tsm_set_job_detail_to_drop_Click);
-            // 
-            // tsm_delete_job_detail
-            // 
-            this.tsm_delete_job_detail.Name = "tsm_delete_job_detail";
-            this.tsm_delete_job_detail.Size = new System.Drawing.Size(210, 24);
-            this.tsm_delete_job_detail.Text = "Xóa";
-            this.tsm_delete_job_detail.Click += new System.EventHandler(this.tsm_delete_job_detail_Click);
             // 
             // tsm_set_to_ongoing
             // 
             this.tsm_set_to_ongoing.Name = "tsm_set_to_ongoing";
-            this.tsm_set_to_ongoing.Size = new System.Drawing.Size(210, 24);
+            this.tsm_set_to_ongoing.Size = new System.Drawing.Size(196, 24);
             this.tsm_set_to_ongoing.Text = "Tiếp tục thực hiện";
             this.tsm_set_to_ongoing.Click += new System.EventHandler(this.tsm_set_to_ongoing_Click);
+            // 
+            // tsm_delete_job_detail
+            // 
+            this.tsm_delete_job_detail.Name = "tsm_delete_job_detail";
+            this.tsm_delete_job_detail.Size = new System.Drawing.Size(196, 24);
+            this.tsm_delete_job_detail.Text = "Xóa";
+            this.tsm_delete_job_detail.Click += new System.EventHandler(this.tsm_delete_job_detail_Click);
             // 
             // MainForm
             // 

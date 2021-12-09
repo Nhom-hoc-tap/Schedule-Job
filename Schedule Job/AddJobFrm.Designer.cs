@@ -385,6 +385,7 @@ namespace Schedule_Job
             this.rbComplete.TabStop = true;
             this.rbComplete.Text = "Hoàn thành";
             this.rbComplete.UseVisualStyleBackColor = true;
+            this.rbComplete.CheckedChanged += new System.EventHandler(this.rbComplete_CheckedChanged);
             // 
             // btnCancel
             // 
@@ -498,7 +499,7 @@ namespace Schedule_Job
             this.MaximizeBox = false;
             this.Name = "AddJobFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddJobFrm";
+            this.Text = "Thêm công việc";
             this.Load += new System.EventHandler(this.AddJobFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddJobFrm_MouseDown);
             this.rbContinue.ResumeLayout(false);

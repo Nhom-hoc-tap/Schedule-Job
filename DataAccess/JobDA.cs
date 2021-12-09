@@ -56,9 +56,10 @@ namespace DataAccess
                 TypeOfJobId = int.Parse(row["ID_LoaiCV"].ToString()),
                 Name = row["TenCongViec"].ToString(),
                 Progress = int.Parse(row["TienDo"].ToString()),
+                EndTime = DateTime.Parse(row["ThoiGianKetThuc"].ToString()),
                 Status = int.Parse(row["TrangThai"].ToString()),
                 StartTime = DateTime.Parse(row["ThoiGianBatDau"].ToString()),
-                EndTime = DateTime.Parse(row["ThoiGianKetThuc"].ToString()),
+                
                 Priority = int.Parse(row["MucDoUuTien"].ToString()),
                 Description = row["MoTa"].ToString()
                 

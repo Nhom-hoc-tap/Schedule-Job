@@ -196,6 +196,7 @@ namespace Schedule_Job
             this.rbComplete.TabIndex = 38;
             this.rbComplete.Text = "Hoàn thành";
             this.rbComplete.UseVisualStyleBackColor = true;
+            this.rbComplete.CheckedChanged += new System.EventHandler(this.rbComplete_CheckedChanged);
             // 
             // cbbPriority
             // 
@@ -426,7 +427,7 @@ namespace Schedule_Job
             this.MaximizeBox = false;
             this.Name = "AddjobDetailFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddjobDetailFrm";
+            this.Text = "Thêm chi tiết công việc";
             this.Load += new System.EventHandler(this.AddjobDetailFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
