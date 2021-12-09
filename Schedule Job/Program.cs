@@ -16,8 +16,7 @@ namespace Schedule_Job
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new LoginFrm());
-            Application.Run(new MainForm());
+            Application.Run(new LoginFrm());
         }
     }
 }

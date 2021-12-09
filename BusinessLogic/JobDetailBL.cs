@@ -27,6 +27,11 @@ namespace BusinessLogic
             }
         }
 
+        public JobDetail GetById(int id)
+        {
+            return jobDetailDA.GetById(id);
+        }
+
         public List<JobDetail> GetByJobId(int jobId)
         {
             return jobDetailDA.GetByJobId(jobId);

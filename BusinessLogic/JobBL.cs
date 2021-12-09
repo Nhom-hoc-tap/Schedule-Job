@@ -27,6 +27,11 @@ namespace BusinessLogic
             }
         }
 
+        public Job GetById(int id)
+        {
+            return jobDA.GetById(id);
+        }
+
         public List<Job> GetByAccount(string accountName)
         {
             return jobDA.GetByAccount(accountName);

@@ -70,7 +70,7 @@ namespace Schedule_Job
             //pie_chart.Series["s1"].Label = "#PERCENT";
             pie_chart.Titles.Add(((TypeOfJob)cbb_type_of_job.SelectedItem).Name);
             pie_chart.Titles[0].Font = new Font("Microsoft Sans Serif", 10);
-            pie_chart.Series["s1"].IsValueShownAsLabel = true;
+            pie_chart.Series["s1"].IsValueShownAsLabel = false;
             if (jobComplete>0)
                 pie_chart.Series["s1"].Points.AddXY("Hoàn thành (%)", (Math.Round(((double)jobComplete / (double)sum) * 100)).ToString());
             if (jobOngoing > 0)
@@ -205,9 +205,9 @@ namespace Schedule_Job
                 {
                     ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
                     listViewItem.SubItems.Add(jd.Name);
-                    if(jd.status == 1)
+                    if(jd.Status == 1)
                         listViewItem.SubItems.Add("Đã hoàn thành, Tiết kiệm: "+(jd.ActualTime - jd.EstimateTime).ToString());
-                    if(jd.status == 0)
+                    if(jd.Status == 0)
                         listViewItem.SubItems.Add("Chưa hoàn thành, Dự kiến: " + (jd.EstimateTime).ToString());
                     lv_job_detail.Items.Add(listViewItem);
                 }

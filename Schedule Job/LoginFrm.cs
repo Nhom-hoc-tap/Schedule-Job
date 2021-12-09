@@ -60,8 +60,7 @@ namespace Schedule_Job
             string password = txtPassword.Text;
             if (Login(userName, password))
             {
-                Account account = AccountBL.Instance.GetAccount(userName);
-                MainForm form = new MainForm(account);
+                MainForm form = new MainForm(userName);
                 Hide();
                 form.ShowDialog();
                 Close();

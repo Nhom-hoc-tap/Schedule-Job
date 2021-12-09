@@ -116,7 +116,7 @@ namespace Schedule_Job
             this.dtpStartTime.BorderRadius = 8;
             this.dtpStartTime.Checked = true;
             this.dtpStartTime.CheckedState.Parent = this.dtpStartTime;
-            this.dtpStartTime.CustomFormat = "hh:mm";
+            this.dtpStartTime.CustomFormat = "HH:mm";
             this.dtpStartTime.FillColor = System.Drawing.Color.White;
             this.dtpStartTime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
@@ -203,7 +203,7 @@ namespace Schedule_Job
             this.dtpEndTime.BorderRadius = 8;
             this.dtpEndTime.Checked = true;
             this.dtpEndTime.CheckedState.Parent = this.dtpEndTime;
-            this.dtpEndTime.CustomFormat = "hh:mm";
+            this.dtpEndTime.CustomFormat = "HH:mm";
             this.dtpEndTime.FillColor = System.Drawing.Color.White;
             this.dtpEndTime.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;

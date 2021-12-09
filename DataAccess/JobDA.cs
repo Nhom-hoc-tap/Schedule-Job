@@ -26,6 +26,28 @@ namespace DataAccess
             }
         }
 
+        public Job GetById(int id)
+        {
+            SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
+            {
+                Value = id
+            };
+            DataTable table = SqlHelper.Instance.ExecuteReader(Utilities.Job_GetById, idParam);
+            DataRow row = table.Rows[0];
+            return new Job()
+            {
+                Id = (int)row["ID"],
+                TypeOfJobId = (int)row["ID_LoaiCV"],
+                Name = row["TenChiTietCV"].ToString(),
+                Status = (int)row["TrangThai"],
+                StartTime = (DateTime)row["ThoiGianBatDau"],
+                EndTime = (DateTime)row["ThoiGianKetThuc"],
+                Priority = (int)row["MucDoUuTien"],
+                Description = row["MoTa"].ToString(),
+                Progress = (int)row["TienDo"]
+            };
+        }
+
         public List<Job> GetByAccount(string accountName)
         {
             List<Job> jobs = new List<Job>();

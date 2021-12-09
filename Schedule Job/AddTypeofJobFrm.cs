@@ -15,16 +15,16 @@ namespace Schedule_Job
 {
 	public partial class AddTypeofJobFrm : Form
 	{
-		private Account account;
+		private string userName;
 
 		public AddTypeofJobFrm()
 		{
 			InitializeComponent();
 		}
 
-		public AddTypeofJobFrm(Account account) : this()
+		public AddTypeofJobFrm(string userName) : this()
         {
-			this.account = account;
+			this.userName = userName;
         }
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace Schedule_Job
 				TypeOfJob typeOfJob = new TypeOfJob()
                 {
 					Name = txtName.Text,
-					UserName = account.UserName
+					UserName = userName
                 };
 
 				if (TypeOfJobBL.Instance.Insert(typeOfJob))

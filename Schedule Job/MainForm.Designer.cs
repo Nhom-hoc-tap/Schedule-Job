@@ -525,7 +525,8 @@ namespace Schedule_Job
             // dtp_end
             // 
             this.dtp_end.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_end.CustomFormat = "dd/MM/yyyy";
+            this.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_end.Location = new System.Drawing.Point(1037, 62);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 27);
@@ -534,7 +535,8 @@ namespace Schedule_Job
             // dtp_start
             // 
             this.dtp_start.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_start.CustomFormat = "dd/MM/yyyy";
+            this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_start.Location = new System.Drawing.Point(757, 62);
             this.dtp_start.Name = "dtp_start";
             this.dtp_start.Size = new System.Drawing.Size(117, 27);

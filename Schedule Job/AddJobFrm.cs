@@ -15,16 +15,19 @@ namespace Schedule_Job
 {
     public partial class AddJobFrm : Form
     {
-        private Account account;
+        private readonly int jobId;
+
+        private readonly string userName;
 
         public AddJobFrm()
         {
             InitializeComponent();
         }
 
-        public AddJobFrm(Account account) : this()
+        public AddJobFrm(string userName, int? jobId = null) : this()
         {
-            this.account = account;
+            this.userName = userName;
+            this.jobId = jobId ?? 0;
         }
 
         private void AddJobFrm_Load(object sender, EventArgs e)
@@ -34,14 +37,14 @@ namespace Schedule_Job
 
         private void LoadCategory()
         {
-            cbbCategory.DataSource = TypeOfJobBL.Instance.GetByAccount(account.UserName);
+            cbbCategory.DataSource = TypeOfJobBL.Instance.GetByAccount(userName);
             cbbCategory.DisplayMember = "Name";
             cbbCategory.ValueMember = "Id";
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
-            AddTypeofJobFrm addtypeFrm = new AddTypeofJobFrm(account);
+            AddTypeofJobFrm addtypeFrm = new AddTypeofJobFrm(userName);
             if (addtypeFrm.ShowDialog() == DialogResult.OK)
             {
                 LoadCategory();
@@ -60,6 +63,11 @@ namespace Schedule_Job
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
 
+        private Job GetJobById(int id)
+        {
+            return id > 0 ? JobBL.Instance.GetById(id) : null;
+        }
+
         private Job GetJob()
         {
             int typeId = (int)cbbCategory.SelectedValue;
@@ -71,6 +79,7 @@ namespace Schedule_Job
             int status = GetStatus();
             return new Job()
             {
+                TypeOfJobId = typeId,
                 Name = name,
                 StartTime = startDate,
                 EndTime = endDate,
@@ -109,11 +118,17 @@ namespace Schedule_Job
         {
             if (ValidateUserInput())
             {
-                Job job = GetJob();
-                if (JobBL.Instance.Insert(job))
+                var newJob = GetJob();
+                var oldJob = GetJobById(jobId);
+                if (oldJob is null)
                 {
-                    DialogResult = DialogResult.OK;
+                    JobBL.Instance.Insert(newJob);
                 }
+                else
+                {
+                    JobBL.Instance.Update(newJob);
+                }
+                DialogResult = DialogResult.OK;
             }
         }
 

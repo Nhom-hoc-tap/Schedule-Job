@@ -159,7 +159,6 @@ namespace Schedule_Job
             this.rbOver.Name = "rbOver";
             this.rbOver.Size = new System.Drawing.Size(104, 28);
             this.rbOver.TabIndex = 41;
-            this.rbOver.TabStop = true;
             this.rbOver.Text = "Quá hạn";
             this.rbOver.UseVisualStyleBackColor = true;
             // 
@@ -171,13 +170,13 @@ namespace Schedule_Job
             this.rbDrop.Name = "rbDrop";
             this.rbDrop.Size = new System.Drawing.Size(118, 28);
             this.rbDrop.TabIndex = 40;
-            this.rbDrop.TabStop = true;
             this.rbDrop.Text = "Tạm dừng";
             this.rbDrop.UseVisualStyleBackColor = true;
             // 
             // rbOnGoing
             // 
             this.rbOnGoing.AutoSize = true;
+            this.rbOnGoing.Checked = true;
             this.rbOnGoing.Location = new System.Drawing.Point(19, 66);
             this.rbOnGoing.Margin = new System.Windows.Forms.Padding(4);
             this.rbOnGoing.Name = "rbOnGoing";
@@ -195,7 +194,6 @@ namespace Schedule_Job
             this.rbComplete.Name = "rbComplete";
             this.rbComplete.Size = new System.Drawing.Size(129, 28);
             this.rbComplete.TabIndex = 38;
-            this.rbComplete.TabStop = true;
             this.rbComplete.Text = "Hoàn thành";
             this.rbComplete.UseVisualStyleBackColor = true;
             // 

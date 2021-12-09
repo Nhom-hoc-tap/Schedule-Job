@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using BusinessLogic;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,14 +14,29 @@ namespace Schedule_Job
 {
 	public partial class AddjobDetailFrm : Form
 	{
+        private int jobDetailId;
+
+        private int jobId;
+
 		public AddjobDetailFrm()
 		{
 			InitializeComponent();
 		}
 
+        public AddjobDetailFrm(int jobId, int? jobDetailId = null) : this()
+        {
+            this.jobId = jobId;
+            this.jobDetailId = jobDetailId ?? 0;
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
 			Close();
+        }
+
+        private JobDetail GetJobDetailById(int id)
+        {
+            return id > 0 ? JobDetailBL.Instance.GetById(id) : null;
         }
 
         private JobDetail GetJobDetail()
@@ -33,6 +49,7 @@ namespace Schedule_Job
             int status = GetStatus();
             return new JobDetail()
             {
+                JobId = jobId,
                 Name = name,
                 EstimateTime = estimateTime,
                 ActualTime = actualTime,
@@ -66,7 +83,17 @@ namespace Schedule_Job
         {
             if (ValidateUserInput())
             {
-                JobDetail jobDetail = GetJobDetail();
+                var newJobDetail = GetJobDetail();
+                var oldJobDetail = GetJobDetailById(jobDetailId);
+                if (oldJobDetail is null)
+                {
+                    JobDetailBL.Instance.Insert(newJobDetail);
+                }
+                else
+                {
+                    JobDetailBL.Instance.Update(newJobDetail);
+                }
+                DialogResult = DialogResult.OK;
             }
         }
 

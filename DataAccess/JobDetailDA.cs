@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -24,6 +25,28 @@ namespace DataAccess
                 instance = instance ?? new JobDetailDA();
                 return instance;
             }
+        }
+
+        public JobDetail GetById(int id)
+        {
+            SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
+            {
+                Value = id
+            };
+            DataTable table = SqlHelper.Instance.ExecuteReader(Utilities.JobDetail_GetById, idParam);
+            DataRow row = table.Rows[0];
+            return new JobDetail()
+            {
+                Id = (int)row["ID"],
+                JobId = (int)row["ID_CongViec"],
+                Name = row["TenChiTietCV"].ToString(),
+                Status = (int)row["TrangThai"],
+                EstimateTime = (int)row["ThoiDuKien"],
+                ActualTime = (int)row["ThoiThucTe"],
+                Priority = (int)row["MucDoUuTien"],
+                Description = row["MoTa"].ToString(),
+                Progress = (int)row["TienDo"]
+            };
         }
 
         public List<JobDetail> GetByJobId(int jobId)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,8 @@ namespace DataAccess
         public static string GetAllByTableName => "GetALl";
 
         //---Job
+        public static string Job_GetById => "CongViec_GetById";
+
         public static string Job_GetByAccount => "GetJobByAccountName";
 
         public static string Job_Insert => "CongViec_Insert";
@@ -26,6 +29,8 @@ namespace DataAccess
         public static string Job_Delete => "CongViec_Delete";
 
         //---JobDetail
+        public static string JobDetail_GetById => "ChiTietCV_GetById";
+
         public static string JobDetail_GetByJob => "GetJobDetailByJobId";
 
         public static string JobDetail_Insert => "ChiTietCV_Insert";

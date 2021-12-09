@@ -29,8 +29,7 @@ namespace Schedule_Job
         private JobDetailBL _jobDetailBL;
         private TypeOfJobBL _typeOfJobBL;
 
-        private Account account;
-
+        private string userName;
 
         public MainForm()
         {
@@ -40,14 +39,14 @@ namespace Schedule_Job
             InitializeComponent();
         }
 
-        public MainForm(Account account) : this()
+        public MainForm(string userName) : this()
         {
-            this.account = account;
+            this.userName = userName;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _list_job = _jobBL.GetByAccount(account.UserName);
+            _list_job = _jobBL.GetByAccount(userName);
             _list_job = _list_job.OrderBy(x => x.Progress).ToList();
             if (_list_job.Count > 0)
             {
@@ -56,7 +55,7 @@ namespace Schedule_Job
 
             LoadJobs(_list_job);
             LoadTypeOfJobs();
-
+            cbb_type_jobs.SelectedValue = 0;
             txt_search.GotFocus += Txt_search_GotFocus;
             txt_search.LostFocus += Txt_search_LostFocus;
 
@@ -78,7 +77,7 @@ namespace Schedule_Job
 
         private void Search(string str)
         {
-            List<Job> jobs = _jobBL.GetByAccount(account.UserName);
+            List<Job> jobs = _jobBL.GetByAccount(userName);
             if (_current_type_of_job_id > 0)
                 jobs = jobs.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
 
@@ -122,9 +121,9 @@ namespace Schedule_Job
 
         private void LoadTypeOfJobs()
         {
-            _list_TypeOfJob = _typeOfJobBL.GetByAccount(account.UserName);
+            _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
             _list_TypeOfJob = _list_TypeOfJob.OrderBy(x => x.Name).ToList();
-            _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = account.UserName });
+            _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = userName });
             cbb_type_jobs.DataSource = _list_TypeOfJob;
             cbb_type_jobs.ValueMember = "Id";
             cbb_type_jobs.DisplayMember = "Name";
@@ -140,7 +139,7 @@ namespace Schedule_Job
             _current_type_of_job_id = selectedTypeId;
             List<Job> jobs = new List<Job>();
             if (selectedTypeId == 0)
-                jobs = _jobBL.GetByAccount(account.UserName);
+                jobs = _jobBL.GetByAccount(userName);
             else jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
             LoadJobs(jobs);
         }
@@ -362,7 +361,7 @@ namespace Schedule_Job
             }
             for (int i = 1; i <= days; i++)
             {
-                List<Job> jobs = _jobBL.GetByAccount(account.UserName);
+                List<Job> jobs = _jobBL.GetByAccount(userName);
                 jobs = jobs.FindAll(x => (x.EndTime.Day == i && x.EndTime.Month == month && x.EndTime.Year == year));
                 DayControl dayControl = new DayControl(jobs);
                 dayControl.Days(i);
@@ -386,20 +385,26 @@ namespace Schedule_Job
 
         private void tsm_count_Click(object sender, EventArgs e)
         {
-            StatisticalForm statisticalForm = new StatisticalForm(account.UserName);
+            StatisticalForm statisticalForm = new StatisticalForm(userName);
             statisticalForm.Show();
         }
 
         private void btn_add_job_Click(object sender, EventArgs e)
         {
-            AddJobFrm form = new AddJobFrm(account);
-            form.Show(this);
+            AddJobFrm form = new AddJobFrm(userName);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
         }
 
         private void btn_add_jod_detail_Click(object sender, EventArgs e)
         {
-            AddjobDetailFrm form = new AddjobDetailFrm();
-            form.Show(this);
+            AddjobDetailFrm form = new AddjobDetailFrm(_current_job_id);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+
+            }
         }
 
         private void LoadJobsVer2(List<Job> jobs)
