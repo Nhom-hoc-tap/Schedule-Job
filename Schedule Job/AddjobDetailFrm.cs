@@ -18,6 +18,8 @@ namespace Schedule_Job
 
         private int jobId;
 
+        
+
 		public AddjobDetailFrm()
 		{
 			InitializeComponent();
@@ -29,9 +31,15 @@ namespace Schedule_Job
             this.jobDetailId = jobDetailId ?? 0;
         }
 
+
         private void AddjobDetailFrm_Load(object sender, EventArgs e)
         {
             ShowDetailJob();
+
+            txtProgress.Enabled = true;
+            txtActualTime.Enabled = false;
+            txtActualTime.Text = "0";
+            txtProgress.Text = "0";
         }
 
         private void ShowDetailJob()
@@ -48,6 +56,8 @@ namespace Schedule_Job
             txtProgress.Text = jobDetail.Progress.ToString();
             cbbPriority.SelectedIndex = jobDetail.Priority;
             txtDesciption.Text = jobDetail.Description;
+
+            
 
             LoadStatus(jobDetail);
         }
@@ -160,8 +170,42 @@ namespace Schedule_Job
                 MessageBox.Show("Không được để trống tên công việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            if (txtEstimatedTime.Text == "")
+            {
+                MessageBox.Show("Hãy nhập thời gian bạn dự kiến hoàn thành công việc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (rbComplete.Checked == true && txtActualTime.Text=="" || txtActualTime.Text == "0")
+            {
+                MessageBox.Show("Hãy nhập thời gian bạn hoàn thành công việc trong thực tế", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            int progress = int.Parse(txtProgress.Text);
+            if(progress>100 || progress < 0)
+            {
+                txtProgress.Text = "0";
+                MessageBox.Show("Tiến độ phải thuộc khoảng từ 0 tới 100 %", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             return true;
+        }
+
+        private void rbComplete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbComplete.Checked == true)
+            { 
+                txtProgress.Text = "100";
+                txtProgress.Enabled = false;
+                txtActualTime.Enabled = true;
+            }
+            else
+            {
+                txtProgress.Enabled = true;
+                txtActualTime.Enabled = false;
+                txtActualTime.Text = "0";
+                txtProgress.Text = "0";
+            }
         }
     }
 }

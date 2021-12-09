@@ -19,6 +19,8 @@ namespace Schedule_Job
 
         private readonly string userName;
 
+        private int typeOfJobId;
+
         public AddJobFrm()
         {
             InitializeComponent();
@@ -28,6 +30,13 @@ namespace Schedule_Job
         {
             this.userName = userName;
             this.jobId = jobId ?? 0;
+        }
+
+        public AddJobFrm(string userName, int? jobId = null, int? typeOfJobId=null) : this()
+        {
+            this.userName = userName;
+            this.jobId = jobId ?? 0;
+            this.typeOfJobId = typeOfJobId ?? 0;
         }
 
         private void AddJobFrm_Load(object sender, EventArgs e)
@@ -88,6 +97,8 @@ namespace Schedule_Job
             cbbCategory.DataSource = TypeOfJobBL.Instance.GetByAccount(userName);
             cbbCategory.DisplayMember = "Name";
             cbbCategory.ValueMember = "Id";
+
+            cbbCategory.SelectedValue = typeOfJobId;
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -125,6 +136,7 @@ namespace Schedule_Job
             int priority = cbbPriority.SelectedIndex;
             string description = txtDescription.Text;
             int status = GetStatus();
+            int progress = int.Parse( txtProgress.Text);
             return new Job()
             {
                 Id = jobId,
@@ -134,6 +146,7 @@ namespace Schedule_Job
                 EndTime = endDate,
                 Priority = priority,
                 Description = description,
+                Progress = progress,
                 Status = status
             };
         }
@@ -195,7 +208,37 @@ namespace Schedule_Job
                 return false;
             }
 
+            DateTime startDate = dtpStartDate.Value + dtpStartTime.Value.TimeOfDay;
+            DateTime endDate = dtpEndDate.Value + dtpEndTime.Value.TimeOfDay;
+
+            if (rbOver.Checked == false && endDate<startDate)
+            {
+                MessageBox.Show("Ngày kết thúc không được trước ngày bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (rbOver.Checked == true && endDate > startDate && endDate>DateTime.Now)
+            {
+                MessageBox.Show("Công việc chưa quá hạn mà bạn ơi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
             return true;
         }
+
+        private void rbComplete_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbComplete.Checked == true)
+            {
+                txtProgress.Text = "100";
+                txtProgress.Enabled = false;
+            }
+            else
+            {
+                txtProgress.Text = "0";
+                txtProgress.Enabled = true;
+            }
+        }
+
+        
     }
 }

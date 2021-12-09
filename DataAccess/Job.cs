@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace DataAccess
 {
     public class Job
@@ -22,11 +23,24 @@ namespace DataAccess
             get { return status; }
             set {
                 if (Progress == 100)
+                {
                     this.status = 1;
+                    JobDA jobDA = JobDA.Instance;
+                    jobDA.SetStatus(Id, 1);
+                }
                 else if (EndTime < DateTime.Now)
+                { 
                     this.status = -1;
-                else
-                    status = value;
+                    JobDA jobDA = JobDA.Instance;
+                    jobDA.SetStatus(Id, -1);
+                }
+                else if (EndTime > DateTime.Now)
+                {
+                    this.status = 0;
+                    JobDA jobDA = JobDA.Instance;
+                    jobDA.SetStatus(Id, 0);
+                }
+                status = value;
             } 
         } 
         public int TypeOfJobId { get; set; }

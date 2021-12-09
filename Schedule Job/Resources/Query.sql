@@ -139,8 +139,26 @@ begin
 	insert into ChiTietCV(ID_CongViec, TrangThai, ThoiDuKien, ThoiThucTe, TenChiTietCV, MucdoUuTien, MoTa, TienDo)
 	values(@idCongViec, @trangThai, @duKien, @thucTe, @ten, @doUuTien, @moTa, @tienDo)
 	set @id = @@IDENTITY
+
+	declare @sum int
+	declare @count int
+	select @sum = SUM(cv.TienDo), @count = COUNT(cv.ID)
+	from ChiTietCV cv
+	where ID_CongViec = @idCongViec
+	
+	if(@sum = @count*100)
+	begin
+		update CongViec set TienDo = 100, TrangThai = 1 where ID = @idCongViec
+	end
+	else
+	begin
+		update CongViec set TienDo = (@sum/@count) where ID = @idCongViec
+	end
+	
 end
 GO
+
+select * from CongViec
 /****** Object:  StoredProcedure [dbo].[ChiTietCV_Update]    Script Date: 09-Dec-21 14:20:15 ******/
 SET ANSI_NULLS ON
 GO
@@ -169,6 +187,22 @@ begin
 		TrangThai = @trangThai,
 		MoTa = @moTa
 	where ID = @id
+
+	declare @sum int
+	declare @count int
+	select @sum = SUM(cv.TienDo), @count = COUNT(cv.ID)
+	from ChiTietCV cv
+	where ID_CongViec = @idCongViec
+	
+	if(@sum = @count*100)
+	begin
+		update CongViec set TienDo = 100, TrangThai = 1 where ID = @idCongViec
+	end
+	else
+	begin
+		update CongViec set TienDo = (@sum/@count) where ID = @idCongViec
+	end
+
 end
 GO
 /****** Object:  StoredProcedure [dbo].[CongViec_Delete]    Script Date: 09-Dec-21 14:20:15 ******/
@@ -250,6 +284,9 @@ begin
 	where ID = @id
 end
 GO
+
+update CongViec set TienDo = 60 where ID =26
+select * from CongViec
 /****** Object:  StoredProcedure [dbo].[DangNhap]    Script Date: 09-Dec-21 14:20:15 ******/
 SET ANSI_NULLS ON
 GO

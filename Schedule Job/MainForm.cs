@@ -20,6 +20,10 @@ namespace Schedule_Job
         private int _current_type_of_job_id = 0;
         private int _current_job_detail_id = 0;
 
+        private int _prv_type_job_id;
+
+        private DayControl _clicked_day_control;
+
         private int _month, _year;
 
         private List<Job> _list_job;
@@ -99,6 +103,7 @@ namespace Schedule_Job
                 jobControl2.Tag = j.Id;
                 jobControl2.Click += JobControl2_Click;
                 jobControl2.ContextMenuStrip = cms_job;
+                
                 fpn_jobs.Controls.Add(jobControl2);
             }
             lbl_num_job.Text = jobs.Count().ToString();
@@ -148,6 +153,12 @@ namespace Schedule_Job
                 jobDetailControl.ContextMenuStrip = cms_job_detail;
                 jobDetailControl.Tag = jd.Id.ToString();
                 jobDetailControl.Click += JobDetailControl_Click;
+
+                //if (_jobBL.GetById(_current_job_id).Status == -1 || _jobBL.GetById(_current_job_id).Status == 2)
+                //    jobDetailControl.ContextMenuStrip.Items[0].Enabled = false;
+                //else
+                //    jobDetailControl.ContextMenuStrip.Items[0].Enabled = true;
+
                 fpn_job_detail.Controls.Add(jobDetailControl);
             }
             lbl_num_job_detail.Text = jobDetails.Count().ToString();
@@ -420,9 +431,10 @@ namespace Schedule_Job
         private void DayControl_Click(object sender, EventArgs e)
         {
             List<Job> jobs = (sender as DayControl).jobs;
-            cbb_type_jobs.Text = "Tất cả";
+            _clicked_day_control = sender as DayControl;
+            _current_type_of_job_id = 0;
+            cbb_type_jobs.SelectedValue = 0;
             LoadJobsVer2(jobs);
-
         }
 
         private void tsm_count_Click(object sender, EventArgs e)
@@ -433,13 +445,24 @@ namespace Schedule_Job
 
         private void btn_add_job_Click(object sender, EventArgs e)
         {
-            AddJobFrm form = new AddJobFrm(userName);
+            AddJobFrm form = new AddJobFrm(userName,null,_current_type_of_job_id);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
+                _prv_type_job_id = _current_type_of_job_id;
                 LoadTypeOfJobs();
+                _current_type_of_job_id = _prv_type_job_id;
+                cbb_type_jobs.SelectedValue= _current_type_of_job_id;
                 _list_job = _jobBL.GetByAccount(userName);
-                LoadJobs(_list_job);
+                if (_current_type_of_job_id == 0)
+                {
+                    LoadJobs(_list_job);
+                }
+                    
+                else
+                {
+                   LoadJobs( _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
+                }
+                DisplayCalendar(_month, _year);
             }
         }
 
@@ -450,6 +473,11 @@ namespace Schedule_Job
             {
                 _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
                 LoadJobDetail(_list_job_detail);
+                if (_current_type_of_job_id > 0)
+                    LoadJobs(_jobBL.GetByAccount(userName).FindAll(x => x.TypeOfJobId == _current_type_of_job_id).ToList());
+                else
+                    LoadJobs(_jobBL.GetByAccount(userName));
+                ShowCurrentSelectedJob();
             }
         }
 
@@ -458,10 +486,21 @@ namespace Schedule_Job
             AddJobFrm form = new AddJobFrm(userName, _current_job_id);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
+                _prv_type_job_id = _current_type_of_job_id;
                 LoadTypeOfJobs();
+                _current_type_of_job_id = _prv_type_job_id;
+                cbb_type_jobs.SelectedValue = _current_type_of_job_id;
                 _list_job = _jobBL.GetByAccount(userName);
-                LoadJobs(_list_job);
+                if (_current_type_of_job_id == 0)
+                {
+                    LoadJobs(_list_job);
+                }
+
+                else
+                {
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
+                }
+                DisplayCalendar(_month, _year);
             }
         }
 
@@ -507,8 +546,16 @@ namespace Schedule_Job
         {
             _jobBL.Delete(_current_job_id);
             _current_job_id = 0;
-            LoadJobs(_list_job = _jobBL.GetByAccount(userName));
+            _list_job = _jobBL.GetByAccount(userName);
+            if(_current_type_of_job_id == 0)
+                LoadJobs(_list_job);
+            LoadJobs(_list_job.FindAll(x=>x.TypeOfJobId==_current_type_of_job_id));
             fpn_job_detail.Controls.Clear();
+            DisplayCalendar(_month, _year);
+            
+            _clicked_day_control.jobs = _list_job.FindAll(x => (x.EndTime.Day == int.Parse(_clicked_day_control.lbl_day.Text) && x.EndTime.Month == _month && x.EndTime.Year == _year));
+            DayControl_Click(_clicked_day_control, EventArgs.Empty);
+            
         }
 
         private void tsm_add_job_detail_Click(object sender, EventArgs e)
@@ -523,6 +570,11 @@ namespace Schedule_Job
             {
                 _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
                 LoadJobDetail(_list_job_detail);
+                if(_current_type_of_job_id>0)
+                    LoadJobs(_jobBL.GetByAccount(userName).FindAll(x => x.TypeOfJobId == _current_type_of_job_id).ToList());
+                else
+                    LoadJobs(_jobBL.GetByAccount(userName));
+                ShowCurrentSelectedJob();
             }
         }
 
@@ -558,41 +610,44 @@ namespace Schedule_Job
         private void LoadJobsVer2(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
-
-            int current_type_id = 0;
-
-            jobs = jobs.OrderBy(x => x.TypeOfJobId).ToList();
-            current_type_id = jobs[0].TypeOfJobId;
-
-            Label labelDes = new Label();
-            labelDes.AutoSize = false;
-            labelDes.Font = new Font("Microsoft Sans Serif", 10);
-            labelDes.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
-            labelDes.Size = new Size(200, 20);
-            fpn_jobs.Controls.Add(labelDes);
-
-            foreach (Job j in jobs)
+            if (jobs.Count > 0)
             {
-                JobControl2 jobControl2 = new JobControl2(j);
-                jobControl2.Tag = j.Id;
-                jobControl2.Click += JobControl2_Click;
-                jobControl2.ContextMenuStrip = cms_job;
+                int current_type_id = 0;
 
-                if (j.TypeOfJobId != current_type_id)
+                jobs = jobs.OrderBy(x => x.TypeOfJobId).ToList();
+                current_type_id = jobs[0].TypeOfJobId;
+
+                Label labelDes = new Label();
+                labelDes.AutoSize = false;
+                labelDes.Font = new Font("Microsoft Sans Serif", 10);
+                labelDes.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
+                labelDes.Size = new Size(200, 20);
+                fpn_jobs.Controls.Add(labelDes);
+
+                foreach (Job j in jobs)
                 {
-                    current_type_id = j.TypeOfJobId;
+                    JobControl2 jobControl2 = new JobControl2(j);
+                    jobControl2.Tag = j.Id;
+                    jobControl2.Click += JobControl2_Click;
 
-                    Label label = new Label();
-                    label.AutoSize = false;
-                    label.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
-                    label.Font = new Font("Microsoft Sans Serif", 10);
-                    label.Size = new Size(200, 20);
-                    fpn_jobs.Controls.Add(label);
+                    jobControl2.ContextMenuStrip = cms_job;
+
+                    if (j.TypeOfJobId != current_type_id)
+                    {
+                        current_type_id = j.TypeOfJobId;
+
+                        Label label = new Label();
+                        label.AutoSize = false;
+                        label.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
+                        label.Font = new Font("Microsoft Sans Serif", 10);
+                        label.Size = new Size(200, 20);
+                        fpn_jobs.Controls.Add(label);
+                    }
+                    fpn_jobs.Controls.Add(jobControl2);
                 }
-                fpn_jobs.Controls.Add(jobControl2);
+                lbl_num_job.Text = jobs.Count().ToString();
+                fpn_job_detail.Controls.Clear();
             }
-            lbl_num_job.Text = jobs.Count().ToString();
-            fpn_job_detail.Controls.Clear();
         }
     }
 }
