@@ -76,9 +76,9 @@ namespace Schedule_Job
             if (jobOngoing > 0)
                 pie_chart.Series["s1"].Points.AddXY("Đang tiến hành (%)", (Math.Round(((double)jobOngoing / (double)sum) * 100)).ToString());
             if (jobDrop > 0)
-                pie_chart.Series["s1"].Points.AddXY("Quá hạn (%)", (Math.Round(((double)jobDrop / (double)sum) * 100)).ToString());
+                pie_chart.Series["s1"].Points.AddXY("Tạm dừng (%)", (Math.Round(((double)jobDrop / (double)sum) * 100)).ToString());
             if (jobOver > 0)
-                pie_chart.Series["s1"].Points.AddXY("Tạm dừng (%)", (Math.Round(((double)jobOver / (double)sum) * 100)).ToString());
+                pie_chart.Series["s1"].Points.AddXY("Quá hạn (%)", (Math.Round(((double)jobOver / (double)sum) * 100)).ToString());
 
             lv_detail.Items.Clear();
 
@@ -282,6 +282,7 @@ namespace Schedule_Job
             {
                 List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
                 jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => (x.StartTime >= dtp_start.Value && x.EndTime <= dtp_end.Value));
                 jobs = jobs.FindAll(x => x.Status == -1);
                 //MessageBox.Show(jobs.Count.ToString());
                 if (jobs.Count > 0)
@@ -304,6 +305,7 @@ namespace Schedule_Job
             {
                 List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
                 jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => (x.StartTime >= dtp_start.Value && x.EndTime <= dtp_end.Value));
                 jobs = jobs.FindAll(x => x.Status == 2);
                 //MessageBox.Show(jobs.Count.ToString());
                 if (jobs.Count > 0)
@@ -325,6 +327,7 @@ namespace Schedule_Job
             {
                 List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
                 jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => (x.StartTime >= dtp_start.Value && x.EndTime <= dtp_end.Value));
                 jobs = jobs.FindAll(x => x.Status == 1);
                 //MessageBox.Show(jobs.Count.ToString());
                 if (jobs.Count > 0)
@@ -346,6 +349,7 @@ namespace Schedule_Job
             {
                 List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
                 jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => (x.StartTime >= dtp_start.Value && x.EndTime <= dtp_end.Value));
                 jobs = jobs.FindAll(x => x.Status == 0);
                 //MessageBox.Show(jobs.Count.ToString());
                 if (jobs.Count > 0)

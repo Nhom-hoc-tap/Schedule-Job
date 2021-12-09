@@ -561,3 +561,85 @@ end
 GO
 
 select * from TaiKhoan
+
+SET IDENTITY_INSERT [dbo].[CongViec] ON 
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (20, N'Dạy học', CAST(N'2021-12-09T08:00:00' AS SmallDateTime), CAST(N'2021-12-09T10:32:00' AS SmallDateTime), 1, 20, 10, 0, N'Dạy học khóa 12 năm 2021')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (21, N'Việc nhà', CAST(N'2021-04-30T08:00:00' AS SmallDateTime), CAST(N'2021-04-30T08:12:00' AS SmallDateTime), 1, 60, 9, 0, N'Việc nhà tuần 30')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (22, N'Chuẩn bị đồ tết', CAST(N'2021-12-09T07:00:00' AS SmallDateTime), CAST(N'2021-12-09T08:00:00' AS SmallDateTime), 1, 50, 9, 0, N'Chuẩn bị đồ tết năm 2022')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (23, N'Làm hồ sơ xin việc', CAST(N'2021-08-30T12:00:00' AS SmallDateTime), CAST(N'2021-08-30T13:00:00' AS SmallDateTime), 1, 0, 9, 0, N'Dự phòng bị xa thải do ngáo ngơ')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (24, N'Giải bài tập', CAST(N'2021-12-09T00:00:00' AS SmallDateTime), CAST(N'2021-12-09T03:00:00' AS SmallDateTime), 1, 100, 8, 0, N'Giải bài tập toán cao cấp để khỏi quên mất')
+go
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (25, N'Hoa rơi hữu ý, nước chảy do quên đóng vòi nước', CAST(N'2021-04-30T00:00:00' AS SmallDateTime), CAST(N'2014-04-30T00:00:00' AS SmallDateTime), 0, 90, 8, 0, N'Đi thả thính đó')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (26, N'Dự khai giảng', CAST(N'2021-08-30T06:30:00' AS SmallDateTime), CAST(N'2021-08-30T09:00:00' AS SmallDateTime), 0, 90, 10, 0, N'Dự khai giảng năm học mới')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (27, N'Tập thể dục vào buổi sáng', CAST(N'2021-04-30T06:00:00' AS SmallDateTime), CAST(N'2021-04-30T06:30:00' AS SmallDateTime), 0, 75, 9, 0, N'Muốn khoẻ đẹp thì hãy tập thể thao')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (28, N'Đi học thêm môn Hoá', CAST(N'2021-09-12T17:00:00' AS SmallDateTime), CAST(N'2021-04-30T19:30:00' AS SmallDateTime), 0, 100, 8, 0, N'Học nhiều thành tài')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (29, N'Đi khám răng định kỳ', CAST(N'2021-12-09T07:30:00' AS SmallDateTime), CAST(N'2021-12-09T09:00:00' AS SmallDateTime), 0, 25, 9, 0, N'Răng bị sâu ăn không khám là xong')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (30, N'Đi hẹn hò', CAST(N'2021-12-09T19:00:00' AS SmallDateTime), CAST(N'2021-12-09T20:00:00' AS SmallDateTime), 0, 100, 9, 0, N'Hẹn hò ở quán trà sữa gần nhà')
+GO
+INSERT [dbo].[CongViec] ([ID], [TenCongViec], [ThoiGianBatDau], [ThoiGianKetThuc], [MucdoUuTien], [TienDo], [ID_LoaiCV], TrangThai, MoTa) VALUES (31, N'Đi tiêm vacxin', CAST(N'2021-08-22T07:00:00' AS SmallDateTime), CAST(N'2021-08-22T12:00:00' AS SmallDateTime), 0, 100, 9, 0, N'Đi tiêm theo chỉ thị của Chính Phủ')
+GO
+SET IDENTITY_INSERT [dbo].[CongViec] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[ChiTietCV] ON 
+GO
+
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (1, N'Soạn giáo án',N'Soạn giáo án cho môn Ngữ Văn lớp 12A4', 30,0,0,1,12, 10)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (2, N'Chấm bài thi',N'Chấm bài thi giữa kì lớp 12A1', 30,60,1,1,12, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (3, N'Làm đề kiểm tra 15 phút',N'Làm đề kiểm tra 15 phút cho lớp 12A4', 30,0,0,1,12, 50)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (4, N'Dạy lớp 12b2',N'Dạy bài mới rồi cho kiểm tra 15p', 45,0,0,1,20, 75)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (5, N'Quét sân rồi rửa chén cho mẹ khen',N'', 30,15,1,1,21, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (6, N'Mua áo',N'Áo size to hơn mình béo hơn năm trước rồi', 30,20,1,1,22, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (7, N'Mua Quần',N'Quần cũng vậy mua size to hơn', 30,60,1,1,22, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (8, N'Chụp hình thẻ 4*6 để dán vào hồ sơ',N'Nhờ ông chú gần trường chụp cho đẹp', 30,15,1,1,23, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (9, N'Làm bài Lý trên lớp',N'Làm hết', 30,0,0,1,24, 70)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (10, N'Làm bài hoá trên lớp',N'Làm câu 2a,4c,5b mấy câu còn lại khỏi cần lại', 30,0,0,1,24, 30)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (11, N'Chụp hình với lớp',N'', 30,5,1,1,26, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (12, N'Lấy chìa khoá ở phòng bảo vệ để lấy ghế',N'6h30 mới cho lấy', 30,5,1,1,26, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (13, N'Vệ sinh cá nhân',N'', 15,120,1,1,27, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (14, N'Rủ thằng bạn tại hôm nay nó rảnh buổi sáng',N'Đi đu đưa', 5,15,1,1,27, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (15, N'Ăn mặc, chải chuốt, kiểm tra kỹ lưỡng',N'Sạch sẽ là ghi điểm rồi', 15,60,1,1,29, 100)
+insert ChiTietCV (ID, TenChiTietCV, MoTa, ThoiDuKien,ThoiThucTe,TrangThai,MucdoUuTien,ID_CongViec, TienDo) values (16, N'Điền thông tin vào đơn tiêm vacxin',N'Nhớ đem theo CMND và thẻ BHYT', 30,15,1,1,30, 100)
+SET IDENTITY_INSERT [dbo].[ChiTietCV] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[LoaiCV] ON 
+GO
+INSERT [dbo].[LoaiCV] ([ID], [TenLoaiCV], TenDangNhap) VALUES (8, N'Học tập',N'Huu')
+GO
+INSERT [dbo].[LoaiCV] ([ID], [TenLoaiCV], TenDangNhap) VALUES (9, N'Cá nhân',N'Huu')
+GO
+INSERT [dbo].[LoaiCV] ([ID], [TenLoaiCV], TenDangNhap) VALUES (10, N'Giáo dục đào tạo',N'Huu')
+GO
+
+SET IDENTITY_INSERT [dbo].[LoaiCV] OFF
+GO
+
+SET IDENTITY_INSERT [dbo].[TaiKhoan] On
+GO
+INSERT [dbo].[TaiKhoan] ([TenDangNhap], [MatKhau], [HovaTen], [GioiTinh], [Ngaysinh]) VALUES (N'Mai', N'123456', N'Nguyễn Thị Mai', 0, CAST(N'1998-04-30T00:00:00' AS SmallDateTime))
+GO
+INSERT [dbo].[TaiKhoan] ([TenDangNhap], [MatKhau], [HovaTen], [GioiTinh], [Ngaysinh]) VALUES (N'Huu', N'123', N'Nhữ Văn Hữu', 1, CAST(N'2001-04-30T00:00:00' AS SmallDateTime))
+GO
+INSERT [dbo].[TaiKhoan] ([TenDangNhap], [MatKhau], [HovaTen], [GioiTinh], [Ngaysinh]) VALUES (N'Hieu', N'123456', N'Cao Dương Sơn Hiếu', 1, CAST(N'2002-04-30T00:00:00' AS SmallDateTime))
+GO
+INSERT [dbo].[TaiKhoan] ([TenDangNhap], [MatKhau], [HovaTen], [GioiTinh], [Ngaysinh]) VALUES (N'HongBichTram', N'000', N'Nguyễn Hồng Bích Trâm', 0, CAST(N'2004-04-30T00:00:00' AS SmallDateTime))
+GO
+SET IDENTITY_INSERT [dbo].[TaiKhoan] OFF
+
+delete from CongViec
+delete from ChiTietCV
+delete from TaiKhoan
+delete from LoaiCV
+
+select * from TaiKhoan

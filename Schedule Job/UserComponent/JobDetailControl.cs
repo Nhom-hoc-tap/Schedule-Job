@@ -48,13 +48,17 @@ namespace Schedule_Job.UserComponent
         private string GetTime(int value)
         {
             string result = "";
-            int hours = value / 60;
-            if (hours > 0)
-                result += hours.ToString() + " giờ ";
-            if (value - hours > 0)
-                result += (value - hours).ToString() + " phút";
+            
             if (value == 0)
                 result = "Chưa khả dụng";
+            if (value < 60 && value >0)
+                result = value + " phút";
+            if(value >=60)
+            {
+                int h = value / 60;
+                int m = (int)(((double)value / 60 - h) * 60);
+                result = h + " giờ, " + m + " phút";
+            }
             return result;
         }
 

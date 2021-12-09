@@ -16,7 +16,7 @@ namespace Schedule_Job
 {
     public partial class MainForm : Form
     {
-        private string _current_account_name = "Nguyễn Văn A";
+        private string _current_account_name = "Huu";
         private int _current_job_id = 0;
         private int _current_type_of_job_id = 0;
 
