@@ -14,7 +14,8 @@ namespace DataAccess
         public int EstimateTime { get; set; }
         public int ActualTime { get; set; }
         public int Priority { get; set; }
-        public int status;
+
+        private int status;
         //0 on going, 1 complete, -1 over, 2 drop
         public int Status {
             get {return status; }

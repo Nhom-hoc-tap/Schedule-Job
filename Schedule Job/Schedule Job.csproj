@@ -122,6 +122,7 @@
     <Compile Include="StatisticalForm.Designer.cs">
       <DependentUpon>StatisticalForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Status.cs" />
     <Compile Include="UserComponent\BlankDay.cs">
       <SubType>UserControl</SubType>
     </Compile>

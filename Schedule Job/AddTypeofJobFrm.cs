@@ -15,10 +15,17 @@ namespace Schedule_Job
 {
 	public partial class AddTypeofJobFrm : Form
 	{
+		private Account account;
+
 		public AddTypeofJobFrm()
 		{
 			InitializeComponent();
 		}
+
+		public AddTypeofJobFrm(Account account) : this()
+        {
+			this.account = account;
+        }
 
 		private void btnClose_Click(object sender, EventArgs e)
 		{
@@ -48,13 +55,13 @@ namespace Schedule_Job
             {
 				TypeOfJob typeOfJob = new TypeOfJob()
                 {
-					Name = txtName.Text
+					Name = txtName.Text,
+					UserName = account.UserName
                 };
 
 				if (TypeOfJobBL.Instance.Insert(typeOfJob))
                 {
-					MessageBox.Show("Thêm loại công việc thành công!", "Thông báo", MessageBoxButtons.OK);
-					txtName.ResetText();
+					DialogResult = DialogResult.OK;
 				}
 			}
         }

@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using BusinessLogic;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,20 +15,37 @@ namespace Schedule_Job
 {
     public partial class AddJobFrm : Form
     {
+        private Account account;
+
         public AddJobFrm()
         {
             InitializeComponent();
         }
 
-        private void btnThemLoaiCV_Click(object sender, EventArgs e)
+        public AddJobFrm(Account account) : this()
         {
-            AddTypeofJobFrm addtypeFrm = new AddTypeofJobFrm();
-            addtypeFrm.Show();
+            this.account = account;
         }
 
         private void AddJobFrm_Load(object sender, EventArgs e)
         {
+            LoadCategory();
+        }
 
+        private void LoadCategory()
+        {
+            cbbCategory.DataSource = TypeOfJobBL.Instance.GetByAccount(account.UserName);
+            cbbCategory.DisplayMember = "Name";
+            cbbCategory.ValueMember = "Id";
+        }
+
+        private void btnAddCategory_Click(object sender, EventArgs e)
+        {
+            AddTypeofJobFrm addtypeFrm = new AddTypeofJobFrm(account);
+            if (addtypeFrm.ShowDialog() == DialogResult.OK)
+            {
+                LoadCategory();
+            }
         }
 
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
@@ -44,15 +62,76 @@ namespace Schedule_Job
 
         private Job GetJob()
         {
+            int typeId = (int)cbbCategory.SelectedValue;
+            string name = txtName.Text;
+            DateTime startDate = dtpStartDate.Value + dtpStartTime.Value.TimeOfDay;
+            DateTime endDate = dtpEndDate.Value + dtpEndTime.Value.TimeOfDay;
+            int priority = cbbPriority.SelectedIndex;
+            string description = txtDescription.Text;
+            int status = GetStatus();
             return new Job()
             {
-
+                Name = name,
+                StartTime = startDate,
+                EndTime = endDate,
+                Priority = priority,
+                Description = description,
+                Status = status
             };
+        }
+
+        private int GetStatus()
+        {
+            if (rbComplete.Checked)
+            {
+                return (int)Status.Complete;
+            }
+
+            if (rbDrop.Checked)
+            {
+                return (int)Status.Drop;
+            }
+
+            if (rbOver.Checked)
+            {
+                return (int)Status.Over;
+            }
+
+            return (int)Status.OnGoing;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateUserInput())
+            {
+                Job job = GetJob();
+                if (JobBL.Instance.Insert(job))
+                {
+                    DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private bool ValidateUserInput()
+        {
+            if (cbbCategory.SelectedIndex == -1)
+            {
+                MessageBox.Show("Không được để trống loại công việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtName.Text))
+            {
+                MessageBox.Show("Không được để trống tên công việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

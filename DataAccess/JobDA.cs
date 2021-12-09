@@ -10,6 +10,22 @@ namespace DataAccess
 {
     public class JobDA
     {
+        private static JobDA instance;
+
+        private JobDA()
+        {
+
+        }
+
+        public static JobDA Instance
+        {
+            get
+            {
+                instance = instance ?? new JobDA();
+                return instance;
+            }
+        }
+
         public List<Job> GetByAccount(string accountName)
         {
             List<Job> jobs = new List<Job>();
@@ -39,6 +55,117 @@ namespace DataAccess
             }
             sqlConn.Close();
             return jobs;
+        }
+
+        public bool Insert(Job job)
+        {
+            SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            SqlParameter name = new SqlParameter("@tenCongViec", SqlDbType.NVarChar, 1000)
+            {
+                Value = job.Name
+            };
+
+            SqlParameter start = new SqlParameter("@batDau", SqlDbType.SmallDateTime)
+            {
+                Value = job.StartTime
+            };
+
+            SqlParameter end = new SqlParameter("@ketThuc", SqlDbType.SmallDateTime)
+            {
+                Value = job.EndTime
+            };
+            SqlParameter priority = new SqlParameter("@doUuTien", SqlDbType.TinyInt)
+            {
+                Value = job.Priority
+            };
+
+            SqlParameter progress = new SqlParameter("@tienDo", SqlDbType.TinyInt)
+            {
+                Value = job.Progress
+            };
+
+            SqlParameter typeId = new SqlParameter("@idLoaiCV", SqlDbType.Int)
+            {
+                Value = job.TypeOfJobId
+            };
+
+            SqlParameter status = new SqlParameter("@trangThai", SqlDbType.Int)
+            {
+                Value = job.Status
+            };
+
+            SqlParameter description = new SqlParameter("@moTa", SqlDbType.NVarChar, 1000)
+            {
+                Value = job.Description
+            };
+
+            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Job_Insert, id, name, start, end, priority, progress, typeId, status, description);
+            return result > 0;
+        }
+
+        public bool Update(Job job)
+        {
+            SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
+            {
+                Value = job.Id
+            };
+
+            SqlParameter name = new SqlParameter("@tenCongViec", SqlDbType.NVarChar, 1000)
+            {
+                Value = job.Name
+            };
+
+            SqlParameter start = new SqlParameter("@batDau", SqlDbType.SmallDateTime)
+            {
+                Value = job.StartTime
+            };
+
+            SqlParameter end = new SqlParameter("@ketThuc", SqlDbType.SmallDateTime)
+            {
+                Value = job.EndTime
+            };
+            SqlParameter priority = new SqlParameter("@doUuTien", SqlDbType.TinyInt)
+            {
+                Value = job.Priority
+            };
+
+            SqlParameter progress = new SqlParameter("@tienDo", SqlDbType.TinyInt)
+            {
+                Value = job.Progress
+            };
+
+            SqlParameter typeId = new SqlParameter("@idLoaiCV", SqlDbType.Int)
+            {
+                Value = job.TypeOfJobId
+            };
+
+            SqlParameter status = new SqlParameter("@trangThai", SqlDbType.Int)
+            {
+                Value = job.Status
+            };
+
+            SqlParameter description = new SqlParameter("@moTa", SqlDbType.NVarChar, 1000)
+            {
+                Value = job.Description
+            };
+
+            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Job_Update, id, name, start, end, priority, progress, typeId, status, description);
+            return result > 0;
+        }
+
+        public bool Delete(Job job)
+        {
+            SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
+            {
+                Value = job.Id
+            };
+
+            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Job_Delete, id);
+            return result > 0;
         }
     }
 }

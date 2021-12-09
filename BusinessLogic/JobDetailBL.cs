@@ -9,10 +9,42 @@ namespace BusinessLogic
 {
     public class JobDetailBL
     {
-        JobDetailDA jobDetailDA = new JobDetailDA();
+        private static readonly JobDetailDA jobDetailDA = JobDetailDA.Instance;
+
+        private static JobDetailBL instance;
+
+        private JobDetailBL()
+        {
+
+        }
+
+        public static JobDetailBL Instance
+        {
+            get
+            {
+                instance = instance ?? new JobDetailBL();
+                return instance;
+            }
+        }
+
         public List<JobDetail> GetByJobId(int jobId)
         {
             return jobDetailDA.GetByJobId(jobId);
+        }
+
+        public bool Insert(JobDetail jobDetail)
+        {
+            return jobDetailDA.Insert(jobDetail);
+        }
+
+        public bool Update(JobDetail jobDetail)
+        {
+            return jobDetailDA.Update(jobDetail);
+        }
+
+        public bool Delete(JobDetail jobDetail)
+        {
+            return jobDetailDA.Delete(jobDetail);
         }
     }
 }

@@ -34,26 +34,26 @@ namespace Schedule_Job
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.guna2DateTimePicker1 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2DateTimePicker2 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2DateTimePicker3 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2DateTimePicker4 = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpStartTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpStartDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtDescription = new Guna.UI2.WinForms.Guna2TextBox();
+            this.dtpEndDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.dtpEndTime = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.btnThemLoaiCV = new Guna.UI2.WinForms.Guna2Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.cbbPriority = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.cbbCategory = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnAddCategory = new Guna.UI2.WinForms.Guna2Button();
+            this.rbContinue = new System.Windows.Forms.GroupBox();
+            this.rbOver = new System.Windows.Forms.RadioButton();
+            this.rbDrop = new System.Windows.Forms.RadioButton();
+            this.rbOnGoing = new System.Windows.Forms.RadioButton();
+            this.rbComplete = new System.Windows.Forms.RadioButton();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.groupBox1.SuspendLayout();
+            this.txtProgress = new Guna.UI2.WinForms.Guna2TextBox();
+            this.rbContinue.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -111,133 +111,138 @@ namespace Schedule_Job
             this.label5.TabIndex = 4;
             this.label5.Text = "Tiến độ";
             // 
-            // guna2DateTimePicker1
+            // dtpStartTime
             // 
-            this.guna2DateTimePicker1.BorderRadius = 8;
-            this.guna2DateTimePicker1.Checked = true;
-            this.guna2DateTimePicker1.CheckedState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.CustomFormat = "hh:mm";
-            this.guna2DateTimePicker1.FillColor = System.Drawing.Color.White;
-            this.guna2DateTimePicker1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.guna2DateTimePicker1.HoverState.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.Location = new System.Drawing.Point(360, 258);
-            this.guna2DateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2DateTimePicker1.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker1.Name = "guna2DateTimePicker1";
-            this.guna2DateTimePicker1.ShadowDecoration.Parent = this.guna2DateTimePicker1;
-            this.guna2DateTimePicker1.ShowUpDown = true;
-            this.guna2DateTimePicker1.Size = new System.Drawing.Size(179, 53);
-            this.guna2DateTimePicker1.TabIndex = 19;
-            this.guna2DateTimePicker1.Value = new System.DateTime(2021, 12, 8, 8, 37, 11, 123);
+            this.dtpStartTime.BorderRadius = 8;
+            this.dtpStartTime.Checked = true;
+            this.dtpStartTime.CheckedState.Parent = this.dtpStartTime;
+            this.dtpStartTime.CustomFormat = "hh:mm";
+            this.dtpStartTime.FillColor = System.Drawing.Color.White;
+            this.dtpStartTime.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartTime.HoverState.Parent = this.dtpStartTime;
+            this.dtpStartTime.Location = new System.Drawing.Point(360, 258);
+            this.dtpStartTime.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStartTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.ShadowDecoration.Parent = this.dtpStartTime;
+            this.dtpStartTime.ShowUpDown = true;
+            this.dtpStartTime.Size = new System.Drawing.Size(179, 53);
+            this.dtpStartTime.TabIndex = 19;
+            this.dtpStartTime.Value = new System.DateTime(2021, 12, 9, 9, 0, 0, 0);
             // 
-            // guna2DateTimePicker2
+            // dtpStartDate
             // 
-            this.guna2DateTimePicker2.BorderRadius = 8;
-            this.guna2DateTimePicker2.Checked = true;
-            this.guna2DateTimePicker2.CheckedState.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.FillColor = System.Drawing.Color.White;
-            this.guna2DateTimePicker2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker2.HoverState.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.Location = new System.Drawing.Point(45, 258);
-            this.guna2DateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2DateTimePicker2.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker2.Name = "guna2DateTimePicker2";
-            this.guna2DateTimePicker2.ShadowDecoration.Parent = this.guna2DateTimePicker2;
-            this.guna2DateTimePicker2.Size = new System.Drawing.Size(307, 53);
-            this.guna2DateTimePicker2.TabIndex = 20;
-            this.guna2DateTimePicker2.Value = new System.DateTime(2021, 12, 8, 8, 21, 48, 501);
+            this.dtpStartDate.BorderRadius = 8;
+            this.dtpStartDate.Checked = true;
+            this.dtpStartDate.CheckedState.Parent = this.dtpStartDate;
+            this.dtpStartDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpStartDate.FillColor = System.Drawing.Color.White;
+            this.dtpStartDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStartDate.HoverState.Parent = this.dtpStartDate;
+            this.dtpStartDate.Location = new System.Drawing.Point(45, 258);
+            this.dtpStartDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpStartDate.Name = "dtpStartDate";
+            this.dtpStartDate.ShadowDecoration.Parent = this.dtpStartDate;
+            this.dtpStartDate.Size = new System.Drawing.Size(307, 53);
+            this.dtpStartDate.TabIndex = 20;
+            this.dtpStartDate.Value = new System.DateTime(2021, 12, 9, 0, 0, 0, 0);
             // 
-            // guna2TextBox1
+            // txtDescription
             // 
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.FocusedState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.HoverState.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Location = new System.Drawing.Point(45, 494);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.ShadowDecoration.Parent = this.guna2TextBox1;
-            this.guna2TextBox1.Size = new System.Drawing.Size(879, 118);
-            this.guna2TextBox1.TabIndex = 21;
+            this.txtDescription.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtDescription.DefaultText = "";
+            this.txtDescription.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtDescription.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtDescription.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescription.DisabledState.Parent = this.txtDescription;
+            this.txtDescription.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtDescription.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescription.FocusedState.Parent = this.txtDescription;
+            this.txtDescription.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtDescription.ForeColor = System.Drawing.Color.Black;
+            this.txtDescription.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtDescription.HoverState.Parent = this.txtDescription;
+            this.txtDescription.Location = new System.Drawing.Point(45, 494);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(4);
+            this.txtDescription.Multiline = true;
+            this.txtDescription.Name = "txtDescription";
+            this.txtDescription.PasswordChar = '\0';
+            this.txtDescription.PlaceholderText = "";
+            this.txtDescription.SelectedText = "";
+            this.txtDescription.ShadowDecoration.Parent = this.txtDescription;
+            this.txtDescription.Size = new System.Drawing.Size(879, 118);
+            this.txtDescription.TabIndex = 21;
             // 
-            // guna2DateTimePicker3
+            // dtpEndDate
             // 
-            this.guna2DateTimePicker3.BorderRadius = 8;
-            this.guna2DateTimePicker3.Checked = true;
-            this.guna2DateTimePicker3.CheckedState.Parent = this.guna2DateTimePicker3;
-            this.guna2DateTimePicker3.FillColor = System.Drawing.Color.White;
-            this.guna2DateTimePicker3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.guna2DateTimePicker3.HoverState.Parent = this.guna2DateTimePicker3;
-            this.guna2DateTimePicker3.Location = new System.Drawing.Point(45, 373);
-            this.guna2DateTimePicker3.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2DateTimePicker3.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker3.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker3.Name = "guna2DateTimePicker3";
-            this.guna2DateTimePicker3.ShadowDecoration.Parent = this.guna2DateTimePicker3;
-            this.guna2DateTimePicker3.Size = new System.Drawing.Size(307, 53);
-            this.guna2DateTimePicker3.TabIndex = 23;
-            this.guna2DateTimePicker3.Value = new System.DateTime(2021, 12, 8, 8, 21, 48, 501);
+            this.dtpEndDate.BorderRadius = 8;
+            this.dtpEndDate.Checked = true;
+            this.dtpEndDate.CheckedState.Parent = this.dtpEndDate;
+            this.dtpEndDate.CustomFormat = "dd/MM/yyyy";
+            this.dtpEndDate.FillColor = System.Drawing.Color.White;
+            this.dtpEndDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndDate.HoverState.Parent = this.dtpEndDate;
+            this.dtpEndDate.Location = new System.Drawing.Point(45, 373);
+            this.dtpEndDate.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndDate.Name = "dtpEndDate";
+            this.dtpEndDate.ShadowDecoration.Parent = this.dtpEndDate;
+            this.dtpEndDate.Size = new System.Drawing.Size(307, 53);
+            this.dtpEndDate.TabIndex = 23;
+            this.dtpEndDate.Value = new System.DateTime(2021, 12, 9, 0, 0, 0, 0);
             // 
-            // guna2DateTimePicker4
+            // dtpEndTime
             // 
-            this.guna2DateTimePicker4.BorderRadius = 8;
-            this.guna2DateTimePicker4.Checked = true;
-            this.guna2DateTimePicker4.CheckedState.Parent = this.guna2DateTimePicker4;
-            this.guna2DateTimePicker4.CustomFormat = "hh:mm";
-            this.guna2DateTimePicker4.FillColor = System.Drawing.Color.White;
-            this.guna2DateTimePicker4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2DateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.guna2DateTimePicker4.HoverState.Parent = this.guna2DateTimePicker4;
-            this.guna2DateTimePicker4.Location = new System.Drawing.Point(360, 373);
-            this.guna2DateTimePicker4.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2DateTimePicker4.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.guna2DateTimePicker4.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.guna2DateTimePicker4.Name = "guna2DateTimePicker4";
-            this.guna2DateTimePicker4.ShadowDecoration.Parent = this.guna2DateTimePicker4;
-            this.guna2DateTimePicker4.ShowUpDown = true;
-            this.guna2DateTimePicker4.Size = new System.Drawing.Size(179, 53);
-            this.guna2DateTimePicker4.TabIndex = 24;
-            this.guna2DateTimePicker4.Value = new System.DateTime(2021, 12, 8, 8, 37, 11, 123);
+            this.dtpEndTime.BorderRadius = 8;
+            this.dtpEndTime.Checked = true;
+            this.dtpEndTime.CheckedState.Parent = this.dtpEndTime;
+            this.dtpEndTime.CustomFormat = "hh:mm";
+            this.dtpEndTime.FillColor = System.Drawing.Color.White;
+            this.dtpEndTime.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dtpEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEndTime.HoverState.Parent = this.dtpEndTime;
+            this.dtpEndTime.Location = new System.Drawing.Point(360, 373);
+            this.dtpEndTime.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpEndTime.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dtpEndTime.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.ShadowDecoration.Parent = this.dtpEndTime;
+            this.dtpEndTime.ShowUpDown = true;
+            this.dtpEndTime.Size = new System.Drawing.Size(179, 53);
+            this.dtpEndTime.TabIndex = 24;
+            this.dtpEndTime.Value = new System.DateTime(2021, 12, 9, 0, 0, 0, 0);
             // 
-            // guna2TextBox2
+            // txtName
             // 
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.FocusedState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.HoverState.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Location = new System.Drawing.Point(45, 161);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PasswordChar = '\0';
-            this.guna2TextBox2.PlaceholderText = "";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.ShadowDecoration.Parent = this.guna2TextBox2;
-            this.guna2TextBox2.Size = new System.Drawing.Size(493, 44);
-            this.guna2TextBox2.TabIndex = 25;
+            this.txtName.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtName.DefaultText = "";
+            this.txtName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.DisabledState.Parent = this.txtName;
+            this.txtName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.FocusedState.Parent = this.txtName;
+            this.txtName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtName.ForeColor = System.Drawing.Color.Black;
+            this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtName.HoverState.Parent = this.txtName;
+            this.txtName.Location = new System.Drawing.Point(45, 161);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Name = "txtName";
+            this.txtName.PasswordChar = '\0';
+            this.txtName.PlaceholderText = "";
+            this.txtName.SelectedText = "";
+            this.txtName.ShadowDecoration.Parent = this.txtName;
+            this.txtName.Size = new System.Drawing.Size(493, 44);
+            this.txtName.TabIndex = 25;
             // 
             // label7
             // 
@@ -250,134 +255,136 @@ namespace Schedule_Job
             this.label7.TabIndex = 26;
             this.label7.Text = "Loại công việc:";
             // 
-            // guna2ComboBox1
+            // cbbPriority
             // 
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Items.AddRange(new object[] {
-            "Quan trọng",
-            "Không quan trọng"});
-            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(705, 382);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Size = new System.Drawing.Size(217, 36);
-            this.guna2ComboBox1.TabIndex = 27;
+            this.cbbPriority.BackColor = System.Drawing.Color.Transparent;
+            this.cbbPriority.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbPriority.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbPriority.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbPriority.FocusedState.Parent = this.cbbPriority;
+            this.cbbPriority.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbPriority.ForeColor = System.Drawing.Color.Black;
+            this.cbbPriority.HoverState.Parent = this.cbbPriority;
+            this.cbbPriority.ItemHeight = 30;
+            this.cbbPriority.Items.AddRange(new object[] {
+            "Không quan trọng",
+            "Quan trọng"});
+            this.cbbPriority.ItemsAppearance.Parent = this.cbbPriority;
+            this.cbbPriority.Location = new System.Drawing.Point(705, 382);
+            this.cbbPriority.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbPriority.Name = "cbbPriority";
+            this.cbbPriority.ShadowDecoration.Parent = this.cbbPriority;
+            this.cbbPriority.Size = new System.Drawing.Size(217, 36);
+            this.cbbPriority.StartIndex = 0;
+            this.cbbPriority.TabIndex = 27;
             // 
-            // guna2ComboBox2
+            // cbbCategory
             // 
-            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox2.FocusedState.Parent = this.guna2ComboBox2;
-            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox2.HoverState.Parent = this.guna2ComboBox2;
-            this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.ItemsAppearance.Parent = this.guna2ComboBox2;
-            this.guna2ComboBox2.Location = new System.Drawing.Point(45, 64);
-            this.guna2ComboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2ComboBox2.Name = "guna2ComboBox2";
-            this.guna2ComboBox2.ShadowDecoration.Parent = this.guna2ComboBox2;
-            this.guna2ComboBox2.Size = new System.Drawing.Size(305, 36);
-            this.guna2ComboBox2.TabIndex = 28;
+            this.cbbCategory.BackColor = System.Drawing.Color.Transparent;
+            this.cbbCategory.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbCategory.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbCategory.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbCategory.FocusedState.Parent = this.cbbCategory;
+            this.cbbCategory.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbCategory.ForeColor = System.Drawing.Color.Black;
+            this.cbbCategory.HoverState.Parent = this.cbbCategory;
+            this.cbbCategory.ItemHeight = 30;
+            this.cbbCategory.ItemsAppearance.Parent = this.cbbCategory;
+            this.cbbCategory.Location = new System.Drawing.Point(45, 64);
+            this.cbbCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.cbbCategory.Name = "cbbCategory";
+            this.cbbCategory.ShadowDecoration.Parent = this.cbbCategory;
+            this.cbbCategory.Size = new System.Drawing.Size(305, 36);
+            this.cbbCategory.TabIndex = 28;
             // 
-            // btnThemLoaiCV
+            // btnAddCategory
             // 
-            this.btnThemLoaiCV.BorderRadius = 4;
-            this.btnThemLoaiCV.CheckedState.Parent = this.btnThemLoaiCV;
-            this.btnThemLoaiCV.CustomImages.Parent = this.btnThemLoaiCV;
-            this.btnThemLoaiCV.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThemLoaiCV.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThemLoaiCV.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThemLoaiCV.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThemLoaiCV.DisabledState.Parent = this.btnThemLoaiCV;
-            this.btnThemLoaiCV.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnThemLoaiCV.ForeColor = System.Drawing.Color.White;
-            this.btnThemLoaiCV.HoverState.Parent = this.btnThemLoaiCV;
-            this.btnThemLoaiCV.Location = new System.Drawing.Point(360, 64);
-            this.btnThemLoaiCV.Margin = new System.Windows.Forms.Padding(4);
-            this.btnThemLoaiCV.Name = "btnThemLoaiCV";
-            this.btnThemLoaiCV.ShadowDecoration.Parent = this.btnThemLoaiCV;
-            this.btnThemLoaiCV.Size = new System.Drawing.Size(179, 44);
-            this.btnThemLoaiCV.TabIndex = 29;
-            this.btnThemLoaiCV.Text = "Thêm loại công việc";
-            this.btnThemLoaiCV.Click += new System.EventHandler(this.btnThemLoaiCV_Click);
+            this.btnAddCategory.BorderRadius = 4;
+            this.btnAddCategory.CheckedState.Parent = this.btnAddCategory;
+            this.btnAddCategory.CustomImages.Parent = this.btnAddCategory;
+            this.btnAddCategory.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddCategory.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddCategory.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddCategory.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddCategory.DisabledState.Parent = this.btnAddCategory;
+            this.btnAddCategory.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAddCategory.ForeColor = System.Drawing.Color.White;
+            this.btnAddCategory.HoverState.Parent = this.btnAddCategory;
+            this.btnAddCategory.Location = new System.Drawing.Point(360, 64);
+            this.btnAddCategory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.ShadowDecoration.Parent = this.btnAddCategory;
+            this.btnAddCategory.Size = new System.Drawing.Size(179, 44);
+            this.btnAddCategory.TabIndex = 29;
+            this.btnAddCategory.Text = "Thêm loại công việc";
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
-            // groupBox1
+            // rbContinue
             // 
-            this.groupBox1.Controls.Add(this.radioButton4);
-            this.groupBox1.Controls.Add(this.radioButton3);
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(547, 52);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(377, 154);
-            this.groupBox1.TabIndex = 34;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Trạng thái";
+            this.rbContinue.Controls.Add(this.rbOver);
+            this.rbContinue.Controls.Add(this.rbDrop);
+            this.rbContinue.Controls.Add(this.rbOnGoing);
+            this.rbContinue.Controls.Add(this.rbComplete);
+            this.rbContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbContinue.Location = new System.Drawing.Point(547, 52);
+            this.rbContinue.Margin = new System.Windows.Forms.Padding(4);
+            this.rbContinue.Name = "rbContinue";
+            this.rbContinue.Padding = new System.Windows.Forms.Padding(4);
+            this.rbContinue.Size = new System.Drawing.Size(377, 154);
+            this.rbContinue.TabIndex = 34;
+            this.rbContinue.TabStop = false;
+            this.rbContinue.Text = "Trạng thái";
             // 
-            // radioButton4
+            // rbOver
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(216, 91);
-            this.radioButton4.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(109, 29);
-            this.radioButton4.TabIndex = 37;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Quá hạn";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.rbOver.AutoSize = true;
+            this.rbOver.Location = new System.Drawing.Point(216, 91);
+            this.rbOver.Margin = new System.Windows.Forms.Padding(4);
+            this.rbOver.Name = "rbOver";
+            this.rbOver.Size = new System.Drawing.Size(109, 29);
+            this.rbOver.TabIndex = 37;
+            this.rbOver.TabStop = true;
+            this.rbOver.Text = "Quá hạn";
+            this.rbOver.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbDrop
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(216, 41);
-            this.radioButton3.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(122, 29);
-            this.radioButton3.TabIndex = 36;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Tạm dừng";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbDrop.AutoSize = true;
+            this.rbDrop.Location = new System.Drawing.Point(216, 41);
+            this.rbDrop.Margin = new System.Windows.Forms.Padding(4);
+            this.rbDrop.Name = "rbDrop";
+            this.rbDrop.Size = new System.Drawing.Size(122, 29);
+            this.rbDrop.TabIndex = 36;
+            this.rbDrop.TabStop = true;
+            this.rbDrop.Text = "Tạm dừng";
+            this.rbDrop.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbOnGoing
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(27, 91);
-            this.radioButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(165, 29);
-            this.radioButton2.TabIndex = 35;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Đang tiến hành";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbOnGoing.AutoSize = true;
+            this.rbOnGoing.Checked = true;
+            this.rbOnGoing.Location = new System.Drawing.Point(27, 91);
+            this.rbOnGoing.Margin = new System.Windows.Forms.Padding(4);
+            this.rbOnGoing.Name = "rbOnGoing";
+            this.rbOnGoing.Size = new System.Drawing.Size(165, 29);
+            this.rbOnGoing.TabIndex = 35;
+            this.rbOnGoing.TabStop = true;
+            this.rbOnGoing.Text = "Đang tiến hành";
+            this.rbOnGoing.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rbComplete
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(27, 41);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(134, 29);
-            this.radioButton1.TabIndex = 34;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Hoàn thành";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbComplete.AutoSize = true;
+            this.rbComplete.Location = new System.Drawing.Point(27, 41);
+            this.rbComplete.Margin = new System.Windows.Forms.Padding(4);
+            this.rbComplete.Name = "rbComplete";
+            this.rbComplete.Size = new System.Drawing.Size(134, 29);
+            this.rbComplete.TabIndex = 34;
+            this.rbComplete.TabStop = true;
+            this.rbComplete.Text = "Hoàn thành";
+            this.rbComplete.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
@@ -402,27 +409,28 @@ namespace Schedule_Job
             this.btnCancel.Text = "HUỶ";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
-            // guna2Button2
+            // btnSave
             // 
-            this.guna2Button2.BorderRadius = 8;
-            this.guna2Button2.CheckedState.Parent = this.guna2Button2;
-            this.guna2Button2.CustomImages.Parent = this.guna2Button2;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.DisabledState.Parent = this.guna2Button2;
-            this.guna2Button2.FillColor = System.Drawing.Color.DodgerBlue;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.HoverState.Parent = this.guna2Button2;
-            this.guna2Button2.Location = new System.Drawing.Point(563, 633);
-            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.ShadowDecoration.Parent = this.guna2Button2;
-            this.guna2Button2.Size = new System.Drawing.Size(175, 55);
-            this.guna2Button2.TabIndex = 35;
-            this.guna2Button2.Text = "LƯU";
+            this.btnSave.BorderRadius = 8;
+            this.btnSave.CheckedState.Parent = this.btnSave;
+            this.btnSave.CustomImages.Parent = this.btnSave;
+            this.btnSave.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnSave.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnSave.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnSave.DisabledState.Parent = this.btnSave;
+            this.btnSave.FillColor = System.Drawing.Color.DodgerBlue;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.HoverState.Parent = this.btnSave;
+            this.btnSave.Location = new System.Drawing.Point(563, 633);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.ShadowDecoration.Parent = this.btnSave;
+            this.btnSave.Size = new System.Drawing.Size(175, 55);
+            this.btnSave.TabIndex = 35;
+            this.btnSave.Text = "LƯU";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label6
             // 
@@ -435,29 +443,29 @@ namespace Schedule_Job
             this.label6.TabIndex = 39;
             this.label6.Text = "Mô tả";
             // 
-            // guna2TextBox3
+            // txtProgress
             // 
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.FocusedState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.HoverState.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Location = new System.Drawing.Point(636, 267);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PasswordChar = '\0';
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.ShadowDecoration.Parent = this.guna2TextBox3;
-            this.guna2TextBox3.Size = new System.Drawing.Size(288, 44);
-            this.guna2TextBox3.TabIndex = 40;
+            this.txtProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtProgress.DefaultText = "";
+            this.txtProgress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtProgress.DisabledState.Parent = this.txtProgress;
+            this.txtProgress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtProgress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtProgress.FocusedState.Parent = this.txtProgress;
+            this.txtProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtProgress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtProgress.HoverState.Parent = this.txtProgress;
+            this.txtProgress.Location = new System.Drawing.Point(636, 267);
+            this.txtProgress.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProgress.Name = "txtProgress";
+            this.txtProgress.PasswordChar = '\0';
+            this.txtProgress.PlaceholderText = "";
+            this.txtProgress.SelectedText = "";
+            this.txtProgress.ShadowDecoration.Parent = this.txtProgress;
+            this.txtProgress.Size = new System.Drawing.Size(288, 44);
+            this.txtProgress.TabIndex = 40;
             // 
             // AddJobFrm
             // 
@@ -465,21 +473,21 @@ namespace Schedule_Job
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(971, 718);
-            this.Controls.Add(this.guna2TextBox3);
+            this.Controls.Add(this.txtProgress);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.guna2Button2);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnThemLoaiCV);
-            this.Controls.Add(this.guna2ComboBox2);
-            this.Controls.Add(this.guna2ComboBox1);
+            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.rbContinue);
+            this.Controls.Add(this.btnAddCategory);
+            this.Controls.Add(this.cbbCategory);
+            this.Controls.Add(this.cbbPriority);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.guna2TextBox2);
-            this.Controls.Add(this.guna2DateTimePicker4);
-            this.Controls.Add(this.guna2DateTimePicker3);
-            this.Controls.Add(this.guna2TextBox1);
-            this.Controls.Add(this.guna2DateTimePicker2);
-            this.Controls.Add(this.guna2DateTimePicker1);
+            this.Controls.Add(this.txtName);
+            this.Controls.Add(this.dtpEndTime);
+            this.Controls.Add(this.dtpEndDate);
+            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.dtpStartDate);
+            this.Controls.Add(this.dtpStartTime);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -493,8 +501,8 @@ namespace Schedule_Job
             this.Text = "AddJobFrm";
             this.Load += new System.EventHandler(this.AddJobFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddJobFrm_MouseDown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.rbContinue.ResumeLayout(false);
+            this.rbContinue.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -507,24 +515,24 @@ namespace Schedule_Job
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker1;
-		private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker2;
-		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-		private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker3;
-		private Guna.UI2.WinForms.Guna2DateTimePicker guna2DateTimePicker4;
-		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
+		private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartTime;
+		private Guna.UI2.WinForms.Guna2DateTimePicker dtpStartDate;
+		private Guna.UI2.WinForms.Guna2TextBox txtDescription;
+		private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndDate;
+		private Guna.UI2.WinForms.Guna2DateTimePicker dtpEndTime;
+		private Guna.UI2.WinForms.Guna2TextBox txtName;
 		private System.Windows.Forms.Label label7;
-		private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
-		private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
-		private Guna.UI2.WinForms.Guna2Button btnThemLoaiCV;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private Guna.UI2.WinForms.Guna2ComboBox cbbPriority;
+		private Guna.UI2.WinForms.Guna2ComboBox cbbCategory;
+		private Guna.UI2.WinForms.Guna2Button btnAddCategory;
+		private System.Windows.Forms.GroupBox rbContinue;
 		private Guna.UI2.WinForms.Guna2Button btnCancel;
-		private Guna.UI2.WinForms.Guna2Button guna2Button2;
+		private Guna.UI2.WinForms.Guna2Button btnSave;
 		private System.Windows.Forms.Label label6;
-		private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-		private System.Windows.Forms.RadioButton radioButton4;
-		private System.Windows.Forms.RadioButton radioButton3;
-		private System.Windows.Forms.RadioButton radioButton2;
-		private System.Windows.Forms.RadioButton radioButton1;
+		private Guna.UI2.WinForms.Guna2TextBox txtProgress;
+		private System.Windows.Forms.RadioButton rbOver;
+		private System.Windows.Forms.RadioButton rbDrop;
+		private System.Windows.Forms.RadioButton rbOnGoing;
+		private System.Windows.Forms.RadioButton rbComplete;
 	}
 }

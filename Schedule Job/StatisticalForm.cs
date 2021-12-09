@@ -30,8 +30,8 @@ namespace Schedule_Job
         {
             _current_account_name = accountName;
             _typeOfJobBL = TypeOfJobBL.Instance;
-            _jobBL = new JobBL();
-            _jobDetailBL = new JobDetailBL();
+            _jobBL = JobBL.Instance;
+            _jobDetailBL = JobDetailBL.Instance;
             InitializeComponent();
         }
 

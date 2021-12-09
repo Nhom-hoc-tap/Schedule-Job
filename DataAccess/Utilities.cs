@@ -19,8 +19,20 @@ namespace DataAccess
         //---Job
         public static string Job_GetByAccount => "GetJobByAccountName";
 
+        public static string Job_Insert => "CongViec_Insert";
+
+        public static string Job_Update => "CongViec_Update";
+
+        public static string Job_Delete => "CongViec_Delete";
+
         //---JobDetail
         public static string JobDetail_GetByJob => "GetJobDetailByJobId";
+
+        public static string JobDetail_Insert => "ChiTietCV_Insert";
+
+        public static string JobDetail_Update => "ChiTietCV_Update";
+
+        public static string JobDetail_Delete => "ChiTietCV_Delete";
 
         //---TypeOfJob
         public static string TypeOfJob_GetByAccountName => "GetTypeOfJobByAccountName";

@@ -16,7 +16,6 @@ namespace Schedule_Job
 {
     public partial class MainForm : Form
     {
-        private string _current_account_name = "Nguyễn Văn A";
         private int _current_job_id = 0;
         private int _current_type_of_job_id = 0;
 
@@ -30,23 +29,25 @@ namespace Schedule_Job
         private JobDetailBL _jobDetailBL;
         private TypeOfJobBL _typeOfJobBL;
 
+        private Account account;
+
 
         public MainForm()
         {
-            _jobBL = new JobBL();
-            _jobDetailBL = new JobDetailBL();
+            _jobBL = JobBL.Instance;
+            _jobDetailBL = JobDetailBL.Instance;
             _typeOfJobBL = TypeOfJobBL.Instance;
             InitializeComponent();
         }
 
         public MainForm(Account account) : this()
         {
-
+            this.account = account;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _list_job = _jobBL.GetByAccount(_current_account_name);
+            _list_job = _jobBL.GetByAccount(account.UserName);
             _list_job = _list_job.OrderBy(x => x.Progress).ToList();
             if (_list_job.Count > 0)
             {
@@ -77,7 +78,7 @@ namespace Schedule_Job
 
         private void Search(string str)
         {
-            List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+            List<Job> jobs = _jobBL.GetByAccount(account.UserName);
             if (_current_type_of_job_id > 0)
                 jobs = jobs.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
 
@@ -121,9 +122,9 @@ namespace Schedule_Job
 
         private void LoadTypeOfJobs()
         {
-            _list_TypeOfJob = _typeOfJobBL.GetByAccount(_current_account_name);
+            _list_TypeOfJob = _typeOfJobBL.GetByAccount(account.UserName);
             _list_TypeOfJob = _list_TypeOfJob.OrderBy(x => x.Name).ToList();
-            _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = _current_account_name });
+            _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = account.UserName });
             cbb_type_jobs.DataSource = _list_TypeOfJob;
             cbb_type_jobs.ValueMember = "Id";
             cbb_type_jobs.DisplayMember = "Name";
@@ -139,7 +140,7 @@ namespace Schedule_Job
             _current_type_of_job_id = selectedTypeId;
             List<Job> jobs = new List<Job>();
             if (selectedTypeId == 0)
-                jobs = _jobBL.GetByAccount(_current_account_name);
+                jobs = _jobBL.GetByAccount(account.UserName);
             else jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
             LoadJobs(jobs);
         }
@@ -361,7 +362,7 @@ namespace Schedule_Job
             }
             for (int i = 1; i <= days; i++)
             {
-                List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+                List<Job> jobs = _jobBL.GetByAccount(account.UserName);
                 jobs = jobs.FindAll(x => (x.EndTime.Day == i && x.EndTime.Month == month && x.EndTime.Year == year));
                 DayControl dayControl = new DayControl(jobs);
                 dayControl.Days(i);
@@ -385,13 +386,13 @@ namespace Schedule_Job
 
         private void tsm_count_Click(object sender, EventArgs e)
         {
-            StatisticalForm statisticalForm = new StatisticalForm(_current_account_name);
+            StatisticalForm statisticalForm = new StatisticalForm(account.UserName);
             statisticalForm.Show();
         }
 
         private void btn_add_job_Click(object sender, EventArgs e)
         {
-            AddJobFrm form = new AddJobFrm();
+            AddJobFrm form = new AddJobFrm(account);
             form.Show(this);
         }
 
