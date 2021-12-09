@@ -33,6 +33,52 @@ namespace Schedule_Job
         private void AddJobFrm_Load(object sender, EventArgs e)
         {
             LoadCategory();
+            ShowJob();
+        }
+
+        private void ShowJob()
+        {
+            var job = GetJobById(jobId);
+            if (job is null)
+            {
+                return;
+            }
+
+            cbbCategory.SelectedValue = job.TypeOfJobId;
+            txtName.Text = job.Name;
+            txtProgress.Text = job.Progress.ToString();
+            cbbPriority.SelectedIndex = job.Priority;
+            txtDescription.Text = job.Description;
+
+            dtpStartDate.Value = job.StartTime;
+            dtpStartTime.Value = job.StartTime;
+
+            dtpEndDate.Value = job.EndTime;
+            dtpEndDate.Value = job.EndTime;
+
+            LoadStatus(job);
+        }
+
+        private void LoadStatus(Job job)
+        {
+            switch (job.Status)
+            {
+                case 1:
+                    rbComplete.Checked = true;
+                    break;
+
+                case 2:
+                    rbDrop.Checked = true;
+                    break;
+
+                case -1:
+                    rbOver.Checked = true;
+                    break;
+
+                default:
+                    rbOnGoing.Checked = true;
+                    break;
+            }
         }
 
         private void LoadCategory()

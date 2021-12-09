@@ -427,6 +427,7 @@ namespace Schedule_Job
             this.Name = "AddjobDetailFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddjobDetailFrm";
+            this.Load += new System.EventHandler(this.AddjobDetailFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

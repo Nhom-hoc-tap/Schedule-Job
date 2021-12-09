@@ -29,6 +29,51 @@ namespace Schedule_Job
             this.jobDetailId = jobDetailId ?? 0;
         }
 
+        private void AddjobDetailFrm_Load(object sender, EventArgs e)
+        {
+            ShowDetailJob();
+        }
+
+        private void ShowDetailJob()
+        {
+            var jobDetail = GetJobDetailById(jobDetailId);
+            if (jobDetail is null)
+            {
+                return;
+            }
+
+            txtName.Text = jobDetail.Name;
+            txtEstimatedTime.Text = jobDetail.EstimateTime.ToString();
+            txtActualTime.Text = jobDetail.ActualTime.ToString();
+            txtProgress.Text = jobDetail.Progress.ToString();
+            cbbPriority.SelectedIndex = jobDetail.Priority;
+            txtDesciption.Text = jobDetail.Description;
+
+            LoadStatus(jobDetail);
+        }
+
+        private void LoadStatus(JobDetail jobDetail)
+        {
+            switch (jobDetail.Status)
+            {
+                case 1:
+                    rbComplete.Checked = true;
+                    break;
+
+                case 2:
+                    rbDrop.Checked = true;
+                    break;
+
+                case -1:
+                    rbOver.Checked = true;
+                    break;
+
+                default:
+                    rbOnGoing.Checked = true;
+                    break;
+            }
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
 			Close();
