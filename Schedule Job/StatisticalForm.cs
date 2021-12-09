@@ -67,7 +67,7 @@ namespace Schedule_Job
                 jobOver = jobs.FindAll(x => x.Status == -1).Count;
             sum = jobComplete + jobOngoing + jobOver + jobDrop;
 
-            pie_chart.Series["s1"].Label = "#PERCENT";
+            //pie_chart.Series["s1"].Label = "#PERCENT";
             pie_chart.Titles.Add(((TypeOfJob)cbb_type_of_job.SelectedItem).Name);
             pie_chart.Titles[0].Font = new Font("Microsoft Sans Serif", 10);
             pie_chart.Series["s1"].IsValueShownAsLabel = true;
@@ -101,8 +101,23 @@ namespace Schedule_Job
             listViewItem = new ListViewItem("Tổng");
             listViewItem.SubItems.Add(sum.ToString());
             lv_detail.Items.Add(listViewItem);
-            
+
         }
+
+        private string CountTime(DateTime d1, DateTime d2)
+        {
+            //DateTime d1 = DateTime.Now ;//new DateTime(2021, 12, 8, 7, 0, 0);
+            //DateTime d2 = job.EndTime;//DateTime.Now;
+            TimeSpan tp = d2 - d1;
+            double tM = tp.TotalMinutes;
+            int D = ((int)tM / 60) / 24;
+            int H = (int)((((tM / 60) / 24) - D) * 24);
+            int M = (int)((((((tM / 60) / 24) - D) * 24) - H) * 60);
+            string kq = "";
+            kq += D + " ngày, " + H + " giờ, " + M + " phút";
+            return kq;
+        }
+
 
         
         private int CountJob(Job job)
@@ -119,7 +134,191 @@ namespace Schedule_Job
             return kq;
         }
 
-        private void lv_detail_Click(object sender, EventArgs e)
+       
+
+        private void lv_job_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_job.SelectedItems.Count > 0)
+            {
+                ResetInfo();
+                switch (lv_detail.SelectedItems[0].SubItems[0].Text)
+                {
+                    case "Hoàn thành":
+                        LoadJobDetailComplete(int.Parse(lv_job.SelectedItems[0].SubItems[0].Text));
+                        break;
+                    case "Đang tiến hành":
+                        LoadJobDetailOngoning(int.Parse(lv_job.SelectedItems[0].SubItems[0].Text));
+                        break;
+                    case "Quá hạn":
+                        LoadJobDetailOver(int.Parse(lv_job.SelectedItems[0].SubItems[0].Text));
+                        break;
+                    case "Tạm dừng":
+                        LoadJobDetailDrop(int.Parse(lv_job.SelectedItems[0].SubItems[0].Text));
+                        break;
+                    default: break;
+                }
+            }
+        }
+        private void SetInfo(List<JobDetail> jobDetails)
+        {
+            int complete = jobDetails.FindAll(x => x.Status == 1).Count;
+            int ongoing = jobDetails.FindAll(x => x.Status == 0).Count;
+            int over = jobDetails.FindAll(x => x.Status == -1).Count;
+            int drop = jobDetails.FindAll(x => x.Status == 2).Count;
+
+            lbl_num_complete.Text = complete.ToString();
+            lbl_num_ongoing.Text = ongoing.ToString();
+            lbl_num_over.Text = over.ToString();
+            lbl_num_drop.Text = drop.ToString();
+
+        }
+        private void ResetInfo()
+        {
+            lbl_num_complete.Text = "...";
+            lbl_num_ongoing.Text = "...";
+            lbl_num_over.Text = "...";
+            lbl_num_drop.Text = "...";
+        }
+        private void LoadJobDetailComplete(int jobId)
+        {
+            lv_job_detail.Items.Clear();
+            List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(jobId);
+            if (jobDetails.Count > 0)
+            {
+                foreach (JobDetail jd in jobDetails)
+                {
+                    ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
+                    listViewItem.SubItems.Add(jd.Name);
+                    listViewItem.SubItems.Add("TK: "+ (jd.EstimateTime - jd.ActualTime).ToString()+" phút");
+                    lv_job_detail.Items.Add(listViewItem);
+                }
+                SetInfo(jobDetails);
+            }
+        }
+        private void LoadJobDetailOngoning(int jobId)
+        {
+            lv_job_detail.Items.Clear();
+            List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(jobId);
+            if (jobDetails.Count > 0)
+            {
+                foreach (JobDetail jd in jobDetails)
+                {
+                    ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
+                    listViewItem.SubItems.Add(jd.Name);
+                    if(jd.status == 1)
+                        listViewItem.SubItems.Add("Đã hoàn thành, Tiết kiệm: "+(jd.ActualTime - jd.EstimateTime).ToString());
+                    if(jd.status == 0)
+                        listViewItem.SubItems.Add("Chưa hoàn thành, Dự kiến: " + (jd.EstimateTime).ToString());
+                    lv_job_detail.Items.Add(listViewItem);
+                }
+                SetInfo(jobDetails);
+            }
+        }
+
+        private void lv_detail_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lv_job.Items.Clear();
+            lv_job_detail.Items.Clear();
+            if (lv_detail.SelectedItems.Count > 0)
+            {
+                ResetInfo();
+                switch (lv_detail.SelectedItems[0].SubItems[0].Text)
+                {
+                    case "Hoàn thành":
+                        LoadJobCoplete();
+                        break;
+                    case "Đang tiến hành":
+                        LoadJobOnGoing();
+                        break;
+                    case "Quá hạn":
+                        LoadJobOver();
+                        break;
+                    case "Tạm dừng":
+                        LoadJobDrop();
+                        break;
+                    default: break;
+                }
+            }
+        }
+        private void LoadJobDetailOver(int jobId)
+        {
+            lv_job_detail.Items.Clear();
+            List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(jobId);
+            if (jobDetails.Count > 0)
+            {
+                foreach (JobDetail jd in jobDetails)
+                {
+                    ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
+                    listViewItem.SubItems.Add(jd.Name);
+                    if (jd.ActualTime >0)
+                        listViewItem.SubItems.Add("Đã hoàn thành, Tiết kiệm: " + (jd.ActualTime - jd.EstimateTime).ToString());
+                    if (jd.ActualTime == 0)
+                        listViewItem.SubItems.Add("Chưa hoàn thành");
+                    lv_job_detail.Items.Add(listViewItem);
+                }
+                SetInfo(jobDetails);
+            }
+        }
+        private void LoadJobDetailDrop(int jobId)
+        {
+            lv_job_detail.Items.Clear();
+            List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(jobId);
+            if (jobDetails.Count > 0)
+            {
+                foreach (JobDetail jd in jobDetails)
+                {
+                    ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
+                    listViewItem.SubItems.Add(jd.Name);
+                    listViewItem.SubItems.Add("Tạm dừng");
+                    lv_job_detail.Items.Add(listViewItem);
+                }
+                SetInfo(jobDetails);
+            }
+        }
+        private void LoadJobOver()
+        {
+            lv_job.Items.Clear();
+            if (jobOver > 0)
+            {
+                List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+                jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => x.Status == -1);
+                //MessageBox.Show(jobs.Count.ToString());
+                if (jobs.Count > 0)
+                {
+                    foreach (Job j in jobs)
+                    {
+                        ListViewItem listViewItem = new ListViewItem(j.Id.ToString());
+                        listViewItem.SubItems.Add(j.Name.ToString());
+                        listViewItem.SubItems.Add("Quá hạn");//:"+CountTime(j.EndTime, DateTime.Now));
+                        lv_job.Items.Add(listViewItem);
+                    }
+                }
+            }
+        }
+
+        private void LoadJobDrop()
+        {
+            lv_job.Items.Clear();
+            if (jobDrop > 0)
+            {
+                List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+                jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => x.Status == 2);
+                //MessageBox.Show(jobs.Count.ToString());
+                if (jobs.Count > 0)
+                {
+                    foreach (Job j in jobs)
+                    {
+                        ListViewItem listViewItem = new ListViewItem(j.Id.ToString());
+                        listViewItem.SubItems.Add(j.Name.ToString());
+                        listViewItem.SubItems.Add("Tạm dừng");//:"+CountTime(j.EndTime, DateTime.Now));
+                        lv_job.Items.Add(listViewItem);
+                    }
+                }
+            }
+        }
+        private void LoadJobCoplete()
         {
             lv_job.Items.Clear();
             if (jobComplete > 0)
@@ -134,32 +333,34 @@ namespace Schedule_Job
                     {
                         ListViewItem listViewItem = new ListViewItem(j.Id.ToString());
                         listViewItem.SubItems.Add(j.Name.ToString());
-                        listViewItem.SubItems.Add(CountJob(j).ToString());
+                        listViewItem.SubItems.Add("Đã hoàn thành, Tiết kiệm: " + CountJob(j).ToString()+" phút");
+                        lv_job.Items.Add(listViewItem);
+                    }
+                }
+            }
+        }
+        private void LoadJobOnGoing()
+        {
+            lv_job.Items.Clear();
+            if (jobOngoing > 0)
+            {
+                List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
+                jobs = jobs.FindAll(x => x.TypeOfJobId == ((TypeOfJob)cbb_type_of_job.SelectedItem).Id);
+                jobs = jobs.FindAll(x => x.Status == 0);
+                //MessageBox.Show(jobs.Count.ToString());
+                if (jobs.Count > 0)
+                {
+                    foreach (Job j in jobs)
+                    {
+                        ListViewItem listViewItem = new ListViewItem(j.Id.ToString());
+                        listViewItem.SubItems.Add(j.Name.ToString());
+                        listViewItem.SubItems.Add("Còn lại: "+ CountTime(DateTime.Now, j.EndTime).ToString());
                         lv_job.Items.Add(listViewItem);
                     }
                 }
             }
         }
 
-        private void lv_job_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            lv_job_detail.Items.Clear();
-            if (lv_job.SelectedItems.Count > 0)
-            {
-                int jobId = int.Parse( lv_job.SelectedItems[0].SubItems[0].Text);
-                
-                List<JobDetail> jobDetails = _jobDetailBL.GetByJobId(jobId);
-                if (jobDetails.Count > 0)
-                {
-                    foreach(JobDetail jd in jobDetails)
-                    {
-                        ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
-                        listViewItem.SubItems.Add(jd.Name);
-                        listViewItem.SubItems.Add((jd.EstimateTime - jd.ActualTime).ToString());
-                        lv_job_detail.Items.Add(listViewItem);
-                    }
-                }
-            }
-        }
+        
     }
 }
