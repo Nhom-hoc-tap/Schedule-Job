@@ -29,7 +29,7 @@ namespace Schedule_Job
         public StatisticalForm(string accountName)
         {
             _current_account_name = accountName;
-            _typeOfJobBL = new TypeOfJobBL();
+            _typeOfJobBL = TypeOfJobBL.Instance;
             _jobBL = new JobBL();
             _jobDetailBL = new JobDetailBL();
             InitializeComponent();
@@ -67,6 +67,7 @@ namespace Schedule_Job
                 jobOver = jobs.FindAll(x => x.Status == -1).Count;
             sum = jobComplete + jobOngoing + jobOver + jobDrop;
 
+            pie_chart.Series["s1"].Label = "#PERCENT";
             pie_chart.Titles.Add(((TypeOfJob)cbb_type_of_job.SelectedItem).Name);
             pie_chart.Titles[0].Font = new Font("Microsoft Sans Serif", 10);
             pie_chart.Series["s1"].IsValueShownAsLabel = true;

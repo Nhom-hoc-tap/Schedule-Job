@@ -61,7 +61,7 @@ namespace Schedule_Job
             this.txtName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtName.HoverState.Parent = this.txtName;
             this.txtName.Location = new System.Drawing.Point(203, 27);
-            this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
             this.txtName.PasswordChar = '\0';
             this.txtName.PlaceholderText = "";
@@ -85,7 +85,7 @@ namespace Schedule_Job
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.HoverState.Parent = this.btnSave;
             this.btnSave.Location = new System.Drawing.Point(631, 27);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.ShadowDecoration.Parent = this.btnSave;
             this.btnSave.Size = new System.Drawing.Size(147, 44);
@@ -108,7 +108,7 @@ namespace Schedule_Job
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.HoverState.Parent = this.btnClose;
             this.btnClose.Location = new System.Drawing.Point(808, 27);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.Parent = this.btnClose;
             this.btnClose.Size = new System.Drawing.Size(147, 44);
@@ -125,8 +125,11 @@ namespace Schedule_Job
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "AddTypeofJobFrm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddTypeofJobFrm";
             this.Load += new System.EventHandler(this.AddTypeofJobFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddTypeofJobFrm_MouseDown);

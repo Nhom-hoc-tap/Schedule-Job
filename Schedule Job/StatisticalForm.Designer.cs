@@ -29,9 +29,9 @@ namespace Schedule_Job
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbb_type_of_job = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -45,10 +45,10 @@ namespace Schedule_Job
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lv_job = new System.Windows.Forms.ListView();
-            this.lv_job_detail = new System.Windows.Forms.ListView();
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lv_job_detail = new System.Windows.Forms.ListView();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -138,18 +138,18 @@ namespace Schedule_Job
             // 
             // pie_chart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.pie_chart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.pie_chart.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.pie_chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.pie_chart.Legends.Add(legend1);
             this.pie_chart.Location = new System.Drawing.Point(12, 83);
             this.pie_chart.Name = "pie_chart";
-            series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            series3.Legend = "Legend1";
-            series3.Name = "s1";
-            this.pie_chart.Series.Add(series3);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            series1.Legend = "Legend1";
+            series1.Name = "s1";
+            this.pie_chart.Series.Add(series1);
             this.pie_chart.Size = new System.Drawing.Size(500, 500);
             this.pie_chart.TabIndex = 1;
             this.pie_chart.Text = "chart1";
@@ -197,6 +197,21 @@ namespace Schedule_Job
             this.lv_job.View = System.Windows.Forms.View.Details;
             this.lv_job.SelectedIndexChanged += new System.EventHandler(this.lv_job_SelectedIndexChanged);
             // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "Mã số";
+            this.columnHeader7.Width = 80;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "Tên công việc";
+            this.columnHeader8.Width = 280;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "Thời gian tiết kiệm được (phút)";
+            this.columnHeader9.Width = 240;
+            // 
             // lv_job_detail
             // 
             this.lv_job_detail.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -212,21 +227,6 @@ namespace Schedule_Job
             this.lv_job_detail.TabIndex = 3;
             this.lv_job_detail.UseCompatibleStateImageBehavior = false;
             this.lv_job_detail.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "Mã số";
-            this.columnHeader7.Width = 80;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "Tên công việc";
-            this.columnHeader8.Width = 280;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "Thời gian tiết kiệm được (phút)";
-            this.columnHeader9.Width = 240;
             // 
             // columnHeader3
             // 
@@ -255,8 +255,11 @@ namespace Schedule_Job
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "StatisticalForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thống kê";
             this.Load += new System.EventHandler(this.StatisticalForm_Load);
             this.groupBox1.ResumeLayout(false);

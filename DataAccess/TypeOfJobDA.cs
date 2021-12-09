@@ -64,7 +64,7 @@ namespace DataAccess
 
             SqlParameter user = new SqlParameter("@TenDangNhap", SqlDbType.NVarChar, 255)
             {
-                Value = typeOfJob.User
+                Value = typeOfJob.UserName
             };
 
             int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.TypeOfJob_Insert, id, name, user);

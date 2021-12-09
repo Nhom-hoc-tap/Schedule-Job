@@ -32,6 +32,11 @@ namespace BusinessLogic
             return accountDA.Login(userName, password);
         }
 
+        public Account GetAccount(string userName)
+        {
+            return accountDA.GetAccount(userName);
+        }
+
         public bool HasAccount(string userName)
         {
             return accountDA.HasAccount(userName);

@@ -1,4 +1,5 @@
 ﻿using BusinessLogic;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,15 +58,23 @@ namespace Schedule_Job
         {
             string userName = txtUserName.Text;
             string password = txtPassword.Text;
-            if (AccountBL.Instance.Login(userName, password))
+            if (Login(userName, password))
             {
-                MainForm form = new MainForm();
-                form.Show();
+                Account account = AccountBL.Instance.GetAccount(userName);
+                MainForm form = new MainForm(account);
+                Hide();
+                form.ShowDialog();
+                Close();
             }
             else
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool Login(string userName, string password)
+        {
+            return AccountBL.Instance.Login(userName, password);
         }
     }
 }

@@ -42,6 +42,25 @@ namespace DataAccess
             return dataTable.Rows.Count > 0;
         }
 
+        public Account GetAccount(string userName)
+        {
+            SqlParameter userNameParam = new SqlParameter("@TenDangNhap", SqlDbType.NVarChar, 255)
+            {
+                Value = userName
+            };
+
+            DataTable dataTable = SqlHelper.Instance.ExecuteReader(Utilities.Account_GetAccount, userNameParam);
+            DataRow row = dataTable.Rows[0];
+            return new Account()
+            {
+                UserName = row["TenDangNhap"].ToString(),
+                Password = row["MatKhau"].ToString(),
+                FullName = row["HovaTen"].ToString(),
+                Gender = row["GioiTinh"].ToString() == "1",
+                Birth = DateTime.Parse(row["NgaySinh"].ToString())
+            };
+        }
+
         public bool HasAccount(string userName)
         {
             SqlParameter userNameParam = new SqlParameter("@TenDangNhap", SqlDbType.NVarChar, 255)
@@ -49,7 +68,7 @@ namespace DataAccess
                 Value = userName
             };
 
-            DataTable dataTable = SqlHelper.Instance.ExecuteReader(Utilities.Account_HasAccount, userNameParam);
+            DataTable dataTable = SqlHelper.Instance.ExecuteReader(Utilities.Account_GetAccount, userNameParam);
             return dataTable.Rows.Count > 0;
         }
 

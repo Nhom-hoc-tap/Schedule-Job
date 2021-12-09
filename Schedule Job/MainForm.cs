@@ -39,11 +39,20 @@ namespace Schedule_Job
             InitializeComponent();
         }
 
+        public MainForm(Account account) : this()
+        {
+
+        }
+
         private void MainForm_Load(object sender, EventArgs e)
         {
             _list_job = _jobBL.GetByAccount(_current_account_name);
-            _list_job = _list_job.OrderBy(x=>x.Progress).ToList();
-            _current_job_id = _list_job[0].TypeOfJobId;
+            _list_job = _list_job.OrderBy(x => x.Progress).ToList();
+            if (_list_job.Count > 0)
+            {
+                _current_job_id = _list_job[0].TypeOfJobId;
+            }
+
             LoadJobs(_list_job);
             LoadTypeOfJobs();
 
@@ -69,21 +78,21 @@ namespace Schedule_Job
         private void Search(string str)
         {
             List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
-            if(_current_type_of_job_id >0)
+            if (_current_type_of_job_id > 0)
                 jobs = jobs.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
 
-            if (ckb_search_job.Checked == true && jobs!=null)
+            if (ckb_search_job.Checked == true && jobs != null)
                 LoadJobs(jobs.FindAll(x => x.Name.ToLower().Contains(str)));
-            if (ckb_search_job_detail.Checked == true && _list_job_detail !=null)
+            if (ckb_search_job_detail.Checked == true && _list_job_detail != null)
                 LoadJobDetail(_list_job_detail.FindAll(x => x.Name.ToLower().Contains(str)));
         }
 
         private void LoadJobs(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
-            jobs =  jobs.OrderBy(x => x.Priority).ToList();
+            jobs = jobs.OrderBy(x => x.Priority).ToList();
             jobs.Reverse();
-            foreach(Job j in jobs)
+            foreach (Job j in jobs)
             {
                 JobControl2 jobControl2 = new JobControl2(j);
                 jobControl2.Tag = j.Id;
@@ -95,14 +104,14 @@ namespace Schedule_Job
 
         private void JobControl2_Click(object sender, EventArgs e)
         {
-            _current_job_id = int.Parse( (sender as JobControl2).Tag.ToString());
+            _current_job_id = int.Parse((sender as JobControl2).Tag.ToString());
             LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
         }
 
         private void LoadJobDetail(List<JobDetail> jobDetails)
         {
             fpn_job_detail.Controls.Clear();
-            foreach(JobDetail jd in jobDetails)
+            foreach (JobDetail jd in jobDetails)
             {
                 JobDetailControl jobDetailControl = new JobDetailControl(jd);
                 fpn_job_detail.Controls.Add(jobDetailControl);
@@ -126,7 +135,7 @@ namespace Schedule_Job
 
         private void cbb_type_jobs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedTypeId= ((TypeOfJob) cbb_type_jobs.SelectedItem).Id;
+            int selectedTypeId = ((TypeOfJob)cbb_type_jobs.SelectedItem).Id;
             _current_type_of_job_id = selectedTypeId;
             List<Job> jobs = new List<Job>();
             if (selectedTypeId == 0)
@@ -137,8 +146,8 @@ namespace Schedule_Job
 
         private void txt_search_TextChanged(object sender, EventArgs e)
         {
-            if(txt_search.Text!="Nhập tên...")
-            Search(txt_search.Text.ToLower());
+            if (txt_search.Text != "Nhập tên...")
+                Search(txt_search.Text.ToLower());
         }
 
         private void btn_search_Click(object sender, EventArgs e)
@@ -154,7 +163,7 @@ namespace Schedule_Job
             if (_list_job != null)
             {
                 List<Job> jobs = _list_job;
-                if(_current_type_of_job_id >0)
+                if (_current_type_of_job_id > 0)
                     jobs = _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id);
                 if (ckb_priority_true.Checked == true)
                     jobs = jobs.FindAll(x => x.Priority == 1);
@@ -251,7 +260,7 @@ namespace Schedule_Job
 
         private void ckb_search_progress_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckb_search_progress.Checked == true)
+            if (ckb_search_progress.Checked == true)
             {
                 lbl_progress.Enabled = true;
                 lbl_progress_1.Enabled = true;
@@ -269,7 +278,7 @@ namespace Schedule_Job
 
         private void ckb_search_by_date_CheckedChanged(object sender, EventArgs e)
         {
-            if(ckb_search_by_date.Checked == true)
+            if (ckb_search_by_date.Checked == true)
             {
                 lbl_date_start.Enabled = true;
                 lbl_date_end.Enabled = true;
@@ -344,13 +353,13 @@ namespace Schedule_Job
 
             DateTime startofthemonth = new DateTime(year, month, 1);
             int days = DateTime.DaysInMonth(year, month);
-            int dayoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d"))+1;
-            for(int i =1; i<dayoftheweek; i++)
+            int dayoftheweek = Convert.ToInt32(startofthemonth.DayOfWeek.ToString("d")) + 1;
+            for (int i = 1; i < dayoftheweek; i++)
             {
                 BlankDay blankDay = new BlankDay();
                 fpn_display_calendar.Controls.Add(blankDay);
             }
-            for(int i=1; i <= days; i++)
+            for (int i = 1; i <= days; i++)
             {
                 List<Job> jobs = _jobBL.GetByAccount(_current_account_name);
                 jobs = jobs.FindAll(x => (x.EndTime.Day == i && x.EndTime.Month == month && x.EndTime.Year == year));
@@ -371,13 +380,25 @@ namespace Schedule_Job
             List<Job> jobs = (sender as DayControl).jobs;
             cbb_type_jobs.Text = "Tất cả";
             LoadJobsVer2(jobs);
-            
+
         }
 
         private void tsm_count_Click(object sender, EventArgs e)
         {
             StatisticalForm statisticalForm = new StatisticalForm(_current_account_name);
             statisticalForm.Show();
+        }
+
+        private void btn_add_job_Click(object sender, EventArgs e)
+        {
+            AddJobFrm form = new AddJobFrm();
+            form.Show(this);
+        }
+
+        private void btn_add_jod_detail_Click(object sender, EventArgs e)
+        {
+            AddjobDetailFrm form = new AddjobDetailFrm();
+            form.Show(this);
         }
 
         private void LoadJobsVer2(List<Job> jobs)
@@ -401,7 +422,7 @@ namespace Schedule_Job
                 jobControl2.Tag = j.Id;
                 jobControl2.Click += JobControl2_Click;
 
-                if(j.TypeOfJobId != current_type_id)
+                if (j.TypeOfJobId != current_type_id)
                 {
                     current_type_id = j.TypeOfJobId;
 

@@ -32,7 +32,7 @@ namespace DataAccess
 
         public static string Account_Login => "DangNhap";
 
-        public static string Account_HasAccount => "HasAccount";
+        public static string Account_GetAccount => "GetAccountByUserName";
 
         //public static string ...
     }

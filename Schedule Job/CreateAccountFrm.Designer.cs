@@ -88,7 +88,7 @@ namespace Schedule_Job
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.HoverState.Parent = this.guna2TextBox2;
             this.guna2TextBox2.Location = new System.Drawing.Point(83, 633);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PasswordChar = '\0';
             this.guna2TextBox2.PlaceholderText = "";
@@ -111,7 +111,7 @@ namespace Schedule_Job
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
             this.guna2ComboBox1.Location = new System.Drawing.Point(83, 542);
-            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
             this.guna2ComboBox1.Size = new System.Drawing.Size(469, 36);
@@ -132,7 +132,7 @@ namespace Schedule_Job
             this.btnCancel.ForeColor = System.Drawing.Color.White;
             this.btnCancel.HoverState.Parent = this.btnCancel;
             this.btnCancel.Location = new System.Drawing.Point(335, 709);
-            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.ShadowDecoration.Parent = this.btnCancel;
             this.btnCancel.Size = new System.Drawing.Size(221, 55);
@@ -155,7 +155,7 @@ namespace Schedule_Job
             this.btnCreate.ForeColor = System.Drawing.Color.White;
             this.btnCreate.HoverState.Parent = this.btnCreate;
             this.btnCreate.Location = new System.Drawing.Point(80, 709);
-            this.btnCreate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCreate.Margin = new System.Windows.Forms.Padding(4);
             this.btnCreate.Name = "btnCreate";
             this.btnCreate.ShadowDecoration.Parent = this.btnCreate;
             this.btnCreate.Size = new System.Drawing.Size(220, 55);
@@ -226,7 +226,7 @@ namespace Schedule_Job
             this.txtConfimPassword.HoverState.Parent = this.txtConfimPassword;
             this.txtConfimPassword.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtConfimPassword.IconLeft")));
             this.txtConfimPassword.Location = new System.Drawing.Point(83, 452);
-            this.txtConfimPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtConfimPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtConfimPassword.Name = "txtConfimPassword";
             this.txtConfimPassword.PasswordChar = '\0';
             this.txtConfimPassword.PlaceholderText = "";
@@ -255,7 +255,7 @@ namespace Schedule_Job
             this.txtPassword.HoverState.Parent = this.txtPassword;
             this.txtPassword.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPassword.IconLeft")));
             this.txtPassword.Location = new System.Drawing.Point(85, 359);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '\0';
             this.txtPassword.PlaceholderText = "";
@@ -284,7 +284,7 @@ namespace Schedule_Job
             this.txtUserName.HoverState.Parent = this.txtUserName;
             this.txtUserName.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtUserName.IconLeft")));
             this.txtUserName.Location = new System.Drawing.Point(83, 270);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
             this.txtUserName.PlaceholderText = "";
@@ -323,7 +323,7 @@ namespace Schedule_Job
             this.txtFullName.HoverState.Parent = this.txtFullName;
             this.txtFullName.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtFullName.IconLeft")));
             this.txtFullName.Location = new System.Drawing.Point(80, 98);
-            this.txtFullName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFullName.Margin = new System.Windows.Forms.Padding(4);
             this.txtFullName.Name = "txtFullName";
             this.txtFullName.PasswordChar = '\0';
             this.txtFullName.PlaceholderText = "";
@@ -342,7 +342,7 @@ namespace Schedule_Job
             this.dtpBirth.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpBirth.HoverState.Parent = this.dtpBirth;
             this.dtpBirth.Location = new System.Drawing.Point(269, 186);
-            this.dtpBirth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpBirth.Margin = new System.Windows.Forms.Padding(4);
             this.dtpBirth.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpBirth.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpBirth.Name = "dtpBirth";
@@ -442,7 +442,7 @@ namespace Schedule_Job
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CreateAccountFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.CreateAccountFrm_Load);

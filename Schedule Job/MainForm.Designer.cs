@@ -560,6 +560,7 @@ namespace Schedule_Job
             this.btn_add_jod_detail.Size = new System.Drawing.Size(38, 34);
             this.btn_add_jod_detail.TabIndex = 8;
             this.btn_add_jod_detail.UseVisualStyleBackColor = true;
+            this.btn_add_jod_detail.Click += new System.EventHandler(this.btn_add_jod_detail_Click);
             // 
             // btn_add_job
             // 
@@ -569,6 +570,7 @@ namespace Schedule_Job
             this.btn_add_job.Size = new System.Drawing.Size(38, 34);
             this.btn_add_job.TabIndex = 8;
             this.btn_add_job.UseVisualStyleBackColor = true;
+            this.btn_add_job.Click += new System.EventHandler(this.btn_add_job_Click);
             // 
             // menuStrip1
             // 
@@ -580,7 +582,7 @@ namespace Schedule_Job
             this.tsm_option});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(427, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(277, 31);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -628,6 +630,7 @@ namespace Schedule_Job
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản Lý Công Việc";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);

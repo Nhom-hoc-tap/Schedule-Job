@@ -59,7 +59,7 @@ namespace Schedule_Job
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.HoverState.Parent = this.btnClose;
             this.btnClose.Location = new System.Drawing.Point(301, 303);
-            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4);
             this.btnClose.Name = "btnClose";
             this.btnClose.ShadowDecoration.Parent = this.btnClose;
             this.btnClose.Size = new System.Drawing.Size(221, 55);
@@ -109,7 +109,7 @@ namespace Schedule_Job
             this.guna2CheckBox1.CheckedState.BorderThickness = 0;
             this.guna2CheckBox1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2CheckBox1.Location = new System.Drawing.Point(49, 274);
-            this.guna2CheckBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2CheckBox1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2CheckBox1.Name = "guna2CheckBox1";
             this.guna2CheckBox1.Size = new System.Drawing.Size(206, 21);
             this.guna2CheckBox1.TabIndex = 20;
@@ -134,7 +134,7 @@ namespace Schedule_Job
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.HoverState.Parent = this.btnLogin;
             this.btnLogin.Location = new System.Drawing.Point(49, 303);
-            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.ShadowDecoration.Parent = this.btnLogin;
             this.btnLogin.Size = new System.Drawing.Size(220, 55);
@@ -181,7 +181,7 @@ namespace Schedule_Job
             this.guna2Panel1.BackColor = System.Drawing.Color.DodgerBlue;
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.guna2Panel1.Location = new System.Drawing.Point(631, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.ShadowDecoration.Parent = this.guna2Panel1;
             this.guna2Panel1.Size = new System.Drawing.Size(41, 407);
@@ -201,11 +201,12 @@ namespace Schedule_Job
             this.txtPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.FocusedState.Parent = this.txtPassword;
             this.txtPassword.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtPassword.ForeColor = System.Drawing.Color.Black;
             this.txtPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPassword.HoverState.Parent = this.txtPassword;
             this.txtPassword.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtPassword.IconLeft")));
             this.txtPassword.Location = new System.Drawing.Point(52, 213);
-            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '\0';
             this.txtPassword.PlaceholderText = "";
@@ -229,11 +230,12 @@ namespace Schedule_Job
             this.txtUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserName.FocusedState.Parent = this.txtUserName;
             this.txtUserName.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtUserName.ForeColor = System.Drawing.Color.Black;
             this.txtUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUserName.HoverState.Parent = this.txtUserName;
             this.txtUserName.IconLeft = ((System.Drawing.Image)(resources.GetObject("txtUserName.IconLeft")));
             this.txtUserName.Location = new System.Drawing.Point(49, 123);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(4);
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.PasswordChar = '\0';
             this.txtUserName.PlaceholderText = "";
@@ -263,7 +265,7 @@ namespace Schedule_Job
             this.Controls.Add(this.txtUserName);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.LoginFrm_Load);
