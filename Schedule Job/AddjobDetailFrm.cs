@@ -88,19 +88,30 @@ namespace Schedule_Job
         {
             string name = txtName.Text;
             int estimateTime = int.Parse(txtEstimatedTime.Text);
-            int actualTime = int.Parse(txtActualTime.Text);
+            int actualTime = 0;
+            try
+            {
+                actualTime = int.Parse(txtActualTime.Text);
+            }
+            catch ( Exception ex)
+            { }
+                
             int priority = cbbPriority.SelectedIndex;
             string desctiption = txtDesciption.Text;
+            int progress = int.Parse(txtProgress.Text);
             int status = GetStatus();
             return new JobDetail()
             {
+                Id = jobDetailId,
                 JobId = jobId,
                 Name = name,
                 EstimateTime = estimateTime,
                 ActualTime = actualTime,
                 Priority = priority,
                 Description = desctiption,
-                Status = status
+                Progress = progress,
+                Status = status,
+                
             };
         }
 

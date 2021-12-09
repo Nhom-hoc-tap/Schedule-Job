@@ -54,7 +54,7 @@ namespace Schedule_Job
             dtpStartTime.Value = job.StartTime;
 
             dtpEndDate.Value = job.EndTime;
-            dtpEndDate.Value = job.EndTime;
+            dtpEndTime.Value = job.EndTime;
 
             LoadStatus(job);
         }
@@ -74,7 +74,9 @@ namespace Schedule_Job
                 case -1:
                     rbOver.Checked = true;
                     break;
-
+                case 0:
+                    rbOnGoing.Checked = true;
+                    break;
                 default:
                     rbOnGoing.Checked = true;
                     break;
@@ -125,6 +127,7 @@ namespace Schedule_Job
             int status = GetStatus();
             return new Job()
             {
+                Id = jobId,
                 TypeOfJobId = typeId,
                 Name = name,
                 StartTime = startDate,

@@ -52,15 +52,16 @@ namespace DataAccess
             DataRow row = table.Rows[0];
             return new Job()
             {
-                Id = (int)row["ID"],
-                TypeOfJobId = (int)row["ID_LoaiCV"],
-                Name = row["TenChiTietCV"].ToString(),
-                Status = (int)row["TrangThai"],
-                StartTime = (DateTime)row["ThoiGianBatDau"],
-                EndTime = (DateTime)row["ThoiGianKetThuc"],
-                Priority = (int)row["MucDoUuTien"],
-                Description = row["MoTa"].ToString(),
-                Progress = (int)row["TienDo"]
+                Id = int.Parse(row["ID"].ToString()),
+                TypeOfJobId = int.Parse(row["ID_LoaiCV"].ToString()),
+                Name = row["TenCongViec"].ToString(),
+                Progress = int.Parse(row["TienDo"].ToString()),
+                Status = int.Parse(row["TrangThai"].ToString()),
+                StartTime = DateTime.Parse(row["ThoiGianBatDau"].ToString()),
+                EndTime = DateTime.Parse(row["ThoiGianKetThuc"].ToString()),
+                Priority = int.Parse(row["MucDoUuTien"].ToString()),
+                Description = row["MoTa"].ToString()
+                
             };
         }
 

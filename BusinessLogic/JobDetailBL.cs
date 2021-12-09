@@ -52,9 +52,9 @@ namespace BusinessLogic
             return jobDetailDA.Update(jobDetail);
         }
 
-        public bool Delete(JobDetail jobDetail)
+        public bool Delete(int jobDetailId)
         {
-            return jobDetailDA.Delete(jobDetail);
+            return jobDetailDA.Delete(jobDetailId);
         }
     }
 }

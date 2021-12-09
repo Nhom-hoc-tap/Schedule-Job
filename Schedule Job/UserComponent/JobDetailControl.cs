@@ -13,13 +13,33 @@ namespace Schedule_Job.UserComponent
 {
     public partial class JobDetailControl : UserControl
     {
+        private bool _clicked = false;
         private JobDetail _jobDetail;
         public JobDetailControl(JobDetail jobDetail)
         {
             this._jobDetail = jobDetail;
             InitializeComponent();
         }
-
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (_clicked == true)
+            {
+                base.OnPaint(e);
+                SolidBrush drawBrush = new SolidBrush(Color.OrangeRed);
+                Pen pen = new Pen(drawBrush, 3);
+                e.Graphics.DrawRectangle(pen, 0, 0, Width - 3, Height - 3);
+            }
+        }
+        public void OnClick()
+        {
+            this._clicked = true;
+            this.Refresh();
+        }
+        public void NotClick()
+        {
+            this._clicked = false;
+            this.Refresh();
+        }
         private void setData()
         {
             lbl_name.Text = _jobDetail.Name;

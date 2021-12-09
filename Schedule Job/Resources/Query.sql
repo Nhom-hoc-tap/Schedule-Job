@@ -181,6 +181,7 @@ alter procedure [dbo].[CongViec_Delete](@ID int)
 as
 begin
 Delete from CongViec where ID =@ID
+Delete from ChiTietCV where ID_CongViec =@ID
 end
 GO
 /****** Object:  StoredProcedure [dbo].[CongViec_GetById]    Script Date: 09-Dec-21 14:20:15 ******/

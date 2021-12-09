@@ -70,7 +70,7 @@ namespace Schedule_Job
             //pie_chart.Series["s1"].Label = "#PERCENT";
             pie_chart.Titles.Add(((TypeOfJob)cbb_type_of_job.SelectedItem).Name);
             pie_chart.Titles[0].Font = new Font("Microsoft Sans Serif", 10);
-            pie_chart.Series["s1"].IsValueShownAsLabel = false;
+            pie_chart.Series["s1"].IsValueShownAsLabel = true;
             if (jobComplete>0)
                 pie_chart.Series["s1"].Points.AddXY("Hoàn thành (%)", (Math.Round(((double)jobComplete / (double)sum) * 100)).ToString());
             if (jobOngoing > 0)

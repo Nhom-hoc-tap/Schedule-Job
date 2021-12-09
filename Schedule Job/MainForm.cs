@@ -18,6 +18,7 @@ namespace Schedule_Job
     {
         private int _current_job_id = 0;
         private int _current_type_of_job_id = 0;
+        private int _current_job_detail_id = 0;
 
         private int _month, _year;
 
@@ -124,6 +125,20 @@ namespace Schedule_Job
             }
         }
 
+        private void ShowCurrentSelectedJobDetail()
+        {
+            foreach (Control c in fpn_job_detail.Controls)
+            {
+                if (c is JobDetailControl)
+                {
+                    if (((JobDetailControl)c).Tag.ToString() == _current_job_detail_id.ToString())
+                        ((JobDetailControl)c).OnClick();
+                    else
+                        ((JobDetailControl)c).NotClick();
+                }
+            }
+        }
+
         private void LoadJobDetail(List<JobDetail> jobDetails)
         {
             fpn_job_detail.Controls.Clear();
@@ -131,9 +146,17 @@ namespace Schedule_Job
             {
                 JobDetailControl jobDetailControl = new JobDetailControl(jd);
                 jobDetailControl.ContextMenuStrip = cms_job_detail;
+                jobDetailControl.Tag = jd.Id.ToString();
+                jobDetailControl.Click += JobDetailControl_Click;
                 fpn_job_detail.Controls.Add(jobDetailControl);
             }
             lbl_num_job_detail.Text = jobDetails.Count().ToString();
+        }
+
+        private void JobDetailControl_Click(object sender, EventArgs e)
+        {
+            _current_job_detail_id = int.Parse((sender as JobDetailControl).Tag.ToString());
+            ShowCurrentSelectedJobDetail();
         }
 
         private void LoadTypeOfJobs()
@@ -488,6 +511,50 @@ namespace Schedule_Job
             fpn_job_detail.Controls.Clear();
         }
 
+        private void tsm_add_job_detail_Click(object sender, EventArgs e)
+        {
+            btn_add_jod_detail.PerformClick();
+        }
+
+        private void tsm_update_job_detail_Click(object sender, EventArgs e)
+        {
+            AddjobDetailFrm form = new AddjobDetailFrm(_current_job_id, _current_job_detail_id);
+            if (form.ShowDialog(this) == DialogResult.OK)
+            {
+                _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
+                LoadJobDetail(_list_job_detail);
+            }
+        }
+
+        private void tsm_delete_job_detail_Click(object sender, EventArgs e)
+        {
+            if (_current_job_detail_id == 0)
+                return;
+            _jobDetailBL.Delete(_current_job_detail_id);
+            _current_job_detail_id = 0;
+            LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+        }
+
+        private void tsm_set_job_detail_to_drop_Click(object sender, EventArgs e)
+        {
+            if (_list_job_detail.FindAll(x => x.Status == 0 && x.Id == _current_job_detail_id).Count > 0)
+            {
+                _jobDetailBL.SetStatus(_current_job_detail_id, 2);
+                LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+                ShowCurrentSelectedJobDetail();
+            }
+        }
+
+        private void tsm_set_to_ongoing_Click(object sender, EventArgs e)
+        {
+            if (_list_job_detail.FindAll(x => x.Status == 2 && x.Id == _current_job_detail_id).Count > 0)
+            {
+                _jobDetailBL.SetStatus(_current_job_detail_id, 0);
+                LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+                ShowCurrentSelectedJobDetail();
+            }
+        }
+
         private void LoadJobsVer2(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
@@ -509,6 +576,7 @@ namespace Schedule_Job
                 JobControl2 jobControl2 = new JobControl2(j);
                 jobControl2.Tag = j.Id;
                 jobControl2.Click += JobControl2_Click;
+                jobControl2.ContextMenuStrip = cms_job;
 
                 if (j.TypeOfJobId != current_type_id)
                 {
