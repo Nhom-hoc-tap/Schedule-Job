@@ -44,17 +44,30 @@ namespace Schedule_Job.UserComponent
                 lbl_progress.Font = new Font("Microsoft Sans Serif", 8);
                 lbl_progress.ForeColor = Color.Gray;
             }
+            if(_jobDetail.Priority ==0)
+            {
+                pb_priority.Visible = false;
+            }
+            if (_jobDetail.Priority == 1)
+            {
+                pb_priority.Visible = true;
+                pb_priority.Image = Properties.Resources.icons8_star_filled;
+            }
         }
         private string GetTime(int value)
         {
             string result = "";
-            int hours = value / 60;
-            if (hours > 0)
-                result += hours.ToString() + " giờ ";
-            if (value - hours > 0)
-                result += (value - hours).ToString() + " phút";
+            
             if (value == 0)
                 result = "Chưa khả dụng";
+            if (value < 60 && value >0)
+                result = value + " phút";
+            if(value >=60)
+            {
+                int h = value / 60;
+                int m = (int)(((double)value / 60 - h) * 60);
+                result = h + " giờ, " + m + " phút";
+            }
             return result;
         }
 

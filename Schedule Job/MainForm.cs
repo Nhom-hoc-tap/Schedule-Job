@@ -106,6 +106,17 @@ namespace Schedule_Job
         {
             _current_job_id = int.Parse((sender as JobControl2).Tag.ToString());
             LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+            
+            foreach(Control c in fpn_jobs.Controls)
+            {
+                if(c is JobControl2)
+                {
+                    if (((JobControl2)c).Tag.ToString() == _current_job_id.ToString())
+                        ((JobControl2)c).OnClick();
+                    else
+                        ((JobControl2)c).NotClick();
+                }
+            }
         }
 
         private void LoadJobDetail(List<JobDetail> jobDetails)
@@ -244,15 +255,16 @@ namespace Schedule_Job
                 lbl_date_end.Enabled = false;
                 dtp_start.Enabled = false;
                 dtp_end.Enabled = false;
+                ckb_search_by_date.Checked = false;
                 ckb_search_by_date.Enabled = false;
                 // ckb_status_over.Enabled = false;
             }
             else
             {
-                lbl_date_start.Enabled = true;
-                lbl_date_end.Enabled = true;
-                dtp_start.Enabled = true;
-                dtp_end.Enabled = true;
+                //lbl_date_start.Enabled = true;
+                //lbl_date_end.Enabled = true;
+                //dtp_start.Enabled = true;
+                //dtp_end.Enabled = true;
                 ckb_search_by_date.Enabled = true;
                 //ckb_status_over.Enabled = true;
             }
@@ -302,15 +314,16 @@ namespace Schedule_Job
                 lbl_date_end.Enabled = false;
                 dtp_start.Enabled = false;
                 dtp_end.Enabled = false;
+                ckb_search_by_date.Checked = false;
                 ckb_search_by_date.Enabled = false;
                 // ckb_status_over.Enabled = false;
             }
             else
             {
-                lbl_date_start.Enabled = true;
-                lbl_date_end.Enabled = true;
-                dtp_start.Enabled = true;
-                dtp_end.Enabled = true;
+                //lbl_date_start.Enabled = true;
+                //lbl_date_end.Enabled = true;
+                //dtp_start.Enabled = true;
+                //dtp_end.Enabled = true;
                 ckb_search_by_date.Enabled = true;
                 //ckb_status_over.Enabled = true;
             }
@@ -417,9 +430,10 @@ namespace Schedule_Job
             current_type_id = jobs[0].TypeOfJobId;
 
             Label labelDes = new Label();
-            labelDes.AutoSize = true;
+            labelDes.AutoSize = false;
             labelDes.Font = new Font("Microsoft Sans Serif", 10);
             labelDes.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
+            labelDes.Size = new Size(200, 20);
             fpn_jobs.Controls.Add(labelDes);
 
             foreach (Job j in jobs)
@@ -433,10 +447,10 @@ namespace Schedule_Job
                     current_type_id = j.TypeOfJobId;
 
                     Label label = new Label();
-                    label.AutoSize = true;
+                    label.AutoSize = false;
                     label.Text = _list_TypeOfJob.Find(x => x.Id == current_type_id).Name;
                     label.Font = new Font("Microsoft Sans Serif", 10);
-
+                    label.Size = new Size(200, 20);
                     fpn_jobs.Controls.Add(label);
                 }
                 fpn_jobs.Controls.Add(jobControl2);
