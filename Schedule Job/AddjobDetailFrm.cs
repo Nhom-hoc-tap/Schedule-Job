@@ -175,7 +175,7 @@ namespace Schedule_Job
                 MessageBox.Show("Hãy nhập thời gian bạn dự kiến hoàn thành công việc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (rbComplete.Checked == true && txtActualTime.Text=="" || txtActualTime.Text == "0")
+            if ((rbComplete.Checked == true && txtActualTime.Text=="") || (rbComplete.Checked == true && txtActualTime.Text == "0"))
             {
                 MessageBox.Show("Hãy nhập thời gian bạn hoàn thành công việc trong thực tế", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
