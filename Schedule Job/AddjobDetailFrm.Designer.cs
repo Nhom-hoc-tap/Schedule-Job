@@ -56,7 +56,7 @@ namespace Schedule_Job
             // txtProgress
             // 
             this.txtProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProgress.DefaultText = "";
+            this.txtProgress.DefaultText = "0";
             this.txtProgress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
             this.txtProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
@@ -74,6 +74,7 @@ namespace Schedule_Job
             this.txtProgress.PasswordChar = '\0';
             this.txtProgress.PlaceholderText = "";
             this.txtProgress.SelectedText = "";
+            this.txtProgress.SelectionStart = 1;
             this.txtProgress.ShadowDecoration.Parent = this.txtProgress;
             this.txtProgress.Size = new System.Drawing.Size(276, 44);
             this.txtProgress.TabIndex = 60;
