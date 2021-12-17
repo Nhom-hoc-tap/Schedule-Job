@@ -27,6 +27,21 @@ namespace DataAccess
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
+            sqlConn.Open();
+
+            SqlCommand command = sqlConn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Utilities.JobDetail_SetToDrop;
+            command.Parameters.Add("@JobDetailId", SqlDbType.Int).Value = id;
+            command.Parameters.Add("@Status", SqlDbType.Int).Value = status;
+            command.ExecuteNonQuery();
+
+            sqlConn.Close();
+        }
+
         public JobDetail GetById(int id)
         {
             SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
@@ -37,15 +52,16 @@ namespace DataAccess
             DataRow row = table.Rows[0];
             return new JobDetail()
             {
-                Id = (int)row["ID"],
-                JobId = (int)row["ID_CongViec"],
+                Id = int.Parse( row["ID"].ToString()),
+                JobId = int.Parse(row["ID_CongViec"].ToString()),
                 Name = row["TenChiTietCV"].ToString(),
-                Status = (int)row["TrangThai"],
-                EstimateTime = (int)row["ThoiDuKien"],
-                ActualTime = (int)row["ThoiThucTe"],
-                Priority = (int)row["MucDoUuTien"],
-                Description = row["MoTa"].ToString(),
-                Progress = (int)row["TienDo"]
+                Progress = int.Parse(row["TienDo"].ToString()),
+                Status = int.Parse(row["TrangThai"].ToString()),
+                EstimateTime = int.Parse(row["ThoiDuKien"].ToString()),
+                ActualTime = int.Parse(row["ThoiThucTe"].ToString()),
+                Priority = int.Parse(row["MucDoUuTien"].ToString()),
+                Description = row["MoTa"].ToString()
+                
             };
         }
 
@@ -181,11 +197,11 @@ namespace DataAccess
             return result > 0;
         }
 
-        public bool Delete(JobDetail jobDetail)
+        public bool Delete(int jobDetailId)
         {
             SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
             {
-                Value = jobDetail.Id
+                Value = jobDetailId
             };
 
             int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.JobDetail_Delete, id);

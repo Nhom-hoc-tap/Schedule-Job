@@ -26,6 +26,22 @@ namespace DataAccess
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
+            sqlConn.Open();
+
+            SqlCommand command = sqlConn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Utilities.Job_SetToDrop;
+            command.Parameters.Add("@JobId", SqlDbType.Int).Value = id;
+            command.Parameters.Add("@Status", SqlDbType.Int).Value = status;
+
+            command.ExecuteNonQuery();
+
+            sqlConn.Close();
+        }
+
         public Job GetById(int id)
         {
             SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
@@ -36,15 +52,17 @@ namespace DataAccess
             DataRow row = table.Rows[0];
             return new Job()
             {
-                Id = (int)row["ID"],
-                TypeOfJobId = (int)row["ID_LoaiCV"],
-                Name = row["TenChiTietCV"].ToString(),
-                Status = (int)row["TrangThai"],
-                StartTime = (DateTime)row["ThoiGianBatDau"],
-                EndTime = (DateTime)row["ThoiGianKetThuc"],
-                Priority = (int)row["MucDoUuTien"],
-                Description = row["MoTa"].ToString(),
-                Progress = (int)row["TienDo"]
+                Id = int.Parse(row["ID"].ToString()),
+                TypeOfJobId = int.Parse(row["ID_LoaiCV"].ToString()),
+                Name = row["TenCongViec"].ToString(),
+                Progress = int.Parse(row["TienDo"].ToString()),
+                EndTime = DateTime.Parse(row["ThoiGianKetThuc"].ToString()),
+                Status = int.Parse(row["TrangThai"].ToString()),
+                StartTime = DateTime.Parse(row["ThoiGianBatDau"].ToString()),
+                
+                Priority = int.Parse(row["MucDoUuTien"].ToString()),
+                Description = row["MoTa"].ToString()
+                
             };
         }
 
@@ -179,11 +197,11 @@ namespace DataAccess
             return result > 0;
         }
 
-        public bool Delete(Job job)
+        public bool Delete(int jobId)
         {
             SqlParameter id = new SqlParameter("@id", SqlDbType.Int)
             {
-                Value = job.Id
+                Value = jobId
             };
 
             int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Job_Delete, id);

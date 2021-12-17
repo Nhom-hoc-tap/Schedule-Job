@@ -27,6 +27,11 @@ namespace BusinessLogic
             }
         }
 
+        public void SetStatus(int id, int status)
+        {
+            jobDetailDA.SetStatus(id, status);
+        }
+
         public JobDetail GetById(int id)
         {
             return jobDetailDA.GetById(id);
@@ -47,9 +52,9 @@ namespace BusinessLogic
             return jobDetailDA.Update(jobDetail);
         }
 
-        public bool Delete(JobDetail jobDetail)
+        public bool Delete(int jobDetailId)
         {
-            return jobDetailDA.Delete(jobDetail);
+            return jobDetailDA.Delete(jobDetailId);
         }
     }
 }
