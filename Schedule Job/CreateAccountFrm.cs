@@ -68,6 +68,7 @@ namespace Schedule_Job
 					MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK);
 				}
             }
+			this.Close();
 		}
 
 		private bool ValidateUserInput()

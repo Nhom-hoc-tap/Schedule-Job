@@ -107,5 +107,10 @@ namespace Schedule_Job
 
             return true;
         }
-    }
+
+		private void AddjobDetailFrm_Load(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
