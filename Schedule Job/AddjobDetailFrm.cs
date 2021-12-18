@@ -209,10 +209,4 @@ namespace Schedule_Job
             }
         }
     }
-
-		private void AddjobDetailFrm_Load(object sender, EventArgs e)
-		{
-
-		}
-	}
 }
