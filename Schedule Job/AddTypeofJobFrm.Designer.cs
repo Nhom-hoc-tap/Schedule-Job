@@ -131,7 +131,7 @@ namespace Schedule_Job
             this.MaximizeBox = false;
             this.Name = "AddTypeofJobFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AddTypeofJobFrm";
+            this.Text = "Thêm loại công việc";
             this.Load += new System.EventHandler(this.AddTypeofJobFrm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddTypeofJobFrm_MouseDown);
             this.ResumeLayout(false);
