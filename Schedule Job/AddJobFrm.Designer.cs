@@ -52,8 +52,9 @@ namespace Schedule_Job
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtProgress = new Guna.UI2.WinForms.Guna2TextBox();
+            this.nudProgress = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.rbContinue.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProgress)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -444,31 +445,19 @@ namespace Schedule_Job
             this.label6.TabIndex = 39;
             this.label6.Text = "Mô tả";
             // 
-            // txtProgress
+            // nudProgress
             // 
-            this.txtProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProgress.DefaultText = "0";
-            this.txtProgress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProgress.DisabledState.Parent = this.txtProgress;
-            this.txtProgress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProgress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProgress.FocusedState.Parent = this.txtProgress;
-            this.txtProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtProgress.ForeColor = System.Drawing.Color.Black;
-            this.txtProgress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProgress.HoverState.Parent = this.txtProgress;
-            this.txtProgress.Location = new System.Drawing.Point(636, 267);
-            this.txtProgress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProgress.Name = "txtProgress";
-            this.txtProgress.PasswordChar = '\0';
-            this.txtProgress.PlaceholderText = "";
-            this.txtProgress.SelectedText = "";
-            this.txtProgress.SelectionStart = 1;
-            this.txtProgress.ShadowDecoration.Parent = this.txtProgress;
-            this.txtProgress.Size = new System.Drawing.Size(288, 44);
-            this.txtProgress.TabIndex = 40;
+            this.nudProgress.BackColor = System.Drawing.Color.Transparent;
+            this.nudProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudProgress.DisabledState.Parent = this.nudProgress;
+            this.nudProgress.FocusedState.Parent = this.nudProgress;
+            this.nudProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nudProgress.ForeColor = System.Drawing.Color.Black;
+            this.nudProgress.Location = new System.Drawing.Point(636, 270);
+            this.nudProgress.Name = "nudProgress";
+            this.nudProgress.ShadowDecoration.Parent = this.nudProgress;
+            this.nudProgress.Size = new System.Drawing.Size(288, 36);
+            this.nudProgress.TabIndex = 41;
             // 
             // AddJobFrm
             // 
@@ -476,7 +465,7 @@ namespace Schedule_Job
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(971, 718);
-            this.Controls.Add(this.txtProgress);
+            this.Controls.Add(this.nudProgress);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -506,6 +495,7 @@ namespace Schedule_Job
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddJobFrm_MouseDown);
             this.rbContinue.ResumeLayout(false);
             this.rbContinue.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProgress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -532,10 +522,10 @@ namespace Schedule_Job
 		private Guna.UI2.WinForms.Guna2Button btnCancel;
 		private Guna.UI2.WinForms.Guna2Button btnSave;
 		private System.Windows.Forms.Label label6;
-		private Guna.UI2.WinForms.Guna2TextBox txtProgress;
 		private System.Windows.Forms.RadioButton rbOver;
 		private System.Windows.Forms.RadioButton rbDrop;
 		private System.Windows.Forms.RadioButton rbOnGoing;
 		private System.Windows.Forms.RadioButton rbComplete;
-	}
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudProgress;
+    }
 }

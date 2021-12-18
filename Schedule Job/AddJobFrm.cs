@@ -41,6 +41,11 @@ namespace Schedule_Job
 
         private void AddJobFrm_Load(object sender, EventArgs e)
         {
+            dtpStartDate.Value = DateTime.Now;
+            dtpStartTime.Value = DateTime.Now;
+            dtpEndDate.Value = DateTime.Now;
+            dtpEndTime.Value = DateTime.Now;
+
             LoadCategory();
             ShowJob();
         }
@@ -55,7 +60,7 @@ namespace Schedule_Job
 
             cbbCategory.SelectedValue = job.TypeOfJobId;
             txtName.Text = job.Name;
-            txtProgress.Text = job.Progress.ToString();
+            nudProgress.Value = job.Progress;
             cbbPriority.SelectedIndex = job.Priority;
             txtDescription.Text = job.Description;
 
@@ -136,7 +141,7 @@ namespace Schedule_Job
             int priority = cbbPriority.SelectedIndex;
             string description = txtDescription.Text;
             int status = GetStatus();
-            int progress = int.Parse( txtProgress.Text);
+            int progress = (int)nudProgress.Value;
             return new Job()
             {
                 Id = jobId,
@@ -216,6 +221,7 @@ namespace Schedule_Job
                 MessageBox.Show("Ngày kết thúc không được trước ngày bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
             if (rbOver.Checked == true && endDate > startDate && endDate>DateTime.Now)
             {
                 MessageBox.Show("Công việc chưa quá hạn mà bạn ơi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -229,16 +235,14 @@ namespace Schedule_Job
         {
             if (rbComplete.Checked == true)
             {
-                txtProgress.Text = "100";
-                txtProgress.Enabled = false;
+                nudProgress.Value = 100;
+                nudProgress.Enabled = false;
             }
             else
             {
-                txtProgress.Text = "0";
-                txtProgress.Enabled = true;
+                nudProgress.Value = 0;
+                nudProgress.Enabled = true;
             }
         }
-
-        
     }
 }

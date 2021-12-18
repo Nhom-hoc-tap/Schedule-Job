@@ -12,18 +12,16 @@ using System.Windows.Forms;
 
 namespace Schedule_Job
 {
-	public partial class AddjobDetailFrm : Form
-	{
+    public partial class AddjobDetailFrm : Form
+    {
         private int jobDetailId;
 
         private int jobId;
 
-        
-
-		public AddjobDetailFrm()
-		{
-			InitializeComponent();
-		}
+        public AddjobDetailFrm()
+        {
+            InitializeComponent();
+        }
 
         public AddjobDetailFrm(int jobId, int? jobDetailId = null) : this()
         {
@@ -36,10 +34,10 @@ namespace Schedule_Job
         {
             ShowDetailJob();
 
-            txtProgress.Enabled = true;
-            txtActualTime.Enabled = false;
-            txtActualTime.Text = "0";
-            txtProgress.Text = "0";
+            nudProgress.Enabled = true;
+            nudActualTime.Enabled = false;
+            nudActualTime.Value = 0;
+            nudProgress.Value = 0;
         }
 
         private void ShowDetailJob()
@@ -51,13 +49,11 @@ namespace Schedule_Job
             }
 
             txtName.Text = jobDetail.Name;
-            txtEstimatedTime.Text = jobDetail.EstimateTime.ToString();
-            txtActualTime.Text = jobDetail.ActualTime.ToString();
-            txtProgress.Text = jobDetail.Progress.ToString();
+            nudEstimatedTime.Value = jobDetail.EstimateTime;
+            nudActualTime.Value = jobDetail.ActualTime;
+            nudProgress.Value = jobDetail.Progress;
             cbbPriority.SelectedIndex = jobDetail.Priority;
             txtDesciption.Text = jobDetail.Description;
-
-            
 
             LoadStatus(jobDetail);
         }
@@ -86,7 +82,7 @@ namespace Schedule_Job
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-			Close();
+            Close();
         }
 
         private JobDetail GetJobDetailById(int id)
@@ -97,18 +93,18 @@ namespace Schedule_Job
         private JobDetail GetJobDetail()
         {
             string name = txtName.Text;
-            int estimateTime = int.Parse(txtEstimatedTime.Text);
+            int estimateTime = int.Parse(nudEstimatedTime.Text);
             int actualTime = 0;
             try
             {
-                actualTime = int.Parse(txtActualTime.Text);
+                actualTime = int.Parse(nudActualTime.Text);
             }
-            catch ( Exception ex)
+            catch (Exception ex)
             { }
-                
+
             int priority = cbbPriority.SelectedIndex;
             string desctiption = txtDesciption.Text;
-            int progress = int.Parse(txtProgress.Text);
+            int progress = (int)nudProgress.Value;
             int status = GetStatus();
             return new JobDetail()
             {
@@ -121,7 +117,7 @@ namespace Schedule_Job
                 Description = desctiption,
                 Progress = progress,
                 Status = status,
-                
+
             };
         }
 
@@ -170,21 +166,15 @@ namespace Schedule_Job
                 MessageBox.Show("Không được để trống tên công việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (txtEstimatedTime.Text == "")
+            if (nudEstimatedTime.Value == 0)
             {
                 MessageBox.Show("Hãy nhập thời gian bạn dự kiến hoàn thành công việc", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if ((rbComplete.Checked == true && txtActualTime.Text=="") || (rbComplete.Checked == true && txtActualTime.Text == "0"))
+
+            if ((rbComplete.Checked == true && nudActualTime.Value == 0) || (rbComplete.Checked == true && nudActualTime.Value == 0))
             {
                 MessageBox.Show("Hãy nhập thời gian bạn hoàn thành công việc trong thực tế", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            int progress = int.Parse(txtProgress.Text);
-            if(progress>100 || progress < 0)
-            {
-                txtProgress.Text = "0";
-                MessageBox.Show("Tiến độ phải thuộc khoảng từ 0 tới 100 %", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -194,17 +184,17 @@ namespace Schedule_Job
         private void rbComplete_CheckedChanged(object sender, EventArgs e)
         {
             if (rbComplete.Checked == true)
-            { 
-                txtProgress.Text = "100";
-                txtProgress.Enabled = false;
-                txtActualTime.Enabled = true;
+            {
+                nudProgress.Value = 100;
+                nudProgress.Enabled = false;
+                nudActualTime.Enabled = true;
             }
             else
             {
-                txtProgress.Enabled = true;
-                txtActualTime.Enabled = false;
-                txtActualTime.Text = "0";
-                txtProgress.Text = "0";
+                nudProgress.Enabled = true;
+                nudActualTime.Enabled = false;
+                nudActualTime.Value = 0;
+                nudProgress.Value = 0;
             }
         }
     }
