@@ -23,6 +23,7 @@ namespace Schedule_Job
         private int _prv_type_job_id;
 
         private DayControl _clicked_day_control;
+        private DayControl _prv_clicked_day_control;
 
         private int _month, _year;
 
@@ -188,11 +189,13 @@ namespace Schedule_Job
         {
             int selectedTypeId = ((TypeOfJob)cbb_type_jobs.SelectedItem).Id;
             _current_type_of_job_id = selectedTypeId;
-            List<Job> jobs = new List<Job>();
+            _list_job = _jobBL.GetByAccount(userName);
+            //_prv_clicked_day_control = _clicked_day_control;
+            //_clicked_day_control = null;
             if (selectedTypeId == 0)
-                jobs = _jobBL.GetByAccount(userName);
-            else jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
-            LoadJobs(jobs);
+                LoadJobs(_list_job);
+            else
+                LoadJobs(_list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId)));
         }
 
         private void txt_search_TextChanged(object sender, EventArgs e)
@@ -204,9 +207,13 @@ namespace Schedule_Job
         private void btn_search_Click(object sender, EventArgs e)
         {
             //SearchByUnit();
+            Search();
+
+        }
+        private void Search()
+        {
             if (ckb_search_job.Checked == true) SearchJob();
             if (ckb_search_job_detail.Checked == true) SearchJobDetail();
-
         }
 
         private void SearchJob()
@@ -399,7 +406,6 @@ namespace Schedule_Job
 
         private void DisplayCalendar(int month, int year)
         {
-
             fpn_display_calendar.Controls.Clear();
             String monthname = DateTimeFormatInfo.CurrentInfo.GetMonthName(month);
             lbl_month_year.Text = monthname + " " + year.ToString();
@@ -428,13 +434,21 @@ namespace Schedule_Job
             }
         }
 
+
         private void DayControl_Click(object sender, EventArgs e)
         {
             List<Job> jobs = (sender as DayControl).jobs;
-            _clicked_day_control = sender as DayControl;
+            DayControl dc = sender as DayControl;
+            if( dc!=null )
+            {
+                _prv_clicked_day_control = dc;
+                _clicked_day_control = sender as DayControl;
+            }
+                
+            LoadJobsVer2(jobs);
             _current_type_of_job_id = 0;
             cbb_type_jobs.SelectedValue = 0;
-            LoadJobsVer2(jobs);
+            
         }
 
         private void tsm_count_Click(object sender, EventArgs e)
@@ -450,19 +464,21 @@ namespace Schedule_Job
             {
                 _prv_type_job_id = _current_type_of_job_id;
                 LoadTypeOfJobs();
+                _clicked_day_control = _prv_clicked_day_control;
                 _current_type_of_job_id = _prv_type_job_id;
-                cbb_type_jobs.SelectedValue= _current_type_of_job_id;
+                
                 _list_job = _jobBL.GetByAccount(userName);
-                if (_current_type_of_job_id == 0)
-                {
-                    LoadJobs(_list_job);
-                }
-                    
-                else
-                {
-                   LoadJobs( _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
-                }
+                
                 DisplayCalendar(_month, _year);
+
+                if (_current_type_of_job_id == 0)
+                    LoadJobs(_list_job);
+                if (_current_type_of_job_id != 0)
+                {
+                    cbb_type_jobs.SelectedValue = _current_type_of_job_id;
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id)); }
+                DisplayCalendar(_month, _year);
+                fpn_job_detail.Controls.Clear();
             }
         }
 
@@ -472,11 +488,14 @@ namespace Schedule_Job
             if (form.ShowDialog(this) == DialogResult.OK)
             {
                 _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
+                _list_job = _jobBL.GetByAccount(userName);
                 LoadJobDetail(_list_job_detail);
-                if (_current_type_of_job_id > 0)
-                    LoadJobs(_jobBL.GetByAccount(userName).FindAll(x => x.TypeOfJobId == _current_type_of_job_id).ToList());
-                else
-                    LoadJobs(_jobBL.GetByAccount(userName));
+                //DisplayCalendar(_month, _year);
+                
+                if (_current_type_of_job_id == 0)
+                    LoadJobs(_list_job);
+                if (_current_type_of_job_id != 0)
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
                 ShowCurrentSelectedJob();
             }
         }
@@ -521,6 +540,10 @@ namespace Schedule_Job
                 LoadJobDetail(_jobDetailBL.GetByJobId(_current_job_id));
                 ShowCurrentSelectedJob();
             }
+            else
+            {
+                MessageBox.Show("Chỉ tạm dừng công việc đang tiến hành!", "Thông báo");
+            }
         }
 
         private void tsm_set_job_to_ongoing_Click(object sender, EventArgs e)
@@ -540,22 +563,29 @@ namespace Schedule_Job
                 LoadJobDetail(_jobDetailBL.GetByJobId(_current_job_id));
                 ShowCurrentSelectedJob();
             }
+            else
+            {
+                MessageBox.Show("Chỉ tiếp tục thực hiện công việc đã tạm dừng!", "Thông báo");
+            }
         }
 
         private void tsm_delete_job_Click(object sender, EventArgs e)
         {
-            _jobBL.Delete(_current_job_id);
-            _current_job_id = 0;
-            _list_job = _jobBL.GetByAccount(userName);
-            if(_current_type_of_job_id == 0)
-                LoadJobs(_list_job);
-            LoadJobs(_list_job.FindAll(x=>x.TypeOfJobId==_current_type_of_job_id));
-            fpn_job_detail.Controls.Clear();
-            DisplayCalendar(_month, _year);
-            
-            _clicked_day_control.jobs = _list_job.FindAll(x => (x.EndTime.Day == int.Parse(_clicked_day_control.lbl_day.Text) && x.EndTime.Month == _month && x.EndTime.Year == _year));
-            DayControl_Click(_clicked_day_control, EventArgs.Empty);
-            
+            DialogResult dialogResult = MessageBox.Show("Xác nhận xóa? Xóa sẽ làm mất công việc vĩnh viễn.", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if(dialogResult == DialogResult.Yes)
+            {
+                _jobBL.Delete(_current_job_id);
+                _current_job_id = 0;
+                _list_job = _jobBL.GetByAccount(userName);
+
+                fpn_job_detail.Controls.Clear();
+                DisplayCalendar(_month, _year);
+
+                if (_current_type_of_job_id == 0)
+                    LoadJobs(_list_job);
+                if (_current_type_of_job_id != 0)
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
+            }
         }
 
         private void tsm_add_job_detail_Click(object sender, EventArgs e)
@@ -580,11 +610,21 @@ namespace Schedule_Job
 
         private void tsm_delete_job_detail_Click(object sender, EventArgs e)
         {
-            if (_current_job_detail_id == 0)
-                return;
-            _jobDetailBL.Delete(_current_job_detail_id);
-            _current_job_detail_id = 0;
-            LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+            DialogResult dialogResult = MessageBox.Show("Xác nhận xóa? Xóa sẽ làm mất chi tiết công việc vĩnh viễn.", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (dialogResult == DialogResult.Yes)
+            {
+                if (_current_job_detail_id == 0)
+                    return;
+                _jobDetailBL.Delete(_current_job_detail_id);
+                _current_job_detail_id = 0;
+                LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
+                _jobBL.CheckProgress(_current_job_id);
+                _list_job = _jobBL.GetByAccount(userName);
+                if (_current_type_of_job_id == 0)
+                    LoadJobs(_list_job);
+                else
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
+            }
         }
 
         private void tsm_set_job_detail_to_drop_Click(object sender, EventArgs e)
@@ -595,6 +635,10 @@ namespace Schedule_Job
                 LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
                 ShowCurrentSelectedJobDetail();
             }
+            else
+            {
+                MessageBox.Show("Chỉ tạm dừng công việc đang tiến hành!", "Thông báo");
+            }
         }
 
         private void tsm_set_to_ongoing_Click(object sender, EventArgs e)
@@ -604,6 +648,10 @@ namespace Schedule_Job
                 _jobDetailBL.SetStatus(_current_job_detail_id, 0);
                 LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
                 ShowCurrentSelectedJobDetail();
+            }
+            else
+            {
+                MessageBox.Show("Chỉ tiếp tục thực hiện công việc đã tạm dừng!", "Thông báo");
             }
         }
 

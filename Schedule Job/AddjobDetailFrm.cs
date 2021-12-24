@@ -154,12 +154,21 @@ namespace Schedule_Job
                 if (oldJobDetail is null)
                 {
                     JobDetailBL.Instance.Insert(newJobDetail);
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    JobDetailBL.Instance.Update(newJobDetail);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhật? Cập nhật sẽ làm thay đổi dữ liệu", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        JobDetailBL.Instance.Update(newJobDetail);
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                    {
+                        DialogResult = DialogResult.No;
+                    }
                 }
-                DialogResult = DialogResult.OK;
             }
         }
 

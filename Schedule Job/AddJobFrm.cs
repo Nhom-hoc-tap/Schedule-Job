@@ -136,6 +136,8 @@ namespace Schedule_Job
             int priority = cbbPriority.SelectedIndex;
             string description = txtDescription.Text;
             int status = GetStatus();
+            if (txtProgress.Text == "")
+                txtProgress.Text = "0";
             int progress = int.Parse( txtProgress.Text);
             return new Job()
             {
@@ -185,12 +187,20 @@ namespace Schedule_Job
                 if (oldJob is null)
                 {
                     JobBL.Instance.Insert(newJob);
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    JobBL.Instance.Update(newJob);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhật? Cập nhật sẽ làm thay đổi dữ liệu", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        JobBL.Instance.Update(newJob);
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                        DialogResult = DialogResult.No;
                 }
-                DialogResult = DialogResult.OK;
+                
             }
         }
 

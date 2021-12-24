@@ -35,6 +35,11 @@ namespace BusinessLogic
             return jobDA.GetById(id);
         }
 
+        public void CheckProgress(int id)
+        {
+            jobDA.CheckProgress(id);
+        }
+
         public List<Job> GetByAccount(string accountName)
         {
             return jobDA.GetByAccount(accountName);

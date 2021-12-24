@@ -18,14 +18,11 @@ namespace Schedule_Job
         private JobBL _jobBL;
         private JobDetailBL _jobDetailBL;
         private string _current_account_name;
-
         int sum = 0;
-
         int jobComplete = 0;
         int jobOngoing = 0;
         int jobDrop = 0;
         int jobOver = 0;
-
         public StatisticalForm(string accountName)
         {
             _current_account_name = accountName;
@@ -34,7 +31,6 @@ namespace Schedule_Job
             _jobDetailBL = JobDetailBL.Instance;
             InitializeComponent();
         }
-
         private void StatisticalForm_Load(object sender, EventArgs e)
         {
             LoadTypeOfJob();
@@ -46,7 +42,6 @@ namespace Schedule_Job
             cbb_type_of_job.DisplayMember = "Name";
             cbb_type_of_job.ValueMember = "Id";
         }
-
         private void btn_search_Click(object sender, EventArgs e)
         {
             pie_chart.Series.Clear();
@@ -103,7 +98,6 @@ namespace Schedule_Job
             lv_detail.Items.Add(listViewItem);
 
         }
-
         private string CountTime(DateTime d1, DateTime d2)
         {
             //DateTime d1 = DateTime.Now ;//new DateTime(2021, 12, 8, 7, 0, 0);
@@ -117,9 +111,6 @@ namespace Schedule_Job
             kq += D + " ngày, " + H + " giờ, " + M + " phút";
             return kq;
         }
-
-
-        
         private int CountJob(Job job)
         {
             int kq = 0;
@@ -133,9 +124,6 @@ namespace Schedule_Job
             }
             return kq;
         }
-
-       
-
         private void lv_job_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_job.SelectedItems.Count > 0)
@@ -189,7 +177,7 @@ namespace Schedule_Job
                 {
                     ListViewItem listViewItem = new ListViewItem(jd.Id.ToString());
                     listViewItem.SubItems.Add(jd.Name);
-                    listViewItem.SubItems.Add("TK: "+ (jd.EstimateTime - jd.ActualTime).ToString()+" phút");
+                    listViewItem.SubItems.Add("Đã hoàn thành, Tiết kiệm: " + (jd.EstimateTime - jd.ActualTime).ToString()+" phút");
                     lv_job_detail.Items.Add(listViewItem);
                 }
                 SetInfo(jobDetails);
@@ -214,7 +202,6 @@ namespace Schedule_Job
                 SetInfo(jobDetails);
             }
         }
-
         private void lv_detail_SelectedIndexChanged(object sender, EventArgs e)
         {
             lv_job.Items.Clear();
@@ -297,7 +284,6 @@ namespace Schedule_Job
                 }
             }
         }
-
         private void LoadJobDrop()
         {
             lv_job.Items.Clear();
@@ -364,7 +350,5 @@ namespace Schedule_Job
                 }
             }
         }
-
-        
     }
 }
