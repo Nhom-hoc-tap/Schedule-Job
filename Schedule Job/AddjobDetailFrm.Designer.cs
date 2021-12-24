@@ -29,7 +29,6 @@ namespace Schedule_Job
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.txtProgress = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
@@ -46,37 +45,16 @@ namespace Schedule_Job
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtEstimatedTime = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtActualTime = new Guna.UI2.WinForms.Guna2TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.nudProgress = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.nudEstimatedTime = new Guna.UI2.WinForms.Guna2NumericUpDown();
+            this.nudActualTime = new Guna.UI2.WinForms.Guna2NumericUpDown();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProgress)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEstimatedTime)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActualTime)).BeginInit();
             this.SuspendLayout();
-            // 
-            // txtProgress
-            // 
-            this.txtProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtProgress.DefaultText = "";
-            this.txtProgress.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtProgress.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtProgress.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProgress.DisabledState.Parent = this.txtProgress;
-            this.txtProgress.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtProgress.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProgress.FocusedState.Parent = this.txtProgress;
-            this.txtProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtProgress.ForeColor = System.Drawing.Color.Black;
-            this.txtProgress.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtProgress.HoverState.Parent = this.txtProgress;
-            this.txtProgress.Location = new System.Drawing.Point(49, 368);
-            this.txtProgress.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProgress.Name = "txtProgress";
-            this.txtProgress.PasswordChar = '\0';
-            this.txtProgress.PlaceholderText = "";
-            this.txtProgress.SelectedText = "";
-            this.txtProgress.ShadowDecoration.Parent = this.txtProgress;
-            this.txtProgress.Size = new System.Drawing.Size(276, 44);
-            this.txtProgress.TabIndex = 60;
             // 
             // label6
             // 
@@ -328,56 +306,6 @@ namespace Schedule_Job
             this.label1.TabIndex = 41;
             this.label1.Text = "Tên chi tiết công việc:";
             // 
-            // txtEstimatedTime
-            // 
-            this.txtEstimatedTime.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtEstimatedTime.DefaultText = "";
-            this.txtEstimatedTime.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtEstimatedTime.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtEstimatedTime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEstimatedTime.DisabledState.Parent = this.txtEstimatedTime;
-            this.txtEstimatedTime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtEstimatedTime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEstimatedTime.FocusedState.Parent = this.txtEstimatedTime;
-            this.txtEstimatedTime.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtEstimatedTime.ForeColor = System.Drawing.Color.Black;
-            this.txtEstimatedTime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEstimatedTime.HoverState.Parent = this.txtEstimatedTime;
-            this.txtEstimatedTime.Location = new System.Drawing.Point(49, 174);
-            this.txtEstimatedTime.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEstimatedTime.Name = "txtEstimatedTime";
-            this.txtEstimatedTime.PasswordChar = '\0';
-            this.txtEstimatedTime.PlaceholderText = "";
-            this.txtEstimatedTime.SelectedText = "";
-            this.txtEstimatedTime.ShadowDecoration.Parent = this.txtEstimatedTime;
-            this.txtEstimatedTime.Size = new System.Drawing.Size(145, 44);
-            this.txtEstimatedTime.TabIndex = 61;
-            // 
-            // txtActualTime
-            // 
-            this.txtActualTime.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtActualTime.DefaultText = "";
-            this.txtActualTime.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtActualTime.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtActualTime.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtActualTime.DisabledState.Parent = this.txtActualTime;
-            this.txtActualTime.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtActualTime.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtActualTime.FocusedState.Parent = this.txtActualTime;
-            this.txtActualTime.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtActualTime.ForeColor = System.Drawing.Color.Black;
-            this.txtActualTime.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtActualTime.HoverState.Parent = this.txtActualTime;
-            this.txtActualTime.Location = new System.Drawing.Point(47, 267);
-            this.txtActualTime.Margin = new System.Windows.Forms.Padding(4);
-            this.txtActualTime.Name = "txtActualTime";
-            this.txtActualTime.PasswordChar = '\0';
-            this.txtActualTime.PlaceholderText = "";
-            this.txtActualTime.SelectedText = "";
-            this.txtActualTime.ShadowDecoration.Parent = this.txtActualTime;
-            this.txtActualTime.Size = new System.Drawing.Size(148, 44);
-            this.txtActualTime.TabIndex = 62;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -400,16 +328,68 @@ namespace Schedule_Job
             this.label8.TabIndex = 64;
             this.label8.Text = "Phút";
             // 
+            // nudProgress
+            // 
+            this.nudProgress.BackColor = System.Drawing.Color.Transparent;
+            this.nudProgress.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudProgress.DisabledState.Parent = this.nudProgress;
+            this.nudProgress.FocusedState.Parent = this.nudProgress;
+            this.nudProgress.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nudProgress.ForeColor = System.Drawing.Color.Black;
+            this.nudProgress.Location = new System.Drawing.Point(49, 368);
+            this.nudProgress.Name = "nudProgress";
+            this.nudProgress.ShadowDecoration.Parent = this.nudProgress;
+            this.nudProgress.Size = new System.Drawing.Size(276, 36);
+            this.nudProgress.TabIndex = 65;
+            // 
+            // nudEstimatedTime
+            // 
+            this.nudEstimatedTime.BackColor = System.Drawing.Color.Transparent;
+            this.nudEstimatedTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudEstimatedTime.DisabledState.Parent = this.nudEstimatedTime;
+            this.nudEstimatedTime.FocusedState.Parent = this.nudEstimatedTime;
+            this.nudEstimatedTime.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nudEstimatedTime.ForeColor = System.Drawing.Color.Black;
+            this.nudEstimatedTime.Location = new System.Drawing.Point(51, 180);
+            this.nudEstimatedTime.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.nudEstimatedTime.Name = "nudEstimatedTime";
+            this.nudEstimatedTime.ShadowDecoration.Parent = this.nudEstimatedTime;
+            this.nudEstimatedTime.Size = new System.Drawing.Size(145, 36);
+            this.nudEstimatedTime.TabIndex = 66;
+            // 
+            // nudActualTime
+            // 
+            this.nudActualTime.BackColor = System.Drawing.Color.Transparent;
+            this.nudActualTime.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.nudActualTime.DisabledState.Parent = this.nudActualTime;
+            this.nudActualTime.FocusedState.Parent = this.nudActualTime;
+            this.nudActualTime.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.nudActualTime.ForeColor = System.Drawing.Color.Black;
+            this.nudActualTime.Location = new System.Drawing.Point(51, 270);
+            this.nudActualTime.Maximum = new decimal(new int[] {
+            1000000000,
+            0,
+            0,
+            0});
+            this.nudActualTime.Name = "nudActualTime";
+            this.nudActualTime.ShadowDecoration.Parent = this.nudActualTime;
+            this.nudActualTime.Size = new System.Drawing.Size(145, 36);
+            this.nudActualTime.TabIndex = 67;
+            // 
             // AddjobDetailFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(725, 705);
+            this.Controls.Add(this.nudActualTime);
+            this.Controls.Add(this.nudEstimatedTime);
+            this.Controls.Add(this.nudProgress);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.txtActualTime);
-            this.Controls.Add(this.txtEstimatedTime);
-            this.Controls.Add(this.txtProgress);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -431,14 +411,15 @@ namespace Schedule_Job
             this.Load += new System.EventHandler(this.AddjobDetailFrm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudProgress)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudEstimatedTime)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudActualTime)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
 		}
 
 		#endregion
-
-		private Guna.UI2.WinForms.Guna2TextBox txtProgress;
 		private System.Windows.Forms.Label label6;
 		private Guna.UI2.WinForms.Guna2Button btnCancel;
 		private Guna.UI2.WinForms.Guna2Button btnSave;
@@ -451,13 +432,14 @@ namespace Schedule_Job
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private Guna.UI2.WinForms.Guna2TextBox txtEstimatedTime;
-		private Guna.UI2.WinForms.Guna2TextBox txtActualTime;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.RadioButton rbOver;
 		private System.Windows.Forms.RadioButton rbDrop;
 		private System.Windows.Forms.RadioButton rbOnGoing;
 		private System.Windows.Forms.RadioButton rbComplete;
-	}
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudProgress;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudEstimatedTime;
+        private Guna.UI2.WinForms.Guna2NumericUpDown nudActualTime;
+    }
 }
