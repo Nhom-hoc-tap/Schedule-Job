@@ -69,6 +69,7 @@ namespace Schedule_Job
 			this.txtPassword.ShadowDecoration.Parent = this.txtPassword;
 			this.txtPassword.Size = new System.Drawing.Size(302, 36);
 			this.txtPassword.TabIndex = 1;
+			this.txtPassword.UseSystemPasswordChar = true;
 			// 
 			// btnChangePassword
 			// 
