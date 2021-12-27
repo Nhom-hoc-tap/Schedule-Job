@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Schedule_Job;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -98,9 +99,25 @@ namespace DataAccess
             {
                 Value = account.Birth
             };
+            SqlParameter Question = new SqlParameter("@Cauhoi", SqlDbType.NVarChar,255)
+            {
+                Value = account.Question
+            };
+            SqlParameter Answer = new SqlParameter("@Cautraloi", SqlDbType.NVarChar, 255)
+            {
+                Value = account.Answer
+            };
 
-            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Account_Insert, userName, password, fullName, gender, birth);
+            int result = SqlHelper.Instance.ExecuteNonQuery(Utilities.Account_Insert, userName, password, fullName, gender, birth,Question,Answer);
             return result > 0;
         }
+
+        public bool Update(string username,string password)
+		{
+            string query = string.Format("UPDATE TaiKhoan SET [MatKhau] = N'{1}' where [TenDangNhap] = N'{0}'", username, password);
+            int result = DataProvider.Instance.ExecuteNonQuery(query);
+
+            return result > 0;
+		}
     }
 }

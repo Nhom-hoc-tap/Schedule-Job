@@ -68,6 +68,7 @@ namespace Schedule_Job
             _month = now.Month;
             _year = now.Year;
             DisplayCalendar(_month, _year);
+
         }
 
         private void Txt_search_LostFocus(object sender, EventArgs e)
@@ -607,7 +608,26 @@ namespace Schedule_Job
             }
         }
 
-        private void LoadJobsVer2(List<Job> jobs)
+		private void tsm_account_Click(object sender, EventArgs e)
+		{
+            
+		}
+
+		private void đăngXuâtToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            this.Close();
+            this.Hide();
+            LoginFrm lgfrm = new LoginFrm();
+            lgfrm.ShowDialog();
+		}
+
+		private void đôiMâtKhâuToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+            ChangePasswordFrm frm = new ChangePasswordFrm();
+            frm.Show();
+        }
+
+		private void LoadJobsVer2(List<Job> jobs)
         {
             fpn_jobs.Controls.Clear();
             if (jobs.Count > 0)

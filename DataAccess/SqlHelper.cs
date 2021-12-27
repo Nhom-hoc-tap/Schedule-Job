@@ -72,7 +72,6 @@ namespace DataAccess
             using (var conn = new SqlConnection(Utilities.ConnectionString))
             {
                 conn.Open();
-
                 SqlCommand cmd = conn.CreateCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = query;

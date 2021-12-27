@@ -13,5 +13,8 @@ namespace DataAccess
         public string FullName { get; set; }
         public bool Gender { get; set; }
         public DateTime Birth { get; set; }
+
+        public string Question { get; set; }
+        public string Answer { get; set; }
     }
 }

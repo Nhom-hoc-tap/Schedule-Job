@@ -19,6 +19,7 @@ namespace Schedule_Job
         {
             InitializeComponent();
         }
+        public static string userName = "";
 
         private void LoginFrm_Load(object sender, EventArgs e)
         {
@@ -56,7 +57,7 @@ namespace Schedule_Job
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            string userName = txtUserName.Text;
+            userName = txtUserName.Text;
             string password = txtPassword.Text;
             if (Login(userName, password))
             {
