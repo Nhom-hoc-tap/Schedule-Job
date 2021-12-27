@@ -71,7 +71,6 @@ namespace Schedule_Job.UserComponent
             }
             else
             {
-                //pb_priority.Image = Properties.Resources.outline_star_24;
                 pb_priority.Visible = false;
 
             }

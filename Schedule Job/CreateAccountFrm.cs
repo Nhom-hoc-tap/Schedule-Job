@@ -49,13 +49,17 @@ namespace Schedule_Job
 			string password = txtPassword.Text;
 			bool gender = rbMale.Checked;
 			DateTime birth = dtpBirth.Value;
+			string question = cbbQuestion.Text;
+			string answer = txtAnswer.Text;
 			return new Account()
 			{
 				UserName = userName,
 				Password = password,
 				FullName = fullName,
 				Gender = gender,
-				Birth = birth
+				Birth = birth,
+				Question = question,
+				Answer = answer
             };
         }
 
@@ -68,6 +72,7 @@ namespace Schedule_Job
 					MessageBox.Show("Thêm tài khoản thành công!", "Thông báo", MessageBoxButtons.OK);
 				}
             }
+			this.Close();
 		}
 
 		private bool ValidateUserInput()
@@ -99,6 +104,12 @@ namespace Schedule_Job
 			if (txtPassword.Text != txtConfimPassword.Text)
 			{
 				MessageBox.Show("Mật khẩu nhập lại không đúng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				return false;
+			}
+
+			if(string.IsNullOrWhiteSpace(txtAnswer.Text))
+			{
+				MessageBox.Show("Không được để trống câu trả lời nhằm tìm lại mật khẩu khi bạn quên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return false;
 			}
 

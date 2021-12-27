@@ -30,6 +30,8 @@ namespace DataAccess
 
         public static string Job_SetToDrop => "SetJobStatus";
 
+        public static string Job_CheckProgress => "CheckJobProgress";
+
         //---JobDetail
         public static string JobDetail_GetById => "ChiTietCV_GetById";
 

@@ -80,6 +80,8 @@ namespace Schedule_Job
             this.btn_add_job = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsm_account = new System.Windows.Forms.ToolStripMenuItem();
+            this.đăngXuâtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đôiMâtKhâuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_count = new System.Windows.Forms.ToolStripMenuItem();
             this.tsm_option = new System.Windows.Forms.ToolStripMenuItem();
             this.cms_job = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -109,8 +111,9 @@ namespace Schedule_Job
             this.fpn_job_detail.AutoScroll = true;
             this.fpn_job_detail.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fpn_job_detail.Location = new System.Drawing.Point(519, 290);
+            this.fpn_job_detail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fpn_job_detail.Name = "fpn_job_detail";
-            this.fpn_job_detail.Size = new System.Drawing.Size(660, 524);
+            this.fpn_job_detail.Size = new System.Drawing.Size(661, 524);
             this.fpn_job_detail.TabIndex = 4;
             // 
             // fpn_jobs
@@ -119,7 +122,8 @@ namespace Schedule_Job
             | System.Windows.Forms.AnchorStyles.Left)));
             this.fpn_jobs.AutoScroll = true;
             this.fpn_jobs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fpn_jobs.Location = new System.Drawing.Point(10, 290);
+            this.fpn_jobs.Location = new System.Drawing.Point(11, 290);
+            this.fpn_jobs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fpn_jobs.Name = "fpn_jobs";
             this.fpn_jobs.Size = new System.Drawing.Size(503, 524);
             this.fpn_jobs.TabIndex = 2;
@@ -140,14 +144,16 @@ namespace Schedule_Job
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.fpn_display_calendar);
-            this.panel1.Location = new System.Drawing.Point(1185, 13);
+            this.panel1.Location = new System.Drawing.Point(1185, 14);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(350, 801);
             this.panel1.TabIndex = 5;
             // 
             // btn_next_month
             // 
-            this.btn_next_month.Location = new System.Drawing.Point(270, 24);
+            this.btn_next_month.Location = new System.Drawing.Point(269, 25);
+            this.btn_next_month.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_next_month.Name = "btn_next_month";
             this.btn_next_month.Size = new System.Drawing.Size(75, 23);
             this.btn_next_month.TabIndex = 3;
@@ -157,7 +163,8 @@ namespace Schedule_Job
             // 
             // btn_prev_month
             // 
-            this.btn_prev_month.Location = new System.Drawing.Point(6, 24);
+            this.btn_prev_month.Location = new System.Drawing.Point(5, 25);
+            this.btn_prev_month.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_prev_month.Name = "btn_prev_month";
             this.btn_prev_month.Size = new System.Drawing.Size(75, 23);
             this.btn_prev_month.TabIndex = 3;
@@ -168,7 +175,7 @@ namespace Schedule_Job
             // lbl_month_year
             // 
             this.lbl_month_year.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_month_year.Location = new System.Drawing.Point(87, 24);
+            this.lbl_month_year.Location = new System.Drawing.Point(87, 25);
             this.lbl_month_year.Name = "lbl_month_year";
             this.lbl_month_year.Size = new System.Drawing.Size(177, 23);
             this.lbl_month_year.TabIndex = 2;
@@ -185,7 +192,7 @@ namespace Schedule_Job
             // 
             // label11
             // 
-            this.label11.Location = new System.Drawing.Point(258, 58);
+            this.label11.Location = new System.Drawing.Point(259, 58);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(45, 20);
             this.label11.TabIndex = 1;
@@ -217,7 +224,7 @@ namespace Schedule_Job
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(54, 58);
+            this.label4.Location = new System.Drawing.Point(53, 58);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(45, 20);
             this.label4.TabIndex = 1;
@@ -234,8 +241,9 @@ namespace Schedule_Job
             // fpn_display_calendar
             // 
             this.fpn_display_calendar.Location = new System.Drawing.Point(3, 81);
+            this.fpn_display_calendar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fpn_display_calendar.Name = "fpn_display_calendar";
-            this.fpn_display_calendar.Size = new System.Drawing.Size(342, 300);
+            this.fpn_display_calendar.Size = new System.Drawing.Size(341, 300);
             this.fpn_display_calendar.TabIndex = 0;
             // 
             // cbb_type_jobs
@@ -245,6 +253,7 @@ namespace Schedule_Job
             this.cbb_type_jobs.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbb_type_jobs.FormattingEnabled = true;
             this.cbb_type_jobs.Location = new System.Drawing.Point(9, 256);
+            this.cbb_type_jobs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbb_type_jobs.Name = "cbb_type_jobs";
             this.cbb_type_jobs.Size = new System.Drawing.Size(459, 28);
             this.cbb_type_jobs.TabIndex = 7;
@@ -262,7 +271,7 @@ namespace Schedule_Job
             // lbl_num_job
             // 
             this.lbl_num_job.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_num_job.Location = new System.Drawing.Point(114, 817);
+            this.lbl_num_job.Location = new System.Drawing.Point(115, 817);
             this.lbl_num_job.Name = "lbl_num_job";
             this.lbl_num_job.Size = new System.Drawing.Size(101, 23);
             this.lbl_num_job.TabIndex = 9;
@@ -271,7 +280,7 @@ namespace Schedule_Job
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label2.Location = new System.Drawing.Point(518, 817);
+            this.label2.Location = new System.Drawing.Point(517, 817);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(168, 23);
             this.label2.TabIndex = 9;
@@ -291,8 +300,10 @@ namespace Schedule_Job
             this.groupBox1.Controls.Add(this.txt_search);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(497, 38);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(682, 67);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(683, 66);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm kiếm theo tên";
@@ -300,7 +311,8 @@ namespace Schedule_Job
             // txt_search
             // 
             this.txt_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_search.Location = new System.Drawing.Point(22, 26);
+            this.txt_search.Location = new System.Drawing.Point(21, 26);
+            this.txt_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(651, 27);
             this.txt_search.TabIndex = 0;
@@ -313,7 +325,8 @@ namespace Schedule_Job
             this.ckb_search_job.Checked = true;
             this.ckb_search_job.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckb_search_job.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ckb_search_job.Location = new System.Drawing.Point(134, 26);
+            this.ckb_search_job.Location = new System.Drawing.Point(133, 26);
+            this.ckb_search_job.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_search_job.Name = "ckb_search_job";
             this.ckb_search_job.Size = new System.Drawing.Size(105, 24);
             this.ckb_search_job.TabIndex = 1;
@@ -328,6 +341,7 @@ namespace Schedule_Job
             this.ckb_search_job_detail.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ckb_search_job_detail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ckb_search_job_detail.Location = new System.Drawing.Point(284, 26);
+            this.ckb_search_job_detail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_search_job_detail.Name = "ckb_search_job_detail";
             this.ckb_search_job_detail.Size = new System.Drawing.Size(160, 24);
             this.ckb_search_job_detail.TabIndex = 1;
@@ -359,8 +373,10 @@ namespace Schedule_Job
             this.groupBox2.Controls.Add(this.dtp_start);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(13, 111);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1167, 136);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(1167, 135);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm theo ...";
@@ -368,7 +384,8 @@ namespace Schedule_Job
             // ckb_search_progress
             // 
             this.ckb_search_progress.AutoSize = true;
-            this.ckb_search_progress.Location = new System.Drawing.Point(578, 34);
+            this.ckb_search_progress.Location = new System.Drawing.Point(579, 34);
+            this.ckb_search_progress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_search_progress.Name = "ckb_search_progress";
             this.ckb_search_progress.Size = new System.Drawing.Size(18, 17);
             this.ckb_search_progress.TabIndex = 9;
@@ -378,7 +395,8 @@ namespace Schedule_Job
             // ckb_search_by_date
             // 
             this.ckb_search_by_date.AutoSize = true;
-            this.ckb_search_by_date.Location = new System.Drawing.Point(578, 62);
+            this.ckb_search_by_date.Location = new System.Drawing.Point(579, 62);
+            this.ckb_search_by_date.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_search_by_date.Name = "ckb_search_by_date";
             this.ckb_search_by_date.Size = new System.Drawing.Size(18, 17);
             this.ckb_search_by_date.TabIndex = 9;
@@ -387,14 +405,16 @@ namespace Schedule_Job
             // 
             // txt_progress_end
             // 
-            this.txt_progress_end.Location = new System.Drawing.Point(1037, 29);
+            this.txt_progress_end.Location = new System.Drawing.Point(1037, 30);
+            this.txt_progress_end.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_progress_end.Name = "txt_progress_end";
             this.txt_progress_end.Size = new System.Drawing.Size(119, 27);
             this.txt_progress_end.TabIndex = 3;
             // 
             // txt_progress_start
             // 
-            this.txt_progress_start.Location = new System.Drawing.Point(757, 29);
+            this.txt_progress_start.Location = new System.Drawing.Point(757, 30);
+            this.txt_progress_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_progress_start.Name = "txt_progress_start";
             this.txt_progress_start.Size = new System.Drawing.Size(117, 27);
             this.txt_progress_start.TabIndex = 3;
@@ -403,6 +423,7 @@ namespace Schedule_Job
             // 
             this.ckb_status_drop.AutoSize = true;
             this.ckb_status_drop.Location = new System.Drawing.Point(361, 96);
+            this.ckb_status_drop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_status_drop.Name = "ckb_status_drop";
             this.ckb_status_drop.Size = new System.Drawing.Size(105, 24);
             this.ckb_status_drop.TabIndex = 2;
@@ -413,6 +434,7 @@ namespace Schedule_Job
             // 
             this.ckb_status_over.AutoSize = true;
             this.ckb_status_over.Location = new System.Drawing.Point(179, 96);
+            this.ckb_status_over.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_status_over.Name = "ckb_status_over";
             this.ckb_status_over.Size = new System.Drawing.Size(94, 24);
             this.ckb_status_over.TabIndex = 2;
@@ -423,6 +445,7 @@ namespace Schedule_Job
             // 
             this.ckb_status_on_going.AutoSize = true;
             this.ckb_status_on_going.Location = new System.Drawing.Point(361, 66);
+            this.ckb_status_on_going.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_status_on_going.Name = "ckb_status_on_going";
             this.ckb_status_on_going.Size = new System.Drawing.Size(143, 24);
             this.ckb_status_on_going.TabIndex = 2;
@@ -433,6 +456,7 @@ namespace Schedule_Job
             // 
             this.ckb_priority_false.AutoSize = true;
             this.ckb_priority_false.Location = new System.Drawing.Point(361, 31);
+            this.ckb_priority_false.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_priority_false.Name = "ckb_priority_false";
             this.ckb_priority_false.Size = new System.Drawing.Size(162, 24);
             this.ckb_priority_false.TabIndex = 2;
@@ -443,6 +467,7 @@ namespace Schedule_Job
             // 
             this.ckb_status_complete.AutoSize = true;
             this.ckb_status_complete.Location = new System.Drawing.Point(179, 66);
+            this.ckb_status_complete.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_status_complete.Name = "ckb_status_complete";
             this.ckb_status_complete.Size = new System.Drawing.Size(117, 24);
             this.ckb_status_complete.TabIndex = 2;
@@ -453,6 +478,7 @@ namespace Schedule_Job
             // 
             this.btn_search.Image = global::Schedule_Job.Properties.Resources.icons8_search_24;
             this.btn_search.Location = new System.Drawing.Point(1080, 96);
+            this.btn_search.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(77, 34);
             this.btn_search.TabIndex = 8;
@@ -463,6 +489,7 @@ namespace Schedule_Job
             // 
             this.ckb_priority_true.AutoSize = true;
             this.ckb_priority_true.Location = new System.Drawing.Point(179, 31);
+            this.ckb_priority_true.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ckb_priority_true.Name = "ckb_priority_true";
             this.ckb_priority_true.Size = new System.Drawing.Size(114, 24);
             this.ckb_priority_true.TabIndex = 2;
@@ -492,13 +519,13 @@ namespace Schedule_Job
             this.label9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label9.Location = new System.Drawing.Point(560, 30);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(1, 90);
+            this.label9.Size = new System.Drawing.Size(1, 91);
             this.label9.TabIndex = 1;
             // 
             // lbl_progress
             // 
             this.lbl_progress.AutoSize = true;
-            this.lbl_progress.Location = new System.Drawing.Point(602, 32);
+            this.lbl_progress.Location = new System.Drawing.Point(603, 32);
             this.lbl_progress.Name = "lbl_progress";
             this.lbl_progress.Size = new System.Drawing.Size(124, 20);
             this.lbl_progress.TabIndex = 1;
@@ -525,7 +552,7 @@ namespace Schedule_Job
             // lbl_date_start
             // 
             this.lbl_date_start.AutoSize = true;
-            this.lbl_date_start.Location = new System.Drawing.Point(602, 62);
+            this.lbl_date_start.Location = new System.Drawing.Point(603, 62);
             this.lbl_date_start.Name = "lbl_date_start";
             this.lbl_date_start.Size = new System.Drawing.Size(122, 20);
             this.lbl_date_start.TabIndex = 1;
@@ -537,6 +564,7 @@ namespace Schedule_Job
             this.dtp_end.CustomFormat = "dd/MM/yyyy";
             this.dtp_end.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_end.Location = new System.Drawing.Point(1037, 62);
+            this.dtp_end.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtp_end.Name = "dtp_end";
             this.dtp_end.Size = new System.Drawing.Size(119, 27);
             this.dtp_end.TabIndex = 0;
@@ -547,6 +575,7 @@ namespace Schedule_Job
             this.dtp_start.CustomFormat = "dd/MM/yyyy";
             this.dtp_start.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtp_start.Location = new System.Drawing.Point(757, 62);
+            this.dtp_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dtp_start.Name = "dtp_start";
             this.dtp_start.Size = new System.Drawing.Size(117, 27);
             this.dtp_start.TabIndex = 0;
@@ -557,8 +586,10 @@ namespace Schedule_Job
             this.groupBox3.Controls.Add(this.ckb_search_job);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(13, 38);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(478, 67);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(477, 66);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Chọn để tìm kiếm";
@@ -566,9 +597,10 @@ namespace Schedule_Job
             // btn_add_jod_detail
             // 
             this.btn_add_jod_detail.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
-            this.btn_add_jod_detail.Location = new System.Drawing.Point(1141, 253);
+            this.btn_add_jod_detail.Location = new System.Drawing.Point(1141, 254);
+            this.btn_add_jod_detail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_add_jod_detail.Name = "btn_add_jod_detail";
-            this.btn_add_jod_detail.Size = new System.Drawing.Size(38, 34);
+            this.btn_add_jod_detail.Size = new System.Drawing.Size(37, 34);
             this.btn_add_jod_detail.TabIndex = 8;
             this.btn_add_jod_detail.UseVisualStyleBackColor = true;
             this.btn_add_jod_detail.Click += new System.EventHandler(this.btn_add_jod_detail_Click);
@@ -577,10 +609,10 @@ namespace Schedule_Job
             // 
             this.btn_add_job.Image = global::Schedule_Job.Properties.Resources.icons8_add_24;
             this.btn_add_job.Location = new System.Drawing.Point(475, 255);
+            this.btn_add_job.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btn_add_job.Name = "btn_add_job";
-            this.btn_add_job.Size = new System.Drawing.Size(38, 34);
+            this.btn_add_job.Size = new System.Drawing.Size(37, 34);
             this.btn_add_job.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.btn_add_job, "Thêm công việc");
             this.btn_add_job.UseVisualStyleBackColor = true;
             this.btn_add_job.Click += new System.EventHandler(this.btn_add_job_Click);
             // 
@@ -594,16 +626,35 @@ namespace Schedule_Job
             this.tsm_option});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(277, 31);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(276, 31);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // tsm_account
             // 
+            this.tsm_account.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.đăngXuâtToolStripMenuItem,
+            this.đôiMâtKhâuToolStripMenuItem});
             this.tsm_account.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tsm_account.Name = "tsm_account";
             this.tsm_account.Size = new System.Drawing.Size(96, 27);
             this.tsm_account.Text = "Tài khoản";
+            this.tsm_account.Click += new System.EventHandler(this.tsm_account_Click);
+            // 
+            // đăngXuâtToolStripMenuItem
+            // 
+            this.đăngXuâtToolStripMenuItem.Name = "đăngXuâtToolStripMenuItem";
+            this.đăngXuâtToolStripMenuItem.Size = new System.Drawing.Size(197, 28);
+            this.đăngXuâtToolStripMenuItem.Text = "Đăng xuất";
+            this.đăngXuâtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuâtToolStripMenuItem_Click);
+            // 
+            // đôiMâtKhâuToolStripMenuItem
+            // 
+            this.đôiMâtKhâuToolStripMenuItem.Name = "đôiMâtKhâuToolStripMenuItem";
+            this.đôiMâtKhâuToolStripMenuItem.Size = new System.Drawing.Size(197, 28);
+            this.đôiMâtKhâuToolStripMenuItem.Text = "Đổi mật khẩu";
+            this.đôiMâtKhâuToolStripMenuItem.Click += new System.EventHandler(this.đôiMâtKhâuToolStripMenuItem_Click);
             // 
             // tsm_count
             // 
@@ -710,7 +761,7 @@ namespace Schedule_Job
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1582, 853);
+            this.ClientSize = new System.Drawing.Size(1581, 853);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -726,6 +777,7 @@ namespace Schedule_Job
             this.Controls.Add(this.fpn_jobs);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -812,6 +864,8 @@ namespace Schedule_Job
         private System.Windows.Forms.ToolStripMenuItem tsm_delete_job_detail;
         private System.Windows.Forms.ToolStripMenuItem tsm_set_job_to_ongoing;
         private System.Windows.Forms.ToolStripMenuItem tsm_set_to_ongoing;
-    }
+		private System.Windows.Forms.ToolStripMenuItem đăngXuâtToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem đôiMâtKhâuToolStripMenuItem;
+	}
 }
 

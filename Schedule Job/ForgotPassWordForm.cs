@@ -17,7 +17,9 @@ namespace Schedule_Job
         {
             InitializeComponent();
         }
-
+        public static string userName = "";
+        public static string Question = "";
+        public static string Answer = "";
         private void ForgotPassWordForm_Load(object sender, EventArgs e)
         {
             MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
@@ -39,5 +41,14 @@ namespace Schedule_Job
         {
             Close();
         }
-    }
+
+		private void btnOK_Click(object sender, EventArgs e)
+		{
+            userName = txtUserName.Text;
+            Question = cbbQuestion.Text;
+            Answer = txtAnswer.Text;
+            ChangePasswordFrm cpf = new ChangePasswordFrm();
+            cpf.Show();
+		}
+	}
 }

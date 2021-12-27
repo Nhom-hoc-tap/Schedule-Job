@@ -42,6 +42,21 @@ namespace DataAccess
             sqlConn.Close();
         }
 
+        public void CheckProgress(int id)
+        {
+            SqlConnection sqlConn = new SqlConnection(Utilities.ConnectionString);
+            sqlConn.Open();
+
+            SqlCommand command = sqlConn.CreateCommand();
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Utilities.Job_CheckProgress;
+            command.Parameters.Add("@IdJob", SqlDbType.Int).Value = id;
+
+            command.ExecuteNonQuery();
+
+            sqlConn.Close();
+        }
+
         public Job GetById(int id)
         {
             SqlParameter idParam = new SqlParameter("@id", SqlDbType.Int)
