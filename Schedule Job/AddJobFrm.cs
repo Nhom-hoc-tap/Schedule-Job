@@ -190,12 +190,20 @@ namespace Schedule_Job
                 if (oldJob is null)
                 {
                     JobBL.Instance.Insert(newJob);
+                    DialogResult = DialogResult.OK;
                 }
                 else
                 {
-                    JobBL.Instance.Update(newJob);
+                    DialogResult dialogResult = MessageBox.Show("Xác nhận cập nhật? Cập nhật sẽ làm thay đổi dữ liệu", "Cảnh báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        JobBL.Instance.Update(newJob);
+                        DialogResult = DialogResult.OK;
+                    }
+                    else
+                        DialogResult = DialogResult.No;
                 }
-                DialogResult = DialogResult.OK;
+                
             }
         }
 

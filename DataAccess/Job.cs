@@ -44,6 +44,6 @@ namespace DataAccess
             } 
         } 
         public int TypeOfJobId { get; set; }
-        //public string UserName { get; set; }
+        
     }
 }
