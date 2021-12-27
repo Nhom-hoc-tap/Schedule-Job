@@ -19,20 +19,14 @@ namespace Schedule_Job
 
         private readonly string userName;
 
-        private int typeOfJobId;
+        private readonly int typeOfJobId;
 
         public AddJobFrm()
         {
             InitializeComponent();
         }
 
-        public AddJobFrm(string userName, int? jobId = null) : this()
-        {
-            this.userName = userName;
-            this.jobId = jobId ?? 0;
-        }
-
-        public AddJobFrm(string userName, int? jobId = null, int? typeOfJobId=null) : this()
+        public AddJobFrm(string userName, int? jobId = null, int? typeOfJobId = null) : this()
         {
             this.userName = userName;
             this.jobId = jobId ?? 0;
@@ -115,18 +109,6 @@ namespace Schedule_Job
             }
         }
 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
-        private void AddJobFrm_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
         private Job GetJobById(int id)
         {
             return id > 0 ? JobBL.Instance.GetById(id) : null;
@@ -136,8 +118,8 @@ namespace Schedule_Job
         {
             int typeId = (int)cbbCategory.SelectedValue;
             string name = txtName.Text;
-            DateTime startDate = dtpStartDate.Value + dtpStartTime.Value.TimeOfDay;
-            DateTime endDate = dtpEndDate.Value + dtpEndTime.Value.TimeOfDay;
+            DateTime startDate = dtpStartDate.Value.Date + dtpStartTime.Value.TimeOfDay;
+            DateTime endDate = dtpEndDate.Value.Date + dtpEndTime.Value.TimeOfDay;
             int priority = cbbPriority.SelectedIndex;
             string description = txtDescription.Text;
             int status = GetStatus();
@@ -216,13 +198,13 @@ namespace Schedule_Job
             DateTime startDate = dtpStartDate.Value + dtpStartTime.Value.TimeOfDay;
             DateTime endDate = dtpEndDate.Value + dtpEndTime.Value.TimeOfDay;
 
-            if (rbOver.Checked == false && endDate<startDate)
+            if (!rbOver.Checked && endDate < startDate)
             {
                 MessageBox.Show("Ngày kết thúc không được trước ngày bắt đầu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
-            if (rbOver.Checked == true && endDate > startDate && endDate>DateTime.Now)
+            if (rbOver.Checked && endDate > startDate && endDate > DateTime.Now)
             {
                 MessageBox.Show("Công việc chưa quá hạn mà bạn ơi!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -233,7 +215,7 @@ namespace Schedule_Job
 
         private void rbComplete_CheckedChanged(object sender, EventArgs e)
         {
-            if (rbComplete.Checked == true)
+            if (rbComplete.Checked)
             {
                 nudProgress.Value = 100;
                 nudProgress.Enabled = false;

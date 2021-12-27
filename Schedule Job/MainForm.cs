@@ -55,12 +55,13 @@ namespace Schedule_Job
             _list_job = _list_job.OrderBy(x => x.Progress).ToList();
             if (_list_job.Count > 0)
             {
-                _current_job_id = _list_job[0].TypeOfJobId;
+                _current_job_id = _list_job[0].Id;
             }
 
-            LoadJobs(_list_job);
             LoadTypeOfJobs();
             cbb_type_jobs.SelectedValue = 0;
+
+            LoadJobs(_list_job);
             txt_search.GotFocus += Txt_search_GotFocus;
             txt_search.LostFocus += Txt_search_LostFocus;
 
@@ -103,7 +104,7 @@ namespace Schedule_Job
                 jobControl2.Tag = j.Id;
                 jobControl2.Click += JobControl2_Click;
                 jobControl2.ContextMenuStrip = cms_job;
-                
+
                 fpn_jobs.Controls.Add(jobControl2);
             }
             lbl_num_job.Text = jobs.Count().ToString();
@@ -116,16 +117,21 @@ namespace Schedule_Job
 
             ShowCurrentSelectedJob();
         }
+
         private void ShowCurrentSelectedJob()
         {
             foreach (Control c in fpn_jobs.Controls)
             {
-                if (c is JobControl2)
+                if (c is JobControl2 jobControl2)
                 {
-                    if (((JobControl2)c).Tag.ToString() == _current_job_id.ToString())
-                        ((JobControl2)c).OnClick();
+                    if (jobControl2.Tag.ToString() == _current_job_id.ToString())
+                    {
+                        jobControl2.OnClick();
+                    }
                     else
-                        ((JobControl2)c).NotClick();
+                    {
+                        jobControl2.NotClick();
+                    }
                 }
             }
         }
@@ -175,24 +181,12 @@ namespace Schedule_Job
             _list_TypeOfJob = _typeOfJobBL.GetByAccount(userName);
             _list_TypeOfJob = _list_TypeOfJob.OrderBy(x => x.Name).ToList();
             _list_TypeOfJob.Add(new TypeOfJob { Id = 0, Name = "Tất cả", UserName = userName });
-            cbb_type_jobs.DataSource = _list_TypeOfJob;
+
             cbb_type_jobs.ValueMember = "Id";
+            cbb_type_jobs.DataSource = _list_TypeOfJob;
             cbb_type_jobs.DisplayMember = "Name";
 
             toolTip1.SetToolTip(cbb_type_jobs, "Loại công việc");
-
-            _current_type_of_job_id = _list_TypeOfJob[0].Id;
-        }
-
-        private void cbb_type_jobs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int selectedTypeId = ((TypeOfJob)cbb_type_jobs.SelectedItem).Id;
-            _current_type_of_job_id = selectedTypeId;
-            List<Job> jobs = new List<Job>();
-            if (selectedTypeId == 0)
-                jobs = _jobBL.GetByAccount(userName);
-            else jobs = _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
-            LoadJobs(jobs);
         }
 
         private void txt_search_TextChanged(object sender, EventArgs e)
@@ -445,22 +439,20 @@ namespace Schedule_Job
 
         private void btn_add_job_Click(object sender, EventArgs e)
         {
-            AddJobFrm form = new AddJobFrm(userName,null,_current_type_of_job_id);
+            _prv_type_job_id = _current_type_of_job_id;
+            AddJobFrm form = new AddJobFrm(userName, null, _current_type_of_job_id);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                _prv_type_job_id = _current_type_of_job_id;
                 LoadTypeOfJobs();
-                _current_type_of_job_id = _prv_type_job_id;
-                cbb_type_jobs.SelectedValue= _current_type_of_job_id;
+                cbb_type_jobs.SelectedValue = _prv_type_job_id;
                 _list_job = _jobBL.GetByAccount(userName);
                 if (_current_type_of_job_id == 0)
                 {
                     LoadJobs(_list_job);
                 }
-                    
                 else
                 {
-                   LoadJobs( _list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
+                    LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
                 }
                 DisplayCalendar(_month, _year);
             }
@@ -483,19 +475,17 @@ namespace Schedule_Job
 
         private void tsm_update_job_Click(object sender, EventArgs e)
         {
+            _prv_type_job_id = _current_type_of_job_id;
             AddJobFrm form = new AddJobFrm(userName, _current_job_id);
             if (form.ShowDialog(this) == DialogResult.OK)
             {
-                _prv_type_job_id = _current_type_of_job_id;
                 LoadTypeOfJobs();
-                _current_type_of_job_id = _prv_type_job_id;
-                cbb_type_jobs.SelectedValue = _current_type_of_job_id;
+                cbb_type_jobs.SelectedValue = _prv_type_job_id;
                 _list_job = _jobBL.GetByAccount(userName);
                 if (_current_type_of_job_id == 0)
                 {
                     LoadJobs(_list_job);
                 }
-
                 else
                 {
                     LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
@@ -547,15 +537,11 @@ namespace Schedule_Job
             _jobBL.Delete(_current_job_id);
             _current_job_id = 0;
             _list_job = _jobBL.GetByAccount(userName);
-            if(_current_type_of_job_id == 0)
+            if (_current_type_of_job_id == 0)
                 LoadJobs(_list_job);
-            LoadJobs(_list_job.FindAll(x=>x.TypeOfJobId==_current_type_of_job_id));
+            LoadJobs(_list_job.FindAll(x => x.TypeOfJobId == _current_type_of_job_id));
             fpn_job_detail.Controls.Clear();
             DisplayCalendar(_month, _year);
-            
-            _clicked_day_control.jobs = _list_job.FindAll(x => (x.EndTime.Day == int.Parse(_clicked_day_control.lbl_day.Text) && x.EndTime.Month == _month && x.EndTime.Year == _year));
-            DayControl_Click(_clicked_day_control, EventArgs.Empty);
-            
         }
 
         private void tsm_add_job_detail_Click(object sender, EventArgs e)
@@ -570,7 +556,7 @@ namespace Schedule_Job
             {
                 _list_job_detail = _jobDetailBL.GetByJobId(_current_job_id);
                 LoadJobDetail(_list_job_detail);
-                if(_current_type_of_job_id>0)
+                if (_current_type_of_job_id > 0)
                     LoadJobs(_jobBL.GetByAccount(userName).FindAll(x => x.TypeOfJobId == _current_type_of_job_id).ToList());
                 else
                     LoadJobs(_jobBL.GetByAccount(userName));
@@ -605,6 +591,15 @@ namespace Schedule_Job
                 LoadJobDetail(_list_job_detail = _jobDetailBL.GetByJobId(_current_job_id));
                 ShowCurrentSelectedJobDetail();
             }
+        }
+
+        private void cbb_type_jobs_SelectedValueChanged(object sender, EventArgs e)
+        {
+            int selectedTypeId = Convert.ToInt32(cbb_type_jobs.SelectedValue);
+            _current_type_of_job_id = selectedTypeId;
+            List<Job> jobs = new List<Job>();
+            jobs = selectedTypeId == 0 ? _jobBL.GetByAccount(userName) : _list_job.FindAll(x => (x.TypeOfJobId == selectedTypeId));
+            LoadJobs(jobs);
         }
 
         private void LoadJobsVer2(List<Job> jobs)

@@ -492,7 +492,6 @@ namespace Schedule_Job
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm công việc";
             this.Load += new System.EventHandler(this.AddJobFrm_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddJobFrm_MouseDown);
             this.rbContinue.ResumeLayout(false);
             this.rbContinue.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudProgress)).EndInit();

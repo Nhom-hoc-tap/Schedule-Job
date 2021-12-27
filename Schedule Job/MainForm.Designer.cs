@@ -248,7 +248,7 @@ namespace Schedule_Job
             this.cbb_type_jobs.Name = "cbb_type_jobs";
             this.cbb_type_jobs.Size = new System.Drawing.Size(459, 28);
             this.cbb_type_jobs.TabIndex = 7;
-            this.cbb_type_jobs.SelectedIndexChanged += new System.EventHandler(this.cbb_type_jobs_SelectedIndexChanged);
+            this.cbb_type_jobs.SelectedValueChanged += new System.EventHandler(this.cbb_type_jobs_SelectedValueChanged);
             // 
             // label1
             // 
@@ -580,6 +580,7 @@ namespace Schedule_Job
             this.btn_add_job.Name = "btn_add_job";
             this.btn_add_job.Size = new System.Drawing.Size(38, 34);
             this.btn_add_job.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.btn_add_job, "Thêm công việc");
             this.btn_add_job.UseVisualStyleBackColor = true;
             this.btn_add_job.Click += new System.EventHandler(this.btn_add_job_Click);
             // 
